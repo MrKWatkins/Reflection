@@ -1,10 +1,14 @@
 using System.Reflection;
 using MrKWatkins.Reflection.Formatting;
+using MrKWatkins.Reflection.Tests.TestTypes.Events;
+using MrKWatkins.Reflection.Tests.TestTypes.Fields;
+using MrKWatkins.Reflection.Tests.TestTypes.Properties;
 using MrKWatkins.Reflection.Tests.TestTypes.Types;
 
 namespace MrKWatkins.Reflection.Tests.Formatting;
 
-public sealed class DisplayNameFormatterTests
+// TODO: Explicit interface implementations.
+public sealed class DisplayNameFormatterTests : TestFixture
 {
     [TestCaseSource(nameof(Format_UnqualifiedTestCases))]
     public void Format_Unqualified(MemberInfo member, string expected) =>
@@ -16,6 +20,7 @@ public sealed class DisplayNameFormatterTests
         static TestCaseData Create(MemberInfo member, string expected) => new TestCaseData(member, expected).SetArgDisplayNames(member.ToString()!);
 
         #region Types
+
         yield return Create(typeof(string), "String");
         yield return Create(typeof(string).MakePointerType(), "String*");
         yield return Create(typeof(string).MakeByRefType(), "String");
@@ -74,30 +79,29 @@ public sealed class DisplayNameFormatterTests
         yield return Create(typeof(Nested<long>.Child<int, byte>.GrandChild<int, byte>), "Nested<Int64>.Child<Int32, Byte>.GrandChild<Int32, Byte>");
 
         #endregion
+
+        #region Fields
+
+        yield return Create(GetField<FieldModifiers>(nameof(FieldModifiers.Const)), "FieldModifiers.Const");
+        yield return Create(GetField<FieldModifiers>(nameof(FieldModifiers.Instance)), "FieldModifiers.Instance");
+        yield return Create(GetField<FieldModifiers>(nameof(FieldModifiers.Static)), "FieldModifiers.Static");
+
+        #endregion
+
+        #region Events
+
+        yield return Create(GetEvent<EventAccessibility>(nameof(EventAccessibility.Public)), "EventAccessibility.Public");
+
+        #endregion
+
+        #region Properties
+
+        yield return Create(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "PropertyModifiers.Normal");
+        yield return Create(GetProperty<PropertyIndexerOneParameter>("Item"), "PropertyIndexerOneParameter.Item[Int32]");
+        yield return Create(GetProperty<PropertyIndexerTwoParameters>("Item"), "PropertyIndexerTwoParameters.Item[Int32, String]");
+
+        #endregion
 /*
-        // Fields.
-        yield return Create(
-            typeof(int).GetField(nameof(int.MaxValue))!,
-            "F:System.Int32.MaxValue");
-
-        // Properties.
-        yield return Create(
-            typeof(Exception).GetProperty(nameof(Exception.InnerException))!,
-            "P:System.Exception.InnerException");
-
-        yield return Create(
-            typeof(string).GetProperty("Chars")!,
-            "P:System.String.Chars(System.Int32)");
-
-        yield return Create(
-            typeof(ArrayList).GetProperty("Item")!,
-            "P:System.Collections.ArrayList.Item(System.Int32)");
-
-        yield return Create(
-            typeof(Dictionary<,>).GetProperty("System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.IsReadOnly",
-                BindingFlags.Instance | BindingFlags.NonPublic)!,
-            "P:System.Collections.Generic.Dictionary`2.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{TKey@TValue}}#IsReadOnly");
-
         // Methods.
         yield return Create(
             typeof(object).GetMethod(nameof(ToString))!,
@@ -157,11 +161,6 @@ public sealed class DisplayNameFormatterTests
             typeof(string).GetConstructor([typeof(char).MakePointerType()])!,
             "M:System.String.#ctor(System.Char*)");
 
-        // Events.
-        yield return Create(
-            typeof(Timer).GetEvent(nameof(Timer))!,
-            "E:System.Timers.Timer.Elapsed");
-
         // Operators.
         yield return Create(
             typeof(decimal).GetMethod("op_Implicit", [typeof(byte)])!,
@@ -198,5 +197,13 @@ public sealed class DisplayNameFormatterTests
         yield return Create(typeof(Dictionary<int, string>), "System.Collections.Generic.Dictionary<System.Int32, System.String>");
         yield return Create(typeof(Nested<>.Child<,>.GrandChild<,>), "MrKWatkins.Reflection.Tests.TestTypes.Types.Nested<T>.Child<TC1, TC2>.GrandChild<TG1, TG2>");
         yield return Create(typeof(Nested<long>.Child<int>.GrandChild), "MrKWatkins.Reflection.Tests.TestTypes.Types.Nested<System.Int64>.Child<System.Int32>.GrandChild");
+
+        yield return Create(GetField<FieldModifiers>(nameof(FieldModifiers.Const)), "MrKWatkins.Reflection.Tests.TestTypes.Fields.FieldModifiers.Const");
+
+        yield return Create(GetEvent<EventAccessibility>(nameof(EventAccessibility.Public)), "MrKWatkins.Reflection.Tests.TestTypes.Events.EventAccessibility.Public");
+
+        yield return Create(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyModifiers.Normal");
+        yield return Create(GetProperty<PropertyIndexerOneParameter>("Item"), "MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyIndexerOneParameter.Item[System.Int32]");
+        yield return Create(GetProperty<PropertyIndexerTwoParameters>("Item"), "MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyIndexerTwoParameters.Item[System.Int32, System.String]");
     }
 }

@@ -50,8 +50,8 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     [Pure]
     public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()
     {
-        yield return new TestCaseData(GetProperty<PropertyIndexer>(nameof(PropertyIndexer.Normal)), false);
-        yield return new TestCaseData(GetProperty<PropertyIndexer>("Item"), false);
+        yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
+        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), false);
 
         var publicOverloaded = GetProperties<PropertyPublicOverloadedIndexer>("Item");
         yield return new TestCaseData(publicOverloaded[0], true);
@@ -82,8 +82,8 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     [Pure]
     public static IEnumerable<TestCaseData> IsIndexerTestCases()
     {
-        yield return new TestCaseData(GetProperty<PropertyIndexer>(nameof(PropertyIndexer.Normal)), false);
-        yield return new TestCaseData(GetProperty<PropertyIndexer>("Item"), true);
+        yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
+        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), true);
 
         var publicOverloaded = GetProperties<PropertyPublicOverloadedIndexer>("Item");
         yield return new TestCaseData(publicOverloaded[0], true);
@@ -139,7 +139,7 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     {
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Static)), true);
-        yield return new TestCaseData(GetProperty<PropertyIndexer>("Item"), false);
+        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), false);
     }
 
     [Pure]

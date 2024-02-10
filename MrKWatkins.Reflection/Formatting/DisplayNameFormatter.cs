@@ -13,17 +13,45 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
 
     protected override void Format(TextWriter output, EventInfo @event)
     {
-        throw new NotImplementedException();
+        Format(output, @event.DeclaringType!);
+        output.Write('.');
+        output.Write(@event.Name);
     }
 
     protected override void Format(TextWriter output, FieldInfo field)
     {
-        throw new NotImplementedException();
+        Format(output, field.DeclaringType!);
+        output.Write('.');
+        output.Write(field.Name);
     }
 
     protected override void Format(TextWriter output, PropertyInfo property)
     {
-        throw new NotImplementedException();
+        Format(output, property.DeclaringType!);
+        output.Write('.');
+        output.Write(property.Name);
+        if (property.IsIndexer())
+        {
+            output.Write('[');
+            Format(output, property.GetIndexParameters().Select(p => p.ParameterType));
+            output.Write(']');
+        }
+    }
+
+    private void Format(TextWriter output, [InstantHandle] IEnumerable<Type> types)
+    {
+        var needsSeparator = false;
+        foreach (var type in types)
+        {
+            if (needsSeparator)
+            {
+                output.Write(", ");
+            }
+
+            Format(output, type);
+
+            needsSeparator = true;
+        }
     }
 
     protected override void Format(TextWriter output, Type type)
