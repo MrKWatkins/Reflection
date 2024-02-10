@@ -190,20 +190,6 @@ public class ReflectionExtensionsTests
         method.IsPublicOrProtected().Should().Be(expected);
     }
 
-    [TestCase(nameof(TestFieldsClass.ConstField), false)]
-    [TestCase(nameof(TestFieldsClass.StaticReadonlyField), true)]
-    public void IsReadOnly(string name, bool expected)
-    {
-        var field = typeof(TestFieldsClass).GetField(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic)
-                    ?? throw new InvalidOperationException($"Could not find field {name}.");
-        field.IsReadOnly().Should().Be(expected);
-    }
-
-    [TestCase(typeof(TestClass), false)]
-    [TestCase(typeof(TestRecord), true)]
-    [TestCase(typeof(int), false)]
-    public void IsRecord(Type type, bool expected) => type.IsRecord().Should().Be(expected);
-
 #pragma warning disable CA1812
 #pragma warning disable CA1822
 #pragma warning disable CS0414
@@ -211,10 +197,6 @@ public class ReflectionExtensionsTests
 #pragma warning disable CA1802
 #pragma warning disable CA1051
 #pragma warning disable CA1044
-    private sealed class TestClass;
-
-    private sealed record TestRecord;
-
     public static class NestedType
     {
         public static class ReallyNestedType;

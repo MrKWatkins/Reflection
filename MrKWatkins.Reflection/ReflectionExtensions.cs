@@ -1,28 +1,9 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace MrKWatkins.Reflection;
 
 public static class ReflectionExtensions
 {
-    [Pure]
-    public static bool IsConst(this FieldInfo field) => field.IsLiteral;
-
-    [Pure]
-    public static bool IsReadOnly(this FieldInfo field) => field.IsInitOnly;
-
-    [Pure]
-    public static bool IsRecord(this Type type)
-    {
-        if (!type.IsClass)
-        {
-            return false;
-        }
-
-        return type.GetProperty("EqualityContract", BindingFlags.Instance | BindingFlags.NonPublic)?
-            .GetCustomAttribute(typeof(CompilerGeneratedAttribute)) != null;
-    }
-
     /// <summary>
     /// If a type is a nested type then it enumerates its parents, starting at the outermost type, followed by the type itself.
     /// If it is not nested then it just returns the type.

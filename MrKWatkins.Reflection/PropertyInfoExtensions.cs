@@ -3,8 +3,18 @@ using System.Runtime.CompilerServices;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Extension methods for <see cref="PropertyInfo" />.
+/// </summary>
 public static class PropertyInfoExtensions
 {
+    /// <summary>
+    /// Returns the <see cref="Accessibility" /> of the specified <see cref="PropertyInfo" />.
+    /// </summary>
+    /// <param name="property">The method.</param>
+    /// <returns>
+    /// The <see cref="Accessibility" /> of the <paramref name="property"/>.
+    /// </returns>
     [Pure]
     public static Accessibility GetAccessibility(this PropertyInfo property)
     {

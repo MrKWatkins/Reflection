@@ -1,7 +1,12 @@
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Extension methods for <see cref="Type" />.
+/// </summary>
 public static class TypeExtensions
 {
     /// <summary>
@@ -67,4 +72,30 @@ public static class TypeExtensions
     /// </returns>
     [Pure]
     public static bool IsPublicOrProtected(this Type type) => type.GetAccessibility() >= Accessibility.Protected;
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="Type" /> is a <c>ref struct</c>; <c>false</c> otherwise.
+    /// </summary>
+    /// <remarks>Equivalent to <see cref="Type.IsByRefLike"/>.</remarks>
+    /// <param name="type">The type.</param>
+    /// <returns><c>true</c> if the specified <see cref="Type" /> is a <c>ref struct</c>; <c>false</c> otherwise.</returns>
+    [Pure]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static bool IsRefStruct(this Type type) => type.IsByRefLike;
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="Type" /> is a <c>readonly struct</c>; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns><c>true</c> if the specified <see cref="Type" /> is a <c>readonly struct</c>; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool IsReadOnlyStruct(this Type type) => type.IsValueType && type.GetCustomAttribute<IsReadOnlyAttribute>() != null;
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="Type" /> is a <c>record class</c> or <c>record struct</c>; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns><c>true</c> if the specified <see cref="Type" /> is a <c>record class</c> or <c>record struct</c>; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool IsRecord(this Type type) => type.GetMethod("PrintMembers", BindingFlags.Instance | BindingFlags.NonPublic, [typeof(StringBuilder)]) != null;
 }

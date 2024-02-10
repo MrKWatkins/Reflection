@@ -8,59 +8,6 @@ public sealed class PropertyInfoExtensionsTests
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(PropertyInfo property, Accessibility expected) => property.GetAccessibility().Should().Be(expected);
 
-    [Pure]
-    public static IEnumerable<TestCaseData> AccessibilityTestCases()
-    {
-        TestCaseData CreateTestCase(string name, Accessibility expected) => new TestCaseData(GetProperty<PropertyAccessibility>(name), expected).SetArgDisplayNames(name);
-
-        yield return CreateTestCase("PublicGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("PublicGetProtectedSet", Accessibility.Public);
-        yield return CreateTestCase("PublicGetInternalSet", Accessibility.Public);
-        yield return CreateTestCase("PublicGetProtectedInternalSet", Accessibility.Public);
-        yield return CreateTestCase("PublicGetPrivateProtectedSet", Accessibility.Public);
-        yield return CreateTestCase("PublicGetPrivateSet", Accessibility.Public);
-        yield return CreateTestCase("PublicGetNoSet", Accessibility.Public);
-        yield return CreateTestCase("ProtectedGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("ProtectedGetProtectedSet", Accessibility.Protected);
-        yield return CreateTestCase("ProtectedGetProtectedInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("ProtectedGetPrivateProtectedSet", Accessibility.Protected);
-        yield return CreateTestCase("ProtectedGetPrivateSet", Accessibility.Protected);
-        yield return CreateTestCase("ProtectedGetNoSet", Accessibility.Protected);
-        yield return CreateTestCase("InternalGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("InternalGetInternalSet", Accessibility.Internal);
-        yield return CreateTestCase("InternalGetProtectedInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("InternalGetPrivateProtectedSet", Accessibility.Internal);
-        yield return CreateTestCase("InternalGetPrivateSet", Accessibility.Internal);
-        yield return CreateTestCase("InternalGetNoSet", Accessibility.Internal);
-        yield return CreateTestCase("ProtectedInternalGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("ProtectedInternalGetProtectedSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("ProtectedInternalGetInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("ProtectedInternalGetProtectedInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("ProtectedInternalGetPrivateProtectedSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("ProtectedInternalGetPrivateSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("ProtectedInternalGetNoSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("PrivateProtectedGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("PrivateProtectedGetProtectedSet", Accessibility.Protected);
-        yield return CreateTestCase("PrivateProtectedGetInternalSet", Accessibility.Internal);
-        yield return CreateTestCase("PrivateProtectedGetProtectedInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("PrivateProtectedGetPrivateProtectedSet", Accessibility.PrivateProtected);
-        yield return CreateTestCase("PrivateProtectedGetPrivateSet", Accessibility.PrivateProtected);
-        yield return CreateTestCase("PrivateProtectedGetNoSet", Accessibility.PrivateProtected);
-        yield return CreateTestCase("PrivateGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("PrivateGetProtectedSet", Accessibility.Protected);
-        yield return CreateTestCase("PrivateGetInternalSet", Accessibility.Internal);
-        yield return CreateTestCase("PrivateGetProtectedInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("PrivateGetPrivateProtectedSet", Accessibility.PrivateProtected);
-        yield return CreateTestCase("PrivateGetPrivateSet", Accessibility.Private);
-        yield return CreateTestCase("PrivateGetNoSet", Accessibility.Private);
-        yield return CreateTestCase("NoGetPublicSet", Accessibility.Public);
-        yield return CreateTestCase("NoGetProtectedSet", Accessibility.Protected);
-        yield return CreateTestCase("NoGetInternalSet", Accessibility.Internal);
-        yield return CreateTestCase("NoGetProtectedInternalSet", Accessibility.ProtectedInternal);
-        yield return CreateTestCase("NoGetPrivateProtectedSet", Accessibility.PrivateProtected);
-        yield return CreateTestCase("NoGetPrivateSet", Accessibility.Private);
-    }
-
     [TestCaseSource(nameof(GetBaseDefinitionTestCases))]
     public void GetBaseDefinition(PropertyInfo property, PropertyInfo? expected) => property.GetBaseDefinition().Should().BeSameAs(expected);
 
@@ -193,6 +140,59 @@ public sealed class PropertyInfoExtensionsTests
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Static)), true);
         yield return new TestCaseData(GetProperty<PropertyIndexer>("Item"), false);
+    }
+
+    [Pure]
+    public static IEnumerable<TestCaseData> AccessibilityTestCases()
+    {
+        TestCaseData CreateTestCase(string name, Accessibility expected) => new TestCaseData(GetProperty<PropertyAccessibility>(name), expected).SetArgDisplayNames(name);
+
+        yield return CreateTestCase("PublicGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("PublicGetProtectedSet", Accessibility.Public);
+        yield return CreateTestCase("PublicGetInternalSet", Accessibility.Public);
+        yield return CreateTestCase("PublicGetProtectedInternalSet", Accessibility.Public);
+        yield return CreateTestCase("PublicGetPrivateProtectedSet", Accessibility.Public);
+        yield return CreateTestCase("PublicGetPrivateSet", Accessibility.Public);
+        yield return CreateTestCase("PublicGetNoSet", Accessibility.Public);
+        yield return CreateTestCase("ProtectedGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("ProtectedGetProtectedSet", Accessibility.Protected);
+        yield return CreateTestCase("ProtectedGetProtectedInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("ProtectedGetPrivateProtectedSet", Accessibility.Protected);
+        yield return CreateTestCase("ProtectedGetPrivateSet", Accessibility.Protected);
+        yield return CreateTestCase("ProtectedGetNoSet", Accessibility.Protected);
+        yield return CreateTestCase("InternalGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("InternalGetInternalSet", Accessibility.Internal);
+        yield return CreateTestCase("InternalGetProtectedInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("InternalGetPrivateProtectedSet", Accessibility.Internal);
+        yield return CreateTestCase("InternalGetPrivateSet", Accessibility.Internal);
+        yield return CreateTestCase("InternalGetNoSet", Accessibility.Internal);
+        yield return CreateTestCase("ProtectedInternalGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("ProtectedInternalGetProtectedSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("ProtectedInternalGetInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("ProtectedInternalGetProtectedInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("ProtectedInternalGetPrivateProtectedSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("ProtectedInternalGetPrivateSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("ProtectedInternalGetNoSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("PrivateProtectedGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("PrivateProtectedGetProtectedSet", Accessibility.Protected);
+        yield return CreateTestCase("PrivateProtectedGetInternalSet", Accessibility.Internal);
+        yield return CreateTestCase("PrivateProtectedGetProtectedInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("PrivateProtectedGetPrivateProtectedSet", Accessibility.PrivateProtected);
+        yield return CreateTestCase("PrivateProtectedGetPrivateSet", Accessibility.PrivateProtected);
+        yield return CreateTestCase("PrivateProtectedGetNoSet", Accessibility.PrivateProtected);
+        yield return CreateTestCase("PrivateGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("PrivateGetProtectedSet", Accessibility.Protected);
+        yield return CreateTestCase("PrivateGetInternalSet", Accessibility.Internal);
+        yield return CreateTestCase("PrivateGetProtectedInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("PrivateGetPrivateProtectedSet", Accessibility.PrivateProtected);
+        yield return CreateTestCase("PrivateGetPrivateSet", Accessibility.Private);
+        yield return CreateTestCase("PrivateGetNoSet", Accessibility.Private);
+        yield return CreateTestCase("NoGetPublicSet", Accessibility.Public);
+        yield return CreateTestCase("NoGetProtectedSet", Accessibility.Protected);
+        yield return CreateTestCase("NoGetInternalSet", Accessibility.Internal);
+        yield return CreateTestCase("NoGetProtectedInternalSet", Accessibility.ProtectedInternal);
+        yield return CreateTestCase("NoGetPrivateProtectedSet", Accessibility.PrivateProtected);
+        yield return CreateTestCase("NoGetPrivateSet", Accessibility.Private);
     }
 
     [Pure]

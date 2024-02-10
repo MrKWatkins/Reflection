@@ -2,6 +2,9 @@ using System.Reflection;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Extension methods for <see cref="EventInfo" />.
+/// </summary>
 public static class EventInfoExtensions
 {
     /// <summary>

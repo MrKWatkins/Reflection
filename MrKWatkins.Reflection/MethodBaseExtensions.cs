@@ -1,7 +1,11 @@
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Extension methods for <see cref="MethodBase" />.
+/// </summary>
 public static class MethodBaseExtensions
 {
     /// <summary>
@@ -44,6 +48,7 @@ public static class MethodBaseExtensions
     /// <c>true</c> if the method is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </returns>
     [Pure]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsPublic(this MethodBase method) => method.IsPublic;
 
     /// <summary>
