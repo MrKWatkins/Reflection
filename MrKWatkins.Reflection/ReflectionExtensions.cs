@@ -12,27 +12,6 @@ public static class ReflectionExtensions
     public static bool IsReadOnly(this FieldInfo field) => field.IsInitOnly;
 
     [Pure]
-    public static bool IsPublicOrProtected(this FieldInfo field) => field.IsPublic || field.IsProtected();
-
-    [Pure]
-    public static bool IsProtected(this FieldInfo field) => field.IsFamily || field.IsFamilyOrAssembly;
-
-    [Pure]
-    public static bool IsPublicOrProtected(this MethodBase method) => method.IsPublic || method.IsProtected();
-
-    [Pure]
-    public static bool IsProtected(this MethodBase method) => method.IsFamily || method.IsFamilyOrAssembly;
-
-    [Pure]
-    public static bool IsPublic(this EventInfo @event) => @event.AddMethod?.IsPublic == true;
-
-    [Pure]
-    public static bool IsProtected(this EventInfo @event) => @event.AddMethod?.IsProtected() == true;
-
-    [Pure]
-    public static bool IsPublicOrProtected(this EventInfo @event) => @event.AddMethod?.IsPublicOrProtected() == true;
-
-    [Pure]
     public static bool IsRecord(this Type type)
     {
         if (!type.IsClass)
@@ -62,25 +41,12 @@ public static class ReflectionExtensions
     }
 
     [Pure]
-    public static Visibility GetVisibility(this FieldInfo field) => field.IsPublic ? Visibility.Public : Visibility.Protected;
-
-    [Pure]
-    public static Visibility? GetVisibility(this MethodBase method)
-    {
-        if (method.IsPublic)
+    public static string ToKeyword(this Accessibility accessibility) =>
+        accessibility switch
         {
-            return Visibility.Public;
-        }
-        return method.IsProtected() ? Visibility.Protected : null;
-    }
-
-    [Pure]
-    public static string ToKeyword(this Visibility visibility) =>
-        visibility switch
-        {
-            Visibility.Protected => "protected",
-            Visibility.Public => "public",
-            _ => throw new NotSupportedException($"The {nameof(Visibility)} {visibility} is not supported.")
+            Accessibility.Protected => "protected",
+            Accessibility.Public => "public",
+            _ => throw new NotSupportedException($"The {nameof(Accessibility)} {accessibility} is not supported.")
         };
 
     [Pure]

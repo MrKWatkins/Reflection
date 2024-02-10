@@ -1,7 +1,7 @@
 namespace MrKWatkins.Reflection.Tests.TestTypes.Properties;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public class PropertyVisibility
+public class PropertyAccessibility
 {
     public static string PublicGetPublicSet { get; set; } = null!;
     public static string PublicGetProtectedSet { get; protected set; } = null!;

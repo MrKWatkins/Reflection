@@ -6,6 +6,15 @@ namespace MrKWatkins.Reflection;
 public static class PropertyInfoExtensions
 {
     [Pure]
+    public static Accessibility GetAccessibility(this PropertyInfo property)
+    {
+        var getAccessibility = property.GetMethod?.GetAccessibility() ?? Accessibility.Private;
+        var setAccessibility = property.SetMethod?.GetAccessibility() ?? Accessibility.Private;
+
+        return getAccessibility >= setAccessibility ? getAccessibility : setAccessibility;
+    }
+
+    [Pure]
     public static PropertyInfo GetBaseDefinition(this PropertyInfo property)
     {
         var baseDefinition = GetAccessorBaseDefinition(property.GetMethod) ?? GetAccessorBaseDefinition(property.SetMethod);
@@ -42,16 +51,6 @@ public static class PropertyInfoExtensions
         }
 
         return isNew ? Virtuality.New : null;
-    }
-
-    [Pure]
-    public static Visibility? GetVisibility(this PropertyInfo property)
-    {
-        if (property.IsPublic())
-        {
-            return Visibility.Public;
-        }
-        return property.IsProtected() ? Visibility.Protected : null;
     }
 
     [Pure]
@@ -95,35 +94,38 @@ public static class PropertyInfoExtensions
             .GetProperty(property.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic) != null;
     }
 
+    /// <summary>
+    /// Returns <c>true</c> if the property is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="property">The property.</param>
+    /// <returns>
+    /// <c>true</c> if the property is <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// </returns>
     [Pure]
-    public static bool IsProtected(this PropertyInfo property)
-    {
-        var getMethod = property.GetMethod;
-        var setMethod = property.SetMethod;
-        if (getMethod == null)
-        {
-            return setMethod!.IsProtected();
-        }
+    public static bool IsProtected(this PropertyInfo property) => property.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
-        if (setMethod == null)
-        {
-            return getMethod.IsProtected();
-        }
-
-        if (getMethod.IsPublic || setMethod.IsPublic)
-        {
-            return false;
-        }
-
-        return getMethod.IsProtected() || setMethod.IsProtected();
-    }
-
+    /// <summary>
+    /// Returns <c>true</c> if the property is public, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="property">The property.</param>
+    /// <returns>
+    /// <c>true</c> if the property is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// </returns>
     [Pure]
-    public static bool IsPublic(this PropertyInfo property) => property.GetMethod?.IsPublic == true || property.SetMethod?.IsPublic == true;
+    public static bool IsPublic(this PropertyInfo property) => property.GetAccessibility() == Accessibility.Public;
 
+    /// <summary>
+    /// Returns <c>true</c> if the property is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="property">The property.</param>
+    /// <returns>
+    /// <c>true</c> if the property is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />;
+    /// <c>false</c> otherwise.
+    /// </returns>
     [Pure]
-    public static bool IsPublicOrProtected(this PropertyInfo property) =>
-        property.GetMethod?.IsPublicOrProtected() == true || property.SetMethod?.IsPublicOrProtected() == true;
+    public static bool IsPublicOrProtected(this PropertyInfo property) => property.GetAccessibility() >= Accessibility.Protected;
 
     [Pure]
     public static bool IsRequired(this PropertyInfo property) => property.IsDefined(typeof(RequiredMemberAttribute));

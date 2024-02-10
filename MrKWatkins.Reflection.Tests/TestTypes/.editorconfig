@@ -1,0 +1,3 @@
+[*.{cs,vb}]
+dotnet_diagnostic.CA1044.severity = none
+dotnet_diagnostic.CA1052.severity = none
