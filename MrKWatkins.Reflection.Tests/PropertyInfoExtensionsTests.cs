@@ -3,7 +3,7 @@ using MrKWatkins.Reflection.Tests.TestTypes.Properties;
 
 namespace MrKWatkins.Reflection.Tests;
 
-public sealed class PropertyInfoExtensionsTests
+public sealed class PropertyInfoExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(PropertyInfo property, Accessibility expected) => property.GetAccessibility().Should().Be(expected);
@@ -193,26 +193,5 @@ public sealed class PropertyInfoExtensionsTests
         yield return CreateTestCase("NoGetProtectedInternalSet", Accessibility.ProtectedInternal);
         yield return CreateTestCase("NoGetPrivateProtectedSet", Accessibility.PrivateProtected);
         yield return CreateTestCase("NoGetPrivateSet", Accessibility.Private);
-    }
-
-    [Pure]
-    private static PropertyInfo GetProperty<T>(string name) =>
-        typeof(T).GetProperty(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new InvalidOperationException($"Could not find property {name} on {typeof(T).DisplayName()}.");
-
-    [Pure]
-    private static List<PropertyInfo> GetProperties<T>(string name)
-    {
-        var properties = typeof(T)
-                .GetProperties(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-                .Where(p => p.Name == name)
-                .ToList();
-
-        if (properties.Count == 0)
-        {
-            throw new InvalidOperationException($"Could not find property {name} on {typeof(T).DisplayName()}.");
-        }
-
-        return properties;
     }
 }

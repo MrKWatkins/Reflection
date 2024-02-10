@@ -58,6 +58,63 @@ public sealed class TypeExtensionsTests
     public void IsRecord(Type type, bool expected) => type.IsRecord().Should().Be(expected);
 
     [Pure]
+    public static IEnumerable<TestCaseData> ResolveNestedTypesTestCases()
+    {
+        yield return new TestCaseData(typeof(Nested), new[] { (typeof(Nested), Type.EmptyTypes) });
+        yield return new TestCaseData(typeof(Nested.Child), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child), Type.EmptyTypes) });
+        yield return new TestCaseData(typeof(Nested.Child.GrandChild), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child), Type.EmptyTypes), (typeof(Nested.Child.GrandChild), Type.EmptyTypes) });
+        yield return new TestCaseData(typeof(Nested.Child.GrandChild<>), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child), Type.EmptyTypes), (typeof(Nested.Child.GrandChild<>), typeof(Nested.Child.GrandChild<>).GetGenericArguments()) });
+        yield return new TestCaseData(typeof(Nested.Child.GrandChild<int>), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child), Type.EmptyTypes), (typeof(Nested.Child.GrandChild<int>), new [] { typeof(int) }) });
+
+        yield return new TestCaseData(typeof(Nested.Child<>), new[]
+        {
+            (typeof(Nested), Type.EmptyTypes),
+            (typeof(Nested.Child<>), typeof(Nested.Child<>).GetGenericArguments())
+        });
+
+        yield return new TestCaseData(typeof(Nested.Child<int>), new[]
+        {
+            (typeof(Nested), Type.EmptyTypes),
+            (typeof(Nested.Child<int>), new [] { typeof(int)})
+        });
+
+        yield return new TestCaseData(typeof(Nested.Child<>.GrandChild), new[]
+        {
+            (typeof(Nested), Type.EmptyTypes),
+            (typeof(Nested.Child<>), typeof(Nested.Child<>.GrandChild).GetGenericArguments()),
+            (typeof(Nested.Child<>.GrandChild), Type.EmptyTypes)
+        });
+
+        yield return new TestCaseData(typeof(Nested.Child<int>.GrandChild), new[]
+        {
+            (typeof(Nested), Type.EmptyTypes),
+            (typeof(Nested.Child<>), new[] { typeof(int) }),
+            (typeof(Nested.Child<int>.GrandChild), Type.EmptyTypes)
+        });
+        /*
+        yield return new TestCaseData(typeof(Nested.Child<>.GrandChild<>), new[]
+        {
+            (typeof(Nested), Type.EmptyTypes),
+            (typeof(Nested.Child<>), typeof(Nested.Child<>).GetGenericArguments()),
+            (typeof(Nested.Child.GrandChild<>), typeof(Nested.Child.GrandChild<>).GetGenericArguments())
+        });
+        yield return new TestCaseData(typeof(Nested.Child<>.GrandChild<int>), new[]
+        {
+            (typeof(Nested), Type.EmptyTypes),
+            (typeof(Nested.Child<>), typeof(Nested.Child<>).GetGenericArguments()),
+            (typeof(Nested.Child.GrandChild<int>), new [] { typeof(int) })
+        });
+
+
+
+        yield return new TestCaseData(typeof(Nested.Child<int>.GrandChild<byte>), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child), Type.EmptyTypes), (typeof(Nested.Child.GrandChild<int>), new [] { typeof(int) }) });
+        yield return new TestCaseData(typeof(Nested.Child<int>), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child<int>), new [] { typeof(int)}) });
+        yield return new TestCaseData(typeof(Nested.Child<,>), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child<,>), typeof(Nested.Child<,>).GetGenericArguments()) });
+        yield return new TestCaseData(typeof(Nested.Child<int, byte>), new[] { (typeof(Nested), Type.EmptyTypes), (typeof(Nested.Child<int, byte>), new [] { typeof(int), typeof(byte)}) });
+        */
+    }
+
+    [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases()
     {
         TestCaseData CreateTestCase(Type type, Accessibility expected, bool nested = false) =>

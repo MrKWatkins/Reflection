@@ -3,7 +3,7 @@ using MrKWatkins.Reflection.Tests.TestTypes.Operators;
 
 namespace MrKWatkins.Reflection.Tests;
 
-public sealed class MethodInfoExtensionTests
+public sealed class MethodInfoExtensionTests : TestFixture
 {
     [TestCaseSource(nameof(CSharpOperatorTestCases))]
     public void GetCSharpOperator(MethodInfo method, CSharpOperator? expected) => method.GetCSharpOperator().Should().Be(expected);
@@ -23,9 +23,4 @@ public sealed class MethodInfoExtensionTests
 
         return valid.Concat(invalid);
     }
-
-    [Pure]
-    private static MethodInfo GetMethod<T>(string name) =>
-        typeof(T).GetMethod(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new InvalidOperationException($"Could not find method {name} on {typeof(T).Name}.");
 }

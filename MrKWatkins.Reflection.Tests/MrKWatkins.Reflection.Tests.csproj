@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\MrKWatkins.Reflection\MrKWatkins.Reflection.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\MrKWatkins.Reflection\MrKWatkins.Reflection.csproj" />
+    </ItemGroup>
 </Project>
