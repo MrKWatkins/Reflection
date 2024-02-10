@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC54CE10-77DB-4F1D-9EA4-EFAA3497A36D}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		License.md = License.md
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2CD5FA32-1F2F-440F-8959-92CCB344D822}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{00684DA7-BE37-4859-A73B-7DD6D23B9DD8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection", "MrKWatkins.Reflection\MrKWatkins.Reflection.csproj", "{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection.Tests", "MrKWatkins.Reflection.Tests\MrKWatkins.Reflection.Tests.csproj", "{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BDD6D37-E7BF-4BFE-A126-C8B7B4140031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BDD6D37-E7BF-4BFE-A126-C8B7B4140031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BDD6D37-E7BF-4BFE-A126-C8B7B4140031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BDD6D37-E7BF-4BFE-A126-C8B7B4140031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CD5FA32-1F2F-440F-8959-92CCB344D822} = {EC54CE10-77DB-4F1D-9EA4-EFAA3497A36D}
+		{00684DA7-BE37-4859-A73B-7DD6D23B9DD8} = {2CD5FA32-1F2F-440F-8959-92CCB344D822}
+	EndGlobalSection
+EndGlobal
