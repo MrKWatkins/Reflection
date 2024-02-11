@@ -44,6 +44,12 @@ public sealed class MemberInfoExtensionsTests
         yield return CreateTestCase("Type", typeof(InternalAccessibility), Accessibility.Internal);
     }
 
+    [TestCase(typeof(string), "String")]
+    [TestCase(typeof(int), "Int32")]
+    [TestCase(typeof(List<string>), "List<String>")]
+    [TestCase(typeof(Dictionary<string, int>), "Dictionary<String, Int32>")]
+    public void ToDisplayName(Type type, string expected) => type.ToDisplayName().Should().Be(expected);
+
     private sealed class UnsupportedMemberInfo : MemberInfo
     {
         public override object[] GetCustomAttributes(bool inherit) => throw new NotSupportedException();

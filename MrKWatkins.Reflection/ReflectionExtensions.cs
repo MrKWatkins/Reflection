@@ -132,7 +132,7 @@ public static class ReflectionExtensions
         {
             ConstructorInfo constructorInfo => constructorInfo.HasPublicOrProtectedOverloads(),
             MethodInfo methodInfo => methodInfo.HasPublicOrProtectedOverloads(),
-            _ => throw new NotSupportedException($"Methods of type {method.GetType().DisplayName()} are not supported.")
+            _ => throw new NotSupportedException($"Methods of type {method.GetType().ToDisplayName()} are not supported.")
         };
 
     [Pure]

@@ -12,8 +12,7 @@ namespace MrKWatkins.Reflection.Tests.Formatting;
 public sealed class DisplayNameFormatterTests : TestFixture
 {
     [TestCaseSource(nameof(Format_UnqualifiedTestCases))]
-    public void Format_Unqualified(MemberInfo member, string expected) =>
-        new DisplayNameFormatter(DisplayNameFormatterOptions.None).Format(member).Should().Be(expected);
+    public void Format_Unqualified(MemberInfo member, string expected) => new DisplayNameFormatter().Format(member).Should().Be(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> Format_UnqualifiedTestCases()

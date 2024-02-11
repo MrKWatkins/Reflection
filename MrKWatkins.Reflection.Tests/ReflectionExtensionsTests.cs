@@ -102,7 +102,7 @@ public class ReflectionExtensionsTests
     public void IsProtected_ConstructorInfo(Type constructorParameterType, bool expected)
     {
         var constructor = typeof(TestVisibilityClass).GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, [constructorParameterType])
-                          ?? throw new InvalidOperationException($"Could not find constructor with parameter of type {constructorParameterType.DisplayName()}.");
+                          ?? throw new InvalidOperationException($"Could not find constructor with parameter of type {constructorParameterType.ToDisplayName()}.");
         constructor.IsProtected().Should().Be(expected);
     }
 
@@ -150,7 +150,7 @@ public class ReflectionExtensionsTests
     public void IsPublicOrProtected_ConstructorInfo(Type constructorParameterType, bool expected)
     {
         var constructor = typeof(TestVisibilityClass).GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, [constructorParameterType])
-                    ?? throw new InvalidOperationException($"Could not find constructor with parameter of type {constructorParameterType.DisplayName()}.");
+                    ?? throw new InvalidOperationException($"Could not find constructor with parameter of type {constructorParameterType.ToDisplayName()}.");
         constructor.IsPublicOrProtected().Should().Be(expected);
     }
 

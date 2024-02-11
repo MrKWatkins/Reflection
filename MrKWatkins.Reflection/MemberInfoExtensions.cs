@@ -1,4 +1,5 @@
 using System.Reflection;
+using MrKWatkins.Reflection.Formatting;
 
 namespace MrKWatkins.Reflection;
 
@@ -7,6 +8,8 @@ namespace MrKWatkins.Reflection;
 /// </summary>
 public static class MemberInfoExtensions
 {
+    private static readonly CachedReflectionFormatter DisplayNameFormatter = new(new DisplayNameFormatter());
+
     /// <summary>
     /// Returns the <see cref="Accessibility" /> of the specified <see cref="MemberInfo" />.
     /// </summary>
@@ -58,4 +61,12 @@ public static class MemberInfoExtensions
     /// </returns>
     [Pure]
     public static bool IsPublicOrProtected(this MemberInfo member) => member.GetAccessibility() >= Accessibility.Protected;
+
+    /// <summary>
+    /// Returns a display name for the member. Created using <see cref="DisplayNameFormatter" /> with default options.
+    /// </summary>
+    /// <param name="member">The member.</param>
+    /// <returns>The display name of the member.</returns>
+    [Pure]
+    public static string ToDisplayName(this MemberInfo member) => DisplayNameFormatter.Format(member);
 }

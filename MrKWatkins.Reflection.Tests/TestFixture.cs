@@ -16,7 +16,7 @@ public abstract class TestFixture
 
         if (constructors.Count == 0)
         {
-            throw new ArgumentException($"Could not find a constructor with matching parameters on {type.DisplayName()}.", nameof(parameterTypes));
+            throw new ArgumentException($"Could not find a constructor with matching parameters on {type.ToDisplayName()}.", nameof(parameterTypes));
         }
 
         return constructors[0];
@@ -32,7 +32,7 @@ public abstract class TestFixture
 
         if (constructors.Count > 1)
         {
-            throw new ArgumentException($"Found multiple constructors with {parameterCount} parameters on {type.DisplayName()}.", nameof(parameterCount));
+            throw new ArgumentException($"Found multiple constructors with {parameterCount} parameters on {type.ToDisplayName()}.", nameof(parameterCount));
         }
 
         return constructors[0];
@@ -50,7 +50,7 @@ public abstract class TestFixture
 
         if (constructors.Count == 0)
         {
-            throw new ArgumentException($"Could not find a constructor with {parameterCount} parameters on {type.DisplayName()}.", nameof(parameterCount));
+            throw new ArgumentException($"Could not find a constructor with {parameterCount} parameters on {type.ToDisplayName()}.", nameof(parameterCount));
         }
 
         return constructors;
@@ -83,7 +83,7 @@ public abstract class TestFixture
     [Pure]
     protected static PropertyInfo GetProperty<T>(string name) =>
         typeof(T).GetProperty(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new ArgumentException($"Could not find property {name} on {typeof(T).DisplayName()}.", nameof(name));
+        ?? throw new ArgumentException($"Could not find property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
 
     [Pure]
     protected static IReadOnlyList<PropertyInfo> GetProperties<T>(string name)
@@ -95,7 +95,7 @@ public abstract class TestFixture
 
         if (properties.Count == 0)
         {
-            throw new ArgumentException($"Could not find property {name} on {typeof(T).DisplayName()}.", nameof(name));
+            throw new ArgumentException($"Could not find property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
         }
 
         return properties;

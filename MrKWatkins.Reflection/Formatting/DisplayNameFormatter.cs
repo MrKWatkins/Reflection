@@ -6,7 +6,7 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
 {
     private readonly DisplayNameFormatterOptions options;
 
-    public DisplayNameFormatter(DisplayNameFormatterOptions options)
+    public DisplayNameFormatter(DisplayNameFormatterOptions options = default)
     {
         this.options = options;
     }
