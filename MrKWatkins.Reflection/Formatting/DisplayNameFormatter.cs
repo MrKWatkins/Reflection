@@ -33,25 +33,28 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         if (property.IsIndexer())
         {
             output.Write('[');
-            Format(output, property.GetIndexParameters().Select(p => p.ParameterType));
+            WriteTypeList(output, property.GetIndexParameters().Select(p => p.ParameterType));
             output.Write(']');
         }
     }
 
-    private void Format(TextWriter output, [InstantHandle] IEnumerable<Type> types)
+    protected override void Format(TextWriter output, MethodInfo method)
     {
-        var needsSeparator = false;
-        foreach (var type in types)
+        Format(output, method.DeclaringType!);
+        output.Write('.');
+        output.Write(method.Name);
+
+        var genericArguments = method.GetGenericArguments();
+        if (genericArguments.Length > 0)
         {
-            if (needsSeparator)
-            {
-                output.Write(", ");
-            }
-
-            Format(output, type);
-
-            needsSeparator = true;
+            output.Write('<');
+            WriteTypeList(output, genericArguments);
+            output.Write('>');
         }
+
+        output.Write('(');
+        WriteTypeList(output, method.GetParameters().Select(p => p.ParameterType));
+        output.Write(')');
     }
 
     protected override void Format(TextWriter output, Type type)
@@ -100,15 +103,7 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
             if (genericArguments.Count > 0)
             {
                 output.Write('<');
-                for (var f = 0; f < genericArguments.Count; f++)
-                {
-                    if (f != 0)
-                    {
-                        output.Write(", ");
-                    }
-
-                    Format(output, genericArguments[f]);
-                }
+                WriteTypeList(output, genericArguments);
                 output.Write('>');
             }
 
@@ -116,21 +111,14 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         }
     }
 
-    private static void WriteName(TextWriter output, Type type, bool qualifiedName)
-    {
-        if (qualifiedName && type.Namespace != null)
-        {
-            output.Write(type.Namespace);
-            output.Write('.');
-        }
-
-        var name = type.Name;
-        output.Write(name.Length > 2 && name[^2] == '`' ? name.AsSpan()[..^2] : name);
-    }
-
     [Pure]
     private static IEnumerable<(Type Type, ArraySegment<Type> GenericArguments)> EnumerateNestedTypes(Type type)
     {
+        // Nested generic types have are defined with generic type parameters for all their parent types. For example, given
+        // Root<T>.Parent<U>.Child<V> then Root has one type T, Parent has T, U and Child has T, U, V. When formatting we want
+        // to show only the generic types parameters explicitly specified for that type. Using the type parameters for the type
+        // being formatted we can go through all the types in the nested hierarchy, keep track of how many have been used at
+        // each level and for a given level only use the ones found at that level excluding any used higher up.
         var genericArguments = type.GetGenericArguments();
         var hierarchy = new List<Type> { type };
         while (true)
@@ -153,5 +141,34 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
             yield return (nestedType, new ArraySegment<Type>(genericArguments, parametersUsed, parametersDefinedByItem));
             parametersUsed = totalParameters;
         }
+    }
+
+    private void WriteTypeList(TextWriter output, [InstantHandle] IEnumerable<Type> types)
+    {
+        using var enumerator = types.GetEnumerator();
+        if (!enumerator.MoveNext())
+        {
+            return;
+        }
+
+        Format(output, enumerator.Current);
+
+        while (enumerator.MoveNext())
+        {
+            output.Write(", ");
+            Format(output, enumerator.Current);
+        }
+    }
+
+    private static void WriteName(TextWriter output, Type type, bool qualifiedName)
+    {
+        if (qualifiedName && type.Namespace != null)
+        {
+            output.Write(type.Namespace);
+            output.Write('.');
+        }
+
+        var name = type.Name;
+        output.Write(name.Length > 2 && name[^2] == '`' ? name.AsSpan()[..^2] : name);
     }
 }

@@ -15,9 +15,12 @@ public abstract class TestFixture
         ?? throw new ArgumentException($"Could not find field {name} on {typeof(T).Name}.", nameof(name));
 
     [Pure]
-    protected static MethodInfo GetMethod<T>(string name) =>
-        typeof(T).GetMethod(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new ArgumentException($"Could not find method {name} on {typeof(T).Name}.", nameof(name));
+    protected static MethodInfo GetMethod<T>(string name) => GetMethod(typeof(T), name);
+
+    [Pure]
+    protected static MethodInfo GetMethod(Type type, string name) =>
+        type.GetMethod(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+        ?? throw new ArgumentException($"Could not find method {name} on {type.Name}.", nameof(name));
 
     [Pure]
     protected static PropertyInfo GetProperty<T>(string name) =>
