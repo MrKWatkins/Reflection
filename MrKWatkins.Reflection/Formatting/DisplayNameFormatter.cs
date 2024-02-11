@@ -38,17 +38,28 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         }
     }
 
-    protected override void Format(TextWriter output, MethodInfo method)
+    protected override void Format(TextWriter output, MethodBase method)
     {
+        var type = method.DeclaringType!;
         Format(output, method.DeclaringType!);
         output.Write('.');
-        output.Write(method.Name);
+        if (method.IsConstructor)
+        {
+            WriteName(output, type, false);
+        }
+        else if (method.Name.StartsWith("op_", StringComparison.Ordinal))
+        {
+            output.Write(method.Name.AsSpan(3));
+        }
+        else
+        {
+            output.Write(method.Name);
+        }
 
-        var genericArguments = method.GetGenericArguments();
-        if (genericArguments.Length > 0)
+        if (method.IsGenericMethod)
         {
             output.Write('<');
-            WriteTypeList(output, genericArguments);
+            WriteTypeList(output, method.GetGenericArguments());
             output.Write('>');
         }
 
