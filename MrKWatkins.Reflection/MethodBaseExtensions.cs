@@ -27,12 +27,12 @@ public static class MethodBaseExtensions
     [Pure]
     public static Accessibility GetAccessibility(this MethodBase method)
     {
-        const int memberAccessMask = (int) MethodAttributes.MemberAccessMask;
+        const int memberAccessMask = (int)MethodAttributes.MemberAccessMask;
 
         // Ignoring MethodAttributes.PrivateScope; assuming that can't happen in the wild.
-        var memberAccess = memberAccessMask & (int) method.Attributes;
+        var memberAccess = memberAccessMask & (int)method.Attributes;
 
-        return (Accessibility) memberAccess - 1;
+        return (Accessibility)memberAccess - 1;
     }
 
     /// <summary>

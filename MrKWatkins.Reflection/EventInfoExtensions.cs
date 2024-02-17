@@ -42,7 +42,7 @@ public static class EventInfoExtensions
     /// <c>true</c> if the event is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </returns>
     [Pure]
-    public static bool IsPublic(this EventInfo @event) =>  @event.GetAccessibility() == Accessibility.Public;
+    public static bool IsPublic(this EventInfo @event) => @event.GetAccessibility() == Accessibility.Public;
 
     /// <summary>
     /// Returns <c>true</c> if the event is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is

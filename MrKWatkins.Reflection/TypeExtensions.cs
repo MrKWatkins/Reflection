@@ -28,42 +28,6 @@ public static class TypeExtensions
         yield return type.IsGenericTypeDefinition ? type.MakeGenericType(genericTypeArguments[..type.GetGenericArguments().Length]) : type;
     }
 
-
-    [Pure]
-    public static IEnumerable<Type> EnumerateNestedTypes2(this Type type)
-    {
-        // Nested generic types have are defined with generic type parameters for all their parent types. For example, given
-        // Root<T>.Parent<U>.Child<V> then Root has one type T, Parent has T, U and Child has T, U, V. When formatting we want
-        // to show only the generic types parameters explicitly specified for that type. Using the type parameters for the type
-        // being formatted we can go through all the types in the nested hierarchy, keep track of how many have been used at
-        // each level and for a given level only use the ones found at that level excluding any used higher up.
-        var genericArguments = type.GetGenericArguments();
-        var hierarchy = new List<Type> { type };
-        while (true)
-        {
-            var parent = type.DeclaringType;
-            if (parent is null)
-            {
-                break;
-            }
-            hierarchy.Add(parent);
-            type = parent;
-        }
-
-        for (var f = 0; f < hierarchy.Count; f++)
-        {
-            var nestedType = hierarchy[hierarchy.Count - f - 1];
-            if (nestedType.IsGenericTypeDefinition)
-            {
-                yield return nestedType.MakeGenericType(genericArguments[..nestedType.GetGenericArguments().Length]);
-            }
-            else
-            {
-                yield return nestedType;
-            }
-        }
-    }
-
     /// <summary>
     /// Returns the <see cref="Accessibility" /> of the specified <see cref="Type" />.
     /// </summary>
@@ -74,9 +38,9 @@ public static class TypeExtensions
     [Pure]
     public static Accessibility GetAccessibility(this Type type)
     {
-        const int visibilityMask = (int) TypeAttributes.VisibilityMask;
+        const int visibilityMask = (int)TypeAttributes.VisibilityMask;
 
-        var visibility = (TypeAttributes)(visibilityMask & (int) type.Attributes);
+        var visibility = (TypeAttributes)(visibilityMask & (int)type.Attributes);
 
         return visibility switch
         {

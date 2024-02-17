@@ -48,7 +48,7 @@ public static class MemberInfoExtensions
     /// <c>true</c> if the member is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </returns>
     [Pure]
-    public static bool IsPublic(this MemberInfo member) =>  member.GetAccessibility() == Accessibility.Public;
+    public static bool IsPublic(this MemberInfo member) => member.GetAccessibility() == Accessibility.Public;
 
     /// <summary>
     /// Returns <c>true</c> if the member is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is

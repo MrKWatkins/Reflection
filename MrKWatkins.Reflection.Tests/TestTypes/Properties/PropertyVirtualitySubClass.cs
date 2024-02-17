@@ -10,7 +10,7 @@ public abstract class PropertyVirtualitySubClass : PropertyVirtuality
 
     public new int New { get; }
 
-    public new abstract int NewAbstract{ get; }
+    public new abstract int NewAbstract { get; }
 
     public new virtual int NewVirtual { get; }
 }

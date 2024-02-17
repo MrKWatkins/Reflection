@@ -1,5 +1,6 @@
 using System.Reflection;
 using MrKWatkins.Reflection.Formatting;
+using MrKWatkins.Reflection.Tests.TestTypes;
 using MrKWatkins.Reflection.Tests.TestTypes.Events;
 using MrKWatkins.Reflection.Tests.TestTypes.Fields;
 using MrKWatkins.Reflection.Tests.TestTypes.Methods;
@@ -12,6 +13,10 @@ namespace MrKWatkins.Reflection.Tests.Formatting;
 // TODO: Explicit interface implementations.
 public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
 {
+    [Test]
+    public void Format_ThrowsForUnsupportedMemberType() =>
+        new DisplayNameFormatter().Invoking(f => f.Format(new UnsupportedMethodBase())).Should().Throw<NotSupportedException>();
+
     [TestCaseSource(nameof(Format_DefaultTestCases))]
     public void Format_Default(MemberInfo member, string expected) => new DisplayNameFormatter().Format(member).Should().Be(expected);
 

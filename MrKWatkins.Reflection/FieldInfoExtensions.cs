@@ -18,12 +18,12 @@ public static class FieldInfoExtensions
     [Pure]
     public static Accessibility GetAccessibility(this FieldInfo field)
     {
-        const int memberAccessMask = (int) MethodAttributes.MemberAccessMask;
+        const int memberAccessMask = (int)MethodAttributes.MemberAccessMask;
 
         // Ignoring fieldAttributes.PrivateScope; assuming that can't happen in the wild.
-        var memberAccess = memberAccessMask & (int) field.Attributes;
+        var memberAccess = memberAccessMask & (int)field.Attributes;
 
-        return (Accessibility) memberAccess - 1;
+        return (Accessibility)memberAccess - 1;
     }
 
     /// <summary>
