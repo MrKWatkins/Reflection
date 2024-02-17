@@ -13,22 +13,33 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
 
     protected override void Format(TextWriter output, EventInfo @event)
     {
-        Format(output, @event.DeclaringType!);
-        output.Write('.');
+        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        {
+            Format(output, @event.DeclaringType!);
+            output.Write('.');
+        }
         output.Write(@event.Name);
     }
 
     protected override void Format(TextWriter output, FieldInfo field)
     {
-        Format(output, field.DeclaringType!);
-        output.Write('.');
+        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        {
+            Format(output, field.DeclaringType!);
+            output.Write('.');
+        }
+
         output.Write(field.Name);
     }
 
     protected override void Format(TextWriter output, PropertyInfo property)
     {
-        Format(output, property.DeclaringType!);
-        output.Write('.');
+        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        {
+            Format(output, property.DeclaringType!);
+            output.Write('.');
+        }
+
         output.Write(property.Name);
         if (property.IsIndexer())
         {
@@ -41,8 +52,12 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
     protected override void Format(TextWriter output, MethodBase method)
     {
         var type = method.DeclaringType!;
-        Format(output, method.DeclaringType!);
-        output.Write('.');
+        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        {
+            Format(output, method.DeclaringType!);
+            output.Write('.');
+        }
+
         if (method.IsConstructor)
         {
             WriteName(output, type, false);
