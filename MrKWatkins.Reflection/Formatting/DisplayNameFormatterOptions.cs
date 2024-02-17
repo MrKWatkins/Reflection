@@ -8,6 +8,12 @@ public sealed record DisplayNameFormatterOptions
     public bool PrefixMembersWithType { get; init; } = true;
 
     /// <summary>
+    /// Whether to use the C# keyword for primitive types rather than the type name, i.e. <code>int</code> instead of <code>Int32</code>.
+    /// Defaults to <c>false</c>.
+    /// </summary>
+    public bool UseCSharpKeywordsForPrimitiveTypes { get; init; }
+
+    /// <summary>
     /// Whether types should be fully qualified with their namespace or not. Defaults to <c>false</c>.
     /// </summary>
     public bool UseFullyQualifiedTypes { get; init; }

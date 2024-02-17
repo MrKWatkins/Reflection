@@ -25,4 +25,25 @@ public static class CSharp
         "virtual", "void", "volatile",
         "while"
     }.ToFrozenSet();
+
+    public static readonly IReadOnlyDictionary<Type, string> PrimitiveTypeKeywords = new Dictionary<Type, string>
+        {
+            { typeof(bool), "bool" },
+            { typeof(char), "char" },
+            { typeof(decimal), "decimal" },
+            { typeof(double), "double" },
+            { typeof(float), "float" },
+            { typeof(int), "int" },
+            { typeof(long), "long" },
+            { typeof(nint), "nint" },
+            { typeof(nuint), "nuint" },
+            { typeof(object), "object" },
+            { typeof(sbyte), "sbyte" },
+            { typeof(string), "string" },
+            { typeof(uint), "uint" },
+            { typeof(ulong), "ulong" },
+            { typeof(ushort), "ushort" },
+            { typeof(void), "void" }
+        }
+        .ToFrozenDictionary();
 }

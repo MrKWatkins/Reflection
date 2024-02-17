@@ -202,8 +202,14 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         }
     }
 
-    private static void WriteName(TextWriter output, Type type, bool qualifiedName)
+    private void WriteName(TextWriter output, Type type, bool qualifiedName)
     {
+        if (options.UseCSharpKeywordsForPrimitiveTypes && CSharp.PrimitiveTypeKeywords.TryGetValue(type, out var keyword))
+        {
+            output.Write(keyword);
+            return;
+        }
+
         if (qualifiedName && type.Namespace != null)
         {
             output.Write(type.Namespace);
