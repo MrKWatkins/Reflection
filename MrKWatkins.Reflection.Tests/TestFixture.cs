@@ -59,12 +59,12 @@ public abstract class TestFixture
     [Pure]
     protected static EventInfo GetEvent<T>(string name) =>
         typeof(T).GetEvent(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new ArgumentException($"Could not find event {name} on {typeof(T).Name}.", nameof(name));
+        ?? throw new ArgumentException($"Could not find an event {name} on {typeof(T).Name}.", nameof(name));
 
     [Pure]
     protected static FieldInfo GetField<T>(string name) =>
         typeof(T).GetField(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new ArgumentException($"Could not find field {name} on {typeof(T).Name}.", nameof(name));
+        ?? throw new ArgumentException($"Could not find a field {name} on {typeof(T).Name}.", nameof(name));
 
     [Pure]
     protected static MethodInfo GetMethod<T>(string name) => GetMethod(typeof(T), name);
@@ -72,7 +72,23 @@ public abstract class TestFixture
     [Pure]
     protected static MethodInfo GetMethod(Type type, string name) =>
         type.GetMethod(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new ArgumentException($"Could not find method {name} on {type.Name}.", nameof(name));
+        ?? throw new ArgumentException($"Could not find a method {name} on {type.Name}.", nameof(name));
+
+    [Pure]
+    protected static IReadOnlyList<MethodInfo> GetMethods<T>(string name)
+    {
+        var methods = typeof(T)
+            .GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+            .Where(m => m.Name == name)
+            .ToList();
+
+        if (methods.Count == 0)
+        {
+            throw new ArgumentException($"Could not find a method {name} on {typeof(T).ToDisplayName()}.", nameof(name));
+        }
+
+        return methods;
+    }
 
     [Pure]
     protected static MethodInfo GetOperator<T>(CSharpOperator @operator) => GetMethod<T>(@operator.ToMethodName());
@@ -83,7 +99,7 @@ public abstract class TestFixture
     [Pure]
     protected static PropertyInfo GetProperty<T>(string name) =>
         typeof(T).GetProperty(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-        ?? throw new ArgumentException($"Could not find property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
+        ?? throw new ArgumentException($"Could not find a property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
 
     [Pure]
     protected static IReadOnlyList<PropertyInfo> GetProperties<T>(string name)
@@ -95,7 +111,7 @@ public abstract class TestFixture
 
         if (properties.Count == 0)
         {
-            throw new ArgumentException($"Could not find property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
+            throw new ArgumentException($"Could not find a property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
         }
 
         return properties;

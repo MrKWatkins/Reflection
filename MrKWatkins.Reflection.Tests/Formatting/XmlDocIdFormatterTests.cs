@@ -32,7 +32,6 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
     [Pure]
     public static IEnumerable<TestCaseData> FormatTestCases()
     {
-
         #region Constructors
 
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<,>), [typeof(int)]), "M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)");
@@ -59,11 +58,11 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
         #region Methods
 
         yield return CreateTestCase(GetMethod<object>(nameof(ToString)), "M:System.Object.ToString");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.ArrayParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.ParameterTypes.ArrayParameter(System.Int32[])");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.MultidimensionalArrayParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.ParameterTypes.MultidimensionalArrayParameter(System.Int32[,])");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.OutParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.ParameterTypes.OutParameter(System.Int32@)");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.PointerParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.ParameterTypes.PointerParameter(System.Int32*)");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.RefParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.ParameterTypes.RefParameter(System.Int32@)");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.ArrayParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.MethodParameterTypes.ArrayParameter(System.Int32[])");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.MultidimensionalArrayParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.MethodParameterTypes.MultidimensionalArrayParameter(System.Int32[,])");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.OutParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.MethodParameterTypes.OutParameter(System.Int32@)");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.PointerParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.MethodParameterTypes.PointerParameter(System.Int32*)");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.RefParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.MethodParameterTypes.RefParameter(System.Int32@)");
         yield return CreateTestCase(GetMethod<Nested>(nameof(Nested.GenericMethodOneParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.GenericMethodOneParameter``1(``0)");
         yield return CreateTestCase(GetMethod<Nested>(nameof(Nested.GenericMethodTwoParameters)), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.GenericMethodTwoParameters``2(``0,``1)");
         yield return CreateTestCase(GetMethod<Nested.Child>(nameof(Nested.Child.ChildGenericMethodOneParameter)), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.Child.ChildGenericMethodOneParameter``1(``0)");

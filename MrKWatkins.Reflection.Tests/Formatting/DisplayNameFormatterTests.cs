@@ -47,11 +47,11 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         #region Methods
 
         yield return CreateTestCase(GetMethod<object>(nameof(ToString)), "Object.ToString()");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.ArrayParameter)), "ParameterTypes.ArrayParameter(Int32[])");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.MultidimensionalArrayParameter)), "ParameterTypes.MultidimensionalArrayParameter(Int32[,])");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.OutParameter)), "ParameterTypes.OutParameter(Int32)");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.PointerParameter)), "ParameterTypes.PointerParameter(Int32*)");
-        yield return CreateTestCase(GetMethod<ParameterTypes>(nameof(ParameterTypes.RefParameter)), "ParameterTypes.RefParameter(Int32)");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.ArrayParameter)), "MethodParameterTypes.ArrayParameter(Int32[])");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.MultidimensionalArrayParameter)), "MethodParameterTypes.MultidimensionalArrayParameter(Int32[,])");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.OutParameter)), "MethodParameterTypes.OutParameter(Int32)");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.PointerParameter)), "MethodParameterTypes.PointerParameter(Int32*)");
+        yield return CreateTestCase(GetMethod<MethodParameterTypes>(nameof(MethodParameterTypes.RefParameter)), "MethodParameterTypes.RefParameter(Int32)");
         yield return CreateTestCase(GetMethod<Nested>(nameof(Nested.GenericMethodOneParameter)), "Nested.GenericMethodOneParameter<T1>(T1)");
         yield return CreateTestCase(GetMethod<Nested>(nameof(Nested.GenericMethodTwoParameters)), "Nested.GenericMethodTwoParameters<T1, T2>(T1, T2)");
         yield return CreateTestCase(GetMethod<Nested.Child>(nameof(Nested.Child.ChildGenericMethodOneParameter)), "Nested.Child.ChildGenericMethodOneParameter<T1>(T1)");

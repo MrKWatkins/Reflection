@@ -6,6 +6,20 @@ namespace MrKWatkins.Reflection;
 public static class MethodInfoExtensions
 {
     /// <summary>
+    /// Enumerates the overloads of the specified method that are declared in the same type.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns>The overloads of <paramref name="method"/> declared in the same type; will be empty if the method is not overloaded.</returns>
+    [Pure]
+    public static IEnumerable<MethodInfo> EnumerateOverloads(this MethodInfo method)
+    {
+        var type = method.DeclaringType!;
+        return type
+            .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
+            .Where(m => m != method && m.Name == method.Name);
+    }
+
+    /// <summary>
     /// Returns the relevant <see cref="CSharpOperator" /> value if the specified method is a C# operator; <c>null</c> otherwise.
     /// </summary>
     /// <remarks>

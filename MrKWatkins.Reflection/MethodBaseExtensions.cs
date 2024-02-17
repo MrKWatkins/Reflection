@@ -8,6 +8,15 @@ namespace MrKWatkins.Reflection;
 /// </summary>
 public static class MethodBaseExtensions
 {
+    [Pure]
+    public static IEnumerable<MethodBase> EnumerateOverloads(this MethodBase method) =>
+        method switch
+        {
+            ConstructorInfo constructorInfo => constructorInfo.EnumerateOverloads(),
+            MethodInfo methodInfo => methodInfo.EnumerateOverloads(),
+            _ => throw new NotSupportedException($"Methods of type {method.GetType().ToDisplayName()} are not supported.")
+        };
+
     /// <summary>
     /// Returns the <see cref="Accessibility" /> of the specified <see cref="MethodBase" />.
     /// </summary>
