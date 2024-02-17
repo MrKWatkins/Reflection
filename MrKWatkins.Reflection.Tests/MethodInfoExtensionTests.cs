@@ -40,12 +40,12 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(GetVirtualityTestCases))]
-    public void GetVirtuality(MethodInfo method, Virtuality? expected) => method.GetVirtuality().Should().Be(expected);
+    public void GetVirtuality(MethodInfo method, Virtuality expected) => method.GetVirtuality().Should().Be(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> GetVirtualityTestCases()
     {
-        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Normal)), null);
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Normal)), Virtuality.Normal);
         yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Virtual)), Virtuality.Virtual);
         yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Abstract)), Virtuality.Abstract);
         yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.Override)), Virtuality.Override);

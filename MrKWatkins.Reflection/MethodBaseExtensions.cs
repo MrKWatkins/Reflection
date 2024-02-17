@@ -8,6 +8,12 @@ namespace MrKWatkins.Reflection;
 /// </summary>
 public static class MethodBaseExtensions
 {
+    /// <summary>
+    /// Enumerates the overloads of the specified method that are declared in the same type.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns>The overloads of <paramref name="method"/> declared in the same type; will be empty if the method is not overloaded.</returns>
+    /// <exception cref="NotSupportedException">If <paramref name="method"/> is not a supported <see cref="MethodBase"/> implementation.</exception>
     [Pure]
     public static IEnumerable<MethodBase> EnumerateOverloads(this MethodBase method) =>
         method switch

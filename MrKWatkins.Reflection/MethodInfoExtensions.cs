@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Extension methods for <see cref="MethodInfo" />.
+/// </summary>
 public static class MethodInfoExtensions
 {
     /// <summary>
@@ -106,8 +109,13 @@ public static class MethodInfoExtensions
     [Pure]
     public static bool IsCSharpOperator(this MethodInfo method) => method.GetCSharpOperator() != null;
 
+    /// <summary>
+    /// Gets the <see cref="Virtuality" /> of the specified <see cref="MethodInfo" />.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns>The <see cref="Virtuality" /> of <paramref name="method"/>.</returns>
     [Pure]
-    public static Virtuality? GetVirtuality(this MethodInfo method)
+    public static Virtuality GetVirtuality(this MethodInfo method)
     {
         var isNew = method.IsNew();
         if (method.IsAbstract)
@@ -125,9 +133,14 @@ public static class MethodInfoExtensions
             return isNew ? Virtuality.NewVirtual : Virtuality.Virtual;
         }
 
-        return isNew ? Virtuality.New : null;
+        return isNew ? Virtuality.New : Virtuality.Normal;
     }
 
+    /// <summary>
+    /// Returns <c>true</c> if the specified method has the <c>new</c> modifier; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns><c>true</c> if the <paramref name="method"/> has the <c>new</c> modifier; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsNew(this MethodInfo method)
     {

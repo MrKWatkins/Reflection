@@ -25,12 +25,12 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     }
 
     [TestCaseSource(nameof(GetVirtualityTestCases))]
-    public void GetVirtuality(PropertyInfo property, Virtuality? expected) => property.GetVirtuality().Should().Be(expected);
+    public void GetVirtuality(PropertyInfo property, Virtuality expected) => property.GetVirtuality().Should().Be(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> GetVirtualityTestCases()
     {
-        yield return new TestCaseData(GetProperty<PropertyVirtuality>(nameof(PropertyVirtuality.Normal)), null);
+        yield return new TestCaseData(GetProperty<PropertyVirtuality>(nameof(PropertyVirtuality.Normal)), Virtuality.Normal);
         yield return new TestCaseData(GetProperty<PropertyVirtuality>(nameof(PropertyVirtuality.Virtual)), Virtuality.Virtual);
         yield return new TestCaseData(GetProperty<PropertyVirtuality>(nameof(PropertyVirtuality.Abstract)), Virtuality.Abstract);
         yield return new TestCaseData(GetProperty<PropertyVirtualitySubClass>(nameof(PropertyVirtualitySubClass.Override)), Virtuality.Override);

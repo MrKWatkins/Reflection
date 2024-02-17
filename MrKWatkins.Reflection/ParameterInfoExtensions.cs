@@ -2,10 +2,18 @@ using System.Reflection;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Extension methods for <see cref="ParameterInfo" />.
+/// </summary>
 public static class ParameterInfoExtensions
 {
+    /// <summary>
+    /// Gets the <see cref="ParameterKind" />  of the specified <see cref="ParameterInfo" />.
+    /// </summary>
+    /// <param name="parameter">The parameter.</param>
+    /// <returns>The <see cref="ParameterKind" /> of <paramref name="parameter"/>.</returns>
     [Pure]
-    public static ParameterKind? GetKind(this ParameterInfo parameter)
+    public static ParameterKind GetKind(this ParameterInfo parameter)
     {
         if (parameter.IsIn)
         {
@@ -27,6 +35,6 @@ public static class ParameterInfoExtensions
             return ParameterKind.Ref;
         }
 
-        return null;
+        return ParameterKind.Normal;
     }
 }

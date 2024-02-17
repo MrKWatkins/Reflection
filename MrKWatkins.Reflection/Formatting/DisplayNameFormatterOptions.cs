@@ -1,5 +1,8 @@
 namespace MrKWatkins.Reflection.Formatting;
 
+/// <summary>
+/// Options for a <see cref="DisplayNameFormatter" />.
+/// </summary>
 public sealed record DisplayNameFormatterOptions
 {
     /// <summary>

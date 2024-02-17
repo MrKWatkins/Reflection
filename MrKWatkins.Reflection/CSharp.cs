@@ -2,8 +2,14 @@ using System.Collections.Frozen;
 
 namespace MrKWatkins.Reflection;
 
+/// <summary>
+/// Members related specifically to C# and not .NET in general.
+/// </summary>
 public static class CSharp
 {
+    /// <summary>
+    /// All the keywords in CSharp.
+    /// </summary>
     public static readonly IReadOnlySet<string> Keywords = new[]
     {
         "abstract", "as",
@@ -26,6 +32,9 @@ public static class CSharp
         "while"
     }.ToFrozenSet();
 
+    /// <summary>
+    /// Keywords for the primitive types in C#.
+    /// </summary>
     public static readonly IReadOnlyDictionary<Type, string> PrimitiveTypeKeywords = new Dictionary<Type, string>
         {
             { typeof(bool), "bool" },

@@ -12,10 +12,7 @@
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <!--
-        TODO: Restore when ready to publish a decent version of the package.
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        -->
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">

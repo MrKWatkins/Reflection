@@ -2,20 +2,35 @@ using System.Reflection;
 
 namespace MrKWatkins.Reflection.Formatting;
 
+/// <summary>
+/// Formats reflection types into a human readable display name.
+/// </summary>
 public sealed class DisplayNameFormatter : ReflectionFormatter
 {
     private readonly DisplayNameFormatterOptions options;
 
+    /// <summary>
+    /// Initialises a new instance of the <see cref="DisplayNameFormatter"/> class using default options.
+    /// </summary>
     public DisplayNameFormatter()
         : this(new DisplayNameFormatterOptions())
     {
     }
 
+    /// <summary>
+    /// Initialises a new instance of the <see cref="DisplayNameFormatter"/> class with the specified options.
+    /// </summary>
+    /// <param name="options">The options to use.</param>
     public DisplayNameFormatter(DisplayNameFormatterOptions options)
     {
         this.options = options;
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="EventInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="event"/> to.</param>
+    /// <param name="event">The event.</param>
     protected override void Format(TextWriter output, EventInfo @event)
     {
         if (options.PrefixMembersWithType)
@@ -26,6 +41,11 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         output.Write(@event.Name);
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="FieldInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="field"/> to.</param>
+    /// <param name="field">The field.</param>
     protected override void Format(TextWriter output, FieldInfo field)
     {
         if (options.PrefixMembersWithType)
@@ -37,6 +57,11 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         output.Write(field.Name);
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="PropertyInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="property"/> to.</param>
+    /// <param name="property">The property.</param>
     protected override void Format(TextWriter output, PropertyInfo property)
     {
         if (options.PrefixMembersWithType)
@@ -54,6 +79,11 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         }
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="MethodBase" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
+    /// <param name="method">The method.</param>
     protected override void Format(TextWriter output, MethodBase method)
     {
         var type = method.DeclaringType!;
@@ -88,6 +118,11 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         output.Write(')');
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="Type" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="type"/> to.</param>
+    /// <param name="type">The type.</param>
     protected override void Format(TextWriter output, Type type)
     {
         if (type.IsArray)

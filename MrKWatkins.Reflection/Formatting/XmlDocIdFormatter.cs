@@ -2,8 +2,17 @@ using System.Reflection;
 
 namespace MrKWatkins.Reflection.Formatting;
 
+/// <summary>
+/// Formats reflection types into an XmlDocId.
+/// </summary>
+/// <seealso href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/#id-strings"/>
 public sealed class XmlDocIdFormatter : ReflectionFormatter
 {
+    /// <summary>
+    /// Formats the specified <see cref="EventInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="event"/> to.</param>
+    /// <param name="event">The event.</param>
     protected override void Format(TextWriter output, EventInfo @event)
     {
         output.Write("E:");
@@ -12,6 +21,11 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         WriteName(output, @event);
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="FieldInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="field"/> to.</param>
+    /// <param name="field">The field.</param>
     protected override void Format(TextWriter output, FieldInfo field)
     {
         output.Write("F:");
@@ -20,6 +34,11 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         WriteName(output, field);
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="PropertyInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="property"/> to.</param>
+    /// <param name="property">The property.</param>
     protected override void Format(TextWriter output, PropertyInfo property)
     {
         output.Write("P:");
@@ -29,6 +48,11 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         WriteParameters(output, property.GetIndexParameters());
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="MethodInfo" />. By default delegates to <see cref="Format(TextWriter, MethodBase)"/>.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
+    /// <param name="method">The method.</param>
     protected override void Format(TextWriter output, MethodInfo method)
     {
         Format(output, (MethodBase)method);
@@ -40,6 +64,11 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         }
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="Type" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="type"/> to.</param>
+    /// <param name="type">The type.</param>
     protected override void Format(TextWriter output, Type type)
     {
         output.Write("T:");
@@ -61,6 +90,11 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         }
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="MethodBase" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
+    /// <param name="method">The method.</param>
     protected override void Format(TextWriter output, MethodBase method)
     {
         output.Write("M:");
