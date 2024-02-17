@@ -1,4 +1,5 @@
 using System.Reflection;
+using MrKWatkins.Reflection.Tests.TestTypes.Methods;
 using MrKWatkins.Reflection.Tests.TestTypes.Operators;
 
 namespace MrKWatkins.Reflection.Tests;
@@ -11,6 +12,22 @@ public sealed class MethodInfoExtensionTests : TestFixture
     [TestCaseSource(nameof(CSharpOperatorTestCases))]
     public void IsOperator(MethodInfo method, CSharpOperator? expected) => method.IsCSharpOperator().Should().Be(expected.HasValue);
 
+    [TestCaseSource(nameof(GetVirtualityTestCases))]
+    public void GetVirtuality(MethodInfo method, Virtuality? expected) => method.GetVirtuality().Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> GetVirtualityTestCases()
+    {
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Normal)), null);
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Virtual)), Virtuality.Virtual);
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Abstract)), Virtuality.Abstract);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.Override)), Virtuality.Override);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.SealedOverride)), Virtuality.SealedOverride);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.New)), Virtuality.New);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.NewAbstract)), Virtuality.NewAbstract);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.NewVirtual)), Virtuality.NewVirtual);
+    }
+
     [Pure]
     public static IEnumerable<TestCaseData> CSharpOperatorTestCases()
     {
@@ -22,5 +39,22 @@ public sealed class MethodInfoExtensionTests : TestFixture
             .Select(method => new TestCaseData(method, null).SetArgDisplayNames($"Invalid: {method.Name}"));
 
         return valid.Concat(invalid);
+    }
+
+    [TestCaseSource(nameof(IsNewTestCases))]
+    public void IsNew(MethodInfo method, bool expected) => method.IsNew().Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> IsNewTestCases()
+    {
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Normal)), false);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.Abstract)), false);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.Virtual)), false);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.Override)), false);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.New)), true);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.NewAbstract)), true);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.NewVirtual)), true);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubSubClass>(nameof(MethodVirtualitySubSubClass.New)), true);
+        yield return new TestCaseData(GetMethod<MethodVirtualitySubSubClass>(nameof(MethodVirtualitySubSubClass.NewSubSubClass)), true);
     }
 }

@@ -91,4 +91,39 @@ public static class MethodInfoExtensions
     /// <returns><c>true</c> if the <paramref name="method"/> is a C# operator; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsCSharpOperator(this MethodInfo method) => method.GetCSharpOperator() != null;
+
+    [Pure]
+    public static Virtuality? GetVirtuality(this MethodInfo method)
+    {
+        var isNew = method.IsNew();
+        if (method.IsAbstract)
+        {
+            return isNew ? Virtuality.NewAbstract : Virtuality.Abstract;
+        }
+
+        if (method.GetBaseDefinition() != method)
+        {
+            return method.IsFinal ? Virtuality.SealedOverride : Virtuality.Override;
+        }
+
+        if (method is { IsVirtual: true, IsFinal: false })
+        {
+            return isNew ? Virtuality.NewVirtual : Virtuality.Virtual;
+        }
+
+        return isNew ? Virtuality.New : null;
+    }
+
+    [Pure]
+    public static bool IsNew(this MethodInfo method)
+    {
+        if (method.GetBaseDefinition() != method)
+        {
+            return false;
+        }
+
+        return method.DeclaringType?.BaseType?
+            // Not using BindingFlags.DeclaredOnly so will retrieve any depth lower in the hierarchy.
+            .GetMethod(method.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic) != null;
+    }
 }

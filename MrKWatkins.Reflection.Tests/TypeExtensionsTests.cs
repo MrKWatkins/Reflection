@@ -6,6 +6,23 @@ namespace MrKWatkins.Reflection.Tests;
 
 public sealed class TypeExtensionsTests
 {
+    [TestCaseSource(nameof(EnumerateNestedTypesTestCases))]
+    public void EnumerateNestedTypes(Type type, Type[] expected) => type.EnumerateNestedTypes().Should().BeEquivalentTo(expected);
+
+    public static IEnumerable<TestCaseData> EnumerateNestedTypesTestCases()
+    {
+        yield return new TestCaseData(typeof(Nested), new[] { typeof(Nested) });
+        yield return new TestCaseData(typeof(Nested.Child), new[] { typeof(Nested), typeof(Nested.Child) });
+        yield return new TestCaseData(typeof(Nested.Child<>), new[] { typeof(Nested), typeof(Nested.Child<>) });
+        yield return new TestCaseData(typeof(Nested.Child<int>), new[] { typeof(Nested), typeof(Nested.Child<int>) });
+        yield return new TestCaseData(typeof(Nested.Child.GrandChild), new[] { typeof(Nested), typeof(Nested.Child), typeof(Nested.Child.GrandChild) });
+        yield return new TestCaseData(typeof(Nested.Child<>.GrandChild), new[] { typeof(Nested), typeof(Nested.Child<>).MakeGenericType(typeof(Nested.Child<>.GrandChild).GetGenericArguments()), typeof(Nested.Child<>.GrandChild) });
+        yield return new TestCaseData(typeof(Nested.Child<int>.GrandChild), new[] { typeof(Nested), typeof(Nested.Child<int>), typeof(Nested.Child<int>.GrandChild) });
+        yield return new TestCaseData(typeof(Nested.Child.GrandChild<>), new[] { typeof(Nested), typeof(Nested.Child), typeof(Nested.Child.GrandChild<>) });
+        yield return new TestCaseData(typeof(Nested.Child<>.GrandChild<>), new[] { typeof(Nested), typeof(Nested.Child<>).MakeGenericType(typeof(Nested.Child<>.GrandChild<>).GetGenericArguments()[0]), typeof(Nested.Child<>.GrandChild<>) });
+        yield return new TestCaseData(typeof(Nested.Child<int>.GrandChild<int>), new[] { typeof(Nested), typeof(Nested.Child<int>), typeof(Nested.Child<int>.GrandChild<int>) });
+    }
+
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(Type type, Accessibility expected) => type.GetAccessibility().Should().Be(expected);
 
