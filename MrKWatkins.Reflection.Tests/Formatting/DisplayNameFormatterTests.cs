@@ -88,6 +88,7 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(GetMethod(typeof(Nested<>.Child<,>), nameof(Nested.Child.ChildGenericMethodTwoParameters)), "Nested<T>.Child<TC1, TC2>.ChildGenericMethodTwoParameters<T1, T2>(T, TC1, TC2, T1, T2)");
         yield return CreateTestCase(GetMethod(typeof(Nested<short>.Child<int, long>), nameof(Nested.Child.ChildGenericMethodTwoParameters)), "Nested<Int16>.Child<Int32, Int64>.ChildGenericMethodTwoParameters<T1, T2>(Int16, Int32, Int64, T1, T2)");
         yield return CreateTestCase(GetMethod(typeof(Nested<short>.Child<int, long>), nameof(Nested.Child.ChildGenericMethodTwoParameters)).MakeGenericMethod(typeof(float), typeof(double)), "Nested<Int16>.Child<Int32, Int64>.ChildGenericMethodTwoParameters<Single, Double>(Int16, Int32, Int64, Single, Double)");
+        yield return CreateTestCase(GetMethod(typeof(Nested<short?>.Child<int?, long?>), nameof(Nested.Child.ChildGenericMethodTwoParameters)).MakeGenericMethod(typeof(float?), typeof(double?)), "Nested<Int16?>.Child<Int32?, Int64?>.ChildGenericMethodTwoParameters<Single?, Double?>(Int16?, Int32?, Int64?, Single?, Double?)");
 
         #endregion
 
@@ -113,11 +114,12 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(typeof(string).MakeByRefType(), "String", "ref String");
         yield return CreateTestCase(typeof(string[]), "String[]");
         yield return CreateTestCase(typeof(string[,]), "String[,]");
-        yield return CreateTestCase(typeof(int?), "Nullable<Int32>");
+        yield return CreateTestCase(typeof(int?), "Int32?");
         yield return CreateTestCase(typeof(IEnumerable<>), "IEnumerable<T>");
         yield return CreateTestCase(typeof(IEnumerable<string>), "IEnumerable<String>");
         yield return CreateTestCase(typeof(Dictionary<,>), "Dictionary<TKey, TValue>");
         yield return CreateTestCase(typeof(Dictionary<int, string>), "Dictionary<Int32, String>");
+        yield return CreateTestCase(typeof(Dictionary<string, int?>), "Dictionary<String, Int32?>");
         yield return CreateTestCase(typeof(Nested.Child), "Nested.Child");
         yield return CreateTestCase(typeof(Nested.Child.GrandChild), "Nested.Child.GrandChild");
         yield return CreateTestCase(typeof(Nested.Child.GrandChild<>), "Nested.Child.GrandChild<TG1>");
@@ -168,19 +170,19 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         #endregion
     }
 
-    [TestCaseSource(nameof(Format_UseQualifiedNamesTestCases))]
-    public void Format_UseQualifiedNames(MemberInfo member, string expected) =>
-        new DisplayNameFormatter(DisplayNameFormatterOptions.UseQualifiedNames).Format(member).Should().Be(expected);
+    [TestCaseSource(nameof(Format_UseFullyQualifiedTypesTestCases))]
+    public void Format_UseFullyQualifiedTypes(MemberInfo member, string expected) =>
+        new DisplayNameFormatter(new DisplayNameFormatterOptions { UseFullyQualifiedTypes = true }).Format(member).Should().Be(expected);
 
     [Pure]
-    public static IEnumerable<TestCaseData> Format_UseQualifiedNamesTestCases()
+    public static IEnumerable<TestCaseData> Format_UseFullyQualifiedTypesTestCases()
     {
         yield return CreateTestCase(typeof(string), "System.String");
         yield return CreateTestCase(typeof(string).MakePointerType(), "System.String*");
         yield return CreateTestCase(typeof(string).MakeByRefType(), "System.String", "ref String");
         yield return CreateTestCase(typeof(string[]), "System.String[]");
         yield return CreateTestCase(typeof(string[,]), "System.String[,]");
-        yield return CreateTestCase(typeof(int?), "System.Nullable<System.Int32>");
+        yield return CreateTestCase(typeof(int?), "System.Int32?");
         yield return CreateTestCase(typeof(IEnumerable<>), "System.Collections.Generic.IEnumerable<T>");
         yield return CreateTestCase(typeof(IEnumerable<string>), "System.Collections.Generic.IEnumerable<System.String>");
         yield return CreateTestCase(typeof(Dictionary<,>), "System.Collections.Generic.Dictionary<TKey, TValue>");
@@ -197,21 +199,22 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(GetOperator<CSharpOperators>(CSharpOperator.Decrement), "MrKWatkins.Reflection.Tests.TestTypes.Operators.CSharpOperators.Decrement(MrKWatkins.Reflection.Tests.TestTypes.Operators.CSharpOperators)");
         yield return CreateTestCase(GetMethod(typeof(Nested.Child<,>), nameof(Nested.Child.ChildGenericMethodOneParameter)), "MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.Child<TC1, TC2>.ChildGenericMethodOneParameter<T1>(TC1, TC2, T1)");
         yield return CreateTestCase(GetMethod(typeof(Nested.Child<int, long>), nameof(Nested.Child.ChildGenericMethodOneParameter)).MakeGenericMethod(typeof(float)), "MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.Child<System.Int32, System.Int64>.ChildGenericMethodOneParameter<System.Single>(System.Int32, System.Int64, System.Single)");
+        yield return CreateTestCase(GetMethod(typeof(Nested.Child<int?, long?>), nameof(Nested.Child.ChildGenericMethodOneParameter)).MakeGenericMethod(typeof(float?)), "MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.Child<System.Int32?, System.Int64?>.ChildGenericMethodOneParameter<System.Single?>(System.Int32?, System.Int64?, System.Single?)");
     }
 
-    [TestCaseSource(nameof(Format_DoNotPrefixMembersWithTypeTestCases))]
-    public void Format_DoNotPrefixMembersWithType(MemberInfo member, string expected) =>
-        new DisplayNameFormatter(DisplayNameFormatterOptions.DoNotPrefixMembersWithType).Format(member).Should().Be(expected);
+    [TestCaseSource(nameof(Format_PrefixMembersWithTypeTestCases))]
+    public void Format_PrefixMembersWithType(MemberInfo member, string expected) =>
+        new DisplayNameFormatter(new DisplayNameFormatterOptions { PrefixMembersWithType = false }).Format(member).Should().Be(expected);
 
     [Pure]
-    public static IEnumerable<TestCaseData> Format_DoNotPrefixMembersWithTypeTestCases()
+    public static IEnumerable<TestCaseData> Format_PrefixMembersWithTypeTestCases()
     {
         yield return CreateTestCase(typeof(string), "String");
         yield return CreateTestCase(typeof(string).MakePointerType(), "String*");
         yield return CreateTestCase(typeof(string).MakeByRefType(), "String", "ref String");
         yield return CreateTestCase(typeof(string[]), "String[]");
         yield return CreateTestCase(typeof(string[,]), "String[,]");
-        yield return CreateTestCase(typeof(int?), "Nullable<Int32>");
+        yield return CreateTestCase(typeof(int?), "Int32?");
         yield return CreateTestCase(typeof(IEnumerable<>), "IEnumerable<T>");
         yield return CreateTestCase(typeof(IEnumerable<string>), "IEnumerable<String>");
         yield return CreateTestCase(typeof(Dictionary<,>), "Dictionary<TKey, TValue>");
@@ -228,5 +231,24 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(GetOperator<CSharpOperators>(CSharpOperator.Decrement), "Decrement(CSharpOperators)");
         yield return CreateTestCase(GetMethod(typeof(Nested.Child<,>), nameof(Nested.Child.ChildGenericMethodOneParameter)), "ChildGenericMethodOneParameter<T1>(TC1, TC2, T1)");
         yield return CreateTestCase(GetMethod(typeof(Nested.Child<int, long>), nameof(Nested.Child.ChildGenericMethodOneParameter)).MakeGenericMethod(typeof(float)), "ChildGenericMethodOneParameter<Single>(Int32, Int64, Single)");
+    }
+
+    [TestCaseSource(nameof(Format_UseQuestionMarksForNullableTypesTestCases))]
+    public void Format_UseQuestionMarksForNullableTypes(MemberInfo member, string expected) =>
+        new DisplayNameFormatter(new DisplayNameFormatterOptions { UseQuestionMarksForNullableTypes = false }).Format(member).Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> Format_UseQuestionMarksForNullableTypesTestCases()
+    {
+        yield return CreateTestCase(typeof(string), "String");
+        yield return CreateTestCase(typeof(int?), "Nullable<Int32>");
+        yield return CreateTestCase(typeof(IEnumerable<>), "IEnumerable<T>");
+        yield return CreateTestCase(typeof(IEnumerable<string>), "IEnumerable<String>");
+        yield return CreateTestCase(typeof(IEnumerable<int?>), "IEnumerable<Nullable<Int32>>");
+        yield return CreateTestCase(typeof(Dictionary<,>), "Dictionary<TKey, TValue>");
+        yield return CreateTestCase(typeof(Dictionary<string, int?>), "Dictionary<String, Nullable<Int32>>");
+        yield return CreateTestCase(GetConstructor(typeof(Dictionary<string, int?>), [typeof(int)]), "Dictionary<String, Nullable<Int32>>.Dictionary(Int32)");
+        yield return CreateTestCase(GetMethod(typeof(Nested.Child<int?, long?>), nameof(Nested.Child.ChildGenericMethodOneParameter)).MakeGenericMethod(typeof(float?)), "Nested.Child<Nullable<Int32>, Nullable<Int64>>.ChildGenericMethodOneParameter<Nullable<Single>>(Nullable<Int32>, Nullable<Int64>, Nullable<Single>)");
+        yield return CreateTestCase(GetMethod(typeof(Nested<short?>.Child<int?, long?>), nameof(Nested.Child.ChildGenericMethodTwoParameters)).MakeGenericMethod(typeof(float?), typeof(double?)), "Nested<Nullable<Int16>>.Child<Nullable<Int32>, Nullable<Int64>>.ChildGenericMethodTwoParameters<Nullable<Single>, Nullable<Double>>(Nullable<Int16>, Nullable<Int32>, Nullable<Int64>, Nullable<Single>, Nullable<Double>)");
     }
 }

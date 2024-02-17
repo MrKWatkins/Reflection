@@ -6,14 +6,19 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
 {
     private readonly DisplayNameFormatterOptions options;
 
-    public DisplayNameFormatter(DisplayNameFormatterOptions options = default)
+    public DisplayNameFormatter()
+        : this(new DisplayNameFormatterOptions())
+    {
+    }
+
+    public DisplayNameFormatter(DisplayNameFormatterOptions options)
     {
         this.options = options;
     }
 
     protected override void Format(TextWriter output, EventInfo @event)
     {
-        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        if (options.PrefixMembersWithType)
         {
             Format(output, @event.DeclaringType!);
             output.Write('.');
@@ -23,7 +28,7 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
 
     protected override void Format(TextWriter output, FieldInfo field)
     {
-        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        if (options.PrefixMembersWithType)
         {
             Format(output, field.DeclaringType!);
             output.Write('.');
@@ -34,7 +39,7 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
 
     protected override void Format(TextWriter output, PropertyInfo property)
     {
-        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        if (options.PrefixMembersWithType)
         {
             Format(output, property.DeclaringType!);
             output.Write('.');
@@ -52,7 +57,7 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
     protected override void Format(TextWriter output, MethodBase method)
     {
         var type = method.DeclaringType!;
-        if (!options.HasFlag(DisplayNameFormatterOptions.DoNotPrefixMembersWithType))
+        if (options.PrefixMembersWithType)
         {
             Format(output, method.DeclaringType!);
             output.Write('.');
@@ -116,6 +121,17 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
             return;
         }
 
+        if (options.UseQuestionMarksForNullableTypes)
+        {
+            var underlying = Nullable.GetUnderlyingType(type);
+            if (underlying != null)
+            {
+                WriteName(output, underlying, options.UseFullyQualifiedTypes);
+                output.Write('?');
+                return;
+            }
+        }
+
         var isFirst = true;
         foreach (var (nestedType, genericArguments) in EnumerateNestedTypes(type))
         {
@@ -124,7 +140,7 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
                 output.Write('.');
             }
 
-            WriteName(output, nestedType, isFirst && options.HasFlag(DisplayNameFormatterOptions.UseQualifiedNames));
+            WriteName(output, nestedType, isFirst && options.UseFullyQualifiedTypes);
 
             if (genericArguments.Count > 0)
             {
