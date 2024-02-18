@@ -42,6 +42,16 @@ public static class MethodBaseExtensions
     }
 
     /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="MethodBase" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
+    /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns><c>true</c> if <paramref name="method"/> has public or protected overloads; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool HasPublicOrProtectedOverloads(this MethodBase method) => method.EnumerateOverloads().Any(m => m.IsPublicOrProtected());
+
+    /// <summary>
     /// Returns <c>true</c> if the method is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>

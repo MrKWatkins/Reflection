@@ -20,7 +20,7 @@ public sealed record DisplayNameFormatterOptions
     /// Whether types should be fully qualified with their namespace or not. Defaults to <c>false</c>.
     /// </summary>
     /// <remarks>
-    /// Does not affect calls to <see cref="DisplayNameFormatter.FormatNamespace(string)" />; they are always fully qualified.
+    /// Does not affect calls to <see cref="DisplayNameFormatter.FormatNamespace(System.IO.TextWriter,string)" />; they are always fully qualified.
     /// </remarks>
     public bool UseFullyQualifiedTypes { get; init; }
 

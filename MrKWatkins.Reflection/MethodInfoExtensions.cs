@@ -18,7 +18,7 @@ public static class MethodInfoExtensions
     {
         var type = method.DeclaringType!;
         return type
-            .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
+            .GetMethods(BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
             .Where(m => m != method && m.Name == method.Name);
     }
 
@@ -135,6 +135,16 @@ public static class MethodInfoExtensions
 
         return isNew ? Virtuality.New : Virtuality.Normal;
     }
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="MethodInfo" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
+    /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns><c>true</c> if <paramref name="method"/> has public or protected overloads; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool HasPublicOrProtectedOverloads(this MethodInfo method) => method.EnumerateOverloads().Any(m => m.IsPublicOrProtected());
 
     /// <summary>
     /// Returns <c>true</c> if the specified method has the <c>new</c> modifier; <c>false</c> otherwise.

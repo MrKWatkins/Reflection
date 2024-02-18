@@ -55,6 +55,27 @@ public sealed class MethodInfoExtensionTests : TestFixture
         yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.NewVirtual)), Virtuality.NewVirtual);
     }
 
+    [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
+    public void HasPublicOrProtectedOverloads(MethodInfo method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()
+    {
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Normal)), false);
+
+        var publicOverloaded = GetMethods<MethodPublicOverload>(nameof(MethodPublicOverload.Overload));
+        yield return new TestCaseData(publicOverloaded[0], true);
+        yield return new TestCaseData(publicOverloaded[1], true);
+
+        var protectedOverloaded = GetMethods<MethodProtectedOverload>(nameof(MethodProtectedOverload.Overload));
+        yield return new TestCaseData(protectedOverloaded[0], true);
+        yield return new TestCaseData(protectedOverloaded[1], true);
+
+        var privateOverloaded = GetMethods<MethodPrivateOverload>(nameof(MethodPrivateOverload.Overload));
+        yield return new TestCaseData(privateOverloaded[0], false);
+        yield return new TestCaseData(privateOverloaded[1], true);
+    }
+
     [TestCaseSource(nameof(IsNewTestCases))]
     public void IsNew(MethodInfo method, bool expected) => method.IsNew().Should().Be(expected);
 

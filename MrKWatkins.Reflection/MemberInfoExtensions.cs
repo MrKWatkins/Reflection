@@ -29,9 +29,24 @@ public static class MemberInfoExtensions
             _ => throw new NotSupportedException($"{nameof(MemberInfo)}s of type {member.GetType().Name} are not supported.")
         };
 
+    /// <summary>
+    /// Returns the namespace the specified <see cref="MemberInfo"/> is contained in, or <c>null</c> if it's in the global namespace.
+    /// </summary>
+    /// <param name="member">The member.</param>
+    /// <returns>
+    /// The namespace <paramref name="member"/> is contained in, or <c>null</c> if it's in the global namespace.
+    /// </returns>
     [Pure]
     public static string? GetNamespace(this MemberInfo member) => member is Type type ? type.Namespace : member.DeclaringType?.Namespace;
 
+    /// <summary>
+    /// Returns the namespace the specified <see cref="MemberInfo"/> is contained in, or throws if it's in the global namespace.
+    /// </summary>
+    /// <param name="member">The member.</param>
+    /// <returns>
+    /// The namespace <paramref name="member"/> is contained in, or throws if it's in the global namespace.
+    /// </returns>
+    /// <exception cref="ArgumentException">If <paramref name="member"/> is in the global namespace.</exception>
     [Pure]
     public static string GetNamespaceOrThrow(this MemberInfo member) =>
         member.GetNamespace() ?? throw new ArgumentException("Value does not have a namespace.", nameof(member));

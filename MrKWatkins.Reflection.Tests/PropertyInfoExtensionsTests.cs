@@ -5,6 +5,29 @@ namespace MrKWatkins.Reflection.Tests;
 
 public sealed class PropertyInfoExtensionsTests : TestFixture
 {
+    [TestCaseSource(nameof(EnumerateOverloadsTestCases))]
+    public void EnumerateOverloads(PropertyInfo property, PropertyInfo[] expected) =>
+        property.EnumerateOverloads().Should().BeEquivalentTo(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> EnumerateOverloadsTestCases()
+    {
+        yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), Array.Empty<PropertyInfo>());
+        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), Array.Empty<PropertyInfo>());
+
+        var publicOverloaded = GetProperties<PropertyPublicOverloadedIndexer>("Item");
+        yield return new TestCaseData(publicOverloaded[0], new[] { publicOverloaded[1] });
+        yield return new TestCaseData(publicOverloaded[1], new[] { publicOverloaded[0] });
+
+        var protectedOverloaded = GetProperties<PropertyProtectedOverloadedIndexer>("Item");
+        yield return new TestCaseData(protectedOverloaded[0], new[] { protectedOverloaded[1] });
+        yield return new TestCaseData(protectedOverloaded[1], new[] { protectedOverloaded[0] });
+
+        var privateOverloaded = GetProperties<PropertyPrivateOverloadedIndexer>("Item");
+        yield return new TestCaseData(privateOverloaded[0], new[] { privateOverloaded[1] });
+        yield return new TestCaseData(privateOverloaded[1], new[] { privateOverloaded[0] });
+    }
+
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(PropertyInfo property, Accessibility expected) => property.GetAccessibility().Should().Be(expected);
 

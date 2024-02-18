@@ -36,8 +36,8 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
 
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<,>), [typeof(int)]), "M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)");
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<,>), [typeof(IDictionary<,>).MakeGenericType(typeof(Dictionary<,>).GetGenericArguments()), typeof(IEqualityComparer<>).MakeGenericType(typeof(Dictionary<,>).GetGenericArguments()[0])]), "M:System.Collections.Generic.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})");
-        yield return CreateTestCase(GetConstructor<Nested>(), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.#ctor");
-        yield return CreateTestCase(GetConstructor(typeof(Nested<>)), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested`1.#ctor");
+        yield return CreateTestCase(GetConstructor<Nested>(0), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested.#ctor");
+        yield return CreateTestCase(GetConstructor(typeof(Nested<>), 0), "M:MrKWatkins.Reflection.Tests.TestTypes.Types.Nested`1.#ctor");
 
         #endregion
 

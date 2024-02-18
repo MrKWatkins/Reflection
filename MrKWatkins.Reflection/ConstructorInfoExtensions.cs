@@ -20,4 +20,14 @@ public static class ConstructorInfoExtensions
             .GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
             .Where(c => c != constructor);
     }
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="ConstructorInfo" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
+    /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="constructor">The method.</param>
+    /// <returns><c>true</c> if <paramref name="constructor"/> has public or protected overloads; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool HasPublicOrProtectedOverloads(this ConstructorInfo constructor) => constructor.EnumerateOverloads().Any(c => c.IsPublicOrProtected());
 }

@@ -62,8 +62,21 @@ public abstract class ReflectionFormatter : IReflectionFormatter
         throw new NotSupportedException($"Members of type {member.GetType().Name} are not supported.");
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="MemberInfo" />'s namespace.
+    /// </summary>
+    /// <param name="member">The member.</param>
+    /// <returns>A string representing <paramref name="member"/>'s namespace.</returns>
+    /// <exception cref="ArgumentException">If <paramref name="member"/> does not have a namespace.</exception>
+    [Pure]
     public string FormatNamespace(MemberInfo member) => FormatNamespace(member.GetNamespaceOrThrow());
 
+    /// <summary>
+    /// Formats the specified namespace.
+    /// </summary>
+    /// <param name="namespace">The namespace.</param>
+    /// <returns>A string representing <paramref name="namespace"/>.</returns>
+    [Pure]
     public string FormatNamespace(string @namespace)
     {
         var output = new StringBuilder();
@@ -71,16 +84,38 @@ public abstract class ReflectionFormatter : IReflectionFormatter
         return output.ToString();
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="MemberInfo" />'s namespace.
+    /// </summary>
+    /// <param name="output">A <see cref="StringBuilder"/> to append a string representing <paramref name="member"/>'s namespace to.</param>
+    /// <param name="member">The member.</param>
+    /// <exception cref="ArgumentException">If <paramref name="member"/> does not have a namespace.</exception>
     public void FormatNamespace(StringBuilder output, MemberInfo member) => FormatNamespace(output, member.GetNamespaceOrThrow());
 
+    /// <summary>
+    /// Formats the specified  namespace.
+    /// </summary>
+    /// <param name="output">A <see cref="StringBuilder"/> to append a string representing <paramref name="namespace"/> to.</param>
+    /// <param name="namespace">The namespace.</param>
     public void FormatNamespace(StringBuilder output, string @namespace)
     {
         using var writer = new StringWriter(output);
         FormatNamespace(writer, @namespace);
     }
 
+    /// <summary>
+    /// Formats the specified <see cref="MemberInfo" />'s namespace.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="member"/>'s namespace to.</param>
+    /// <param name="member">The member.</param>
+    /// <exception cref="ArgumentException">If <paramref name="member"/> does not have a namespace.</exception>
     public void FormatNamespace(TextWriter output, MemberInfo member) => FormatNamespace(output, member.GetNamespaceOrThrow());
 
+    /// <summary>
+    /// Formats the specified namespace.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="namespace"/> to.</param>
+    /// <param name="namespace">The namespace.</param>
     public abstract void FormatNamespace(TextWriter output, string @namespace);
 
     /// <summary>

@@ -23,10 +23,10 @@ public abstract class TestFixture
     }
 
     [Pure]
-    protected static ConstructorInfo GetConstructor<T>(int parameterCount = 0) => GetConstructor(typeof(T), parameterCount);
+    protected static ConstructorInfo GetConstructor<T>(int parameterCount) => GetConstructor(typeof(T), parameterCount);
 
     [Pure]
-    protected static ConstructorInfo GetConstructor(Type type, int parameterCount = 0)
+    protected static ConstructorInfo GetConstructor(Type type, int parameterCount)
     {
         var constructors = GetConstructors(type, parameterCount);
 
@@ -39,10 +39,14 @@ public abstract class TestFixture
     }
 
     [Pure]
-    protected static IReadOnlyList<ConstructorInfo> GetConstructors<T>(int parameterCount = 0) => GetConstructors(typeof(T), parameterCount);
+    protected static IReadOnlyList<ConstructorInfo> GetConstructors<T>() => GetConstructors(typeof(T));
 
     [Pure]
-    protected static IReadOnlyList<ConstructorInfo> GetConstructors(Type type, int parameterCount = 0)
+    protected static IReadOnlyList<ConstructorInfo> GetConstructors(Type type) =>
+        type.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+    [Pure]
+    protected static IReadOnlyList<ConstructorInfo> GetConstructors(Type type, int parameterCount)
     {
         var constructors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
             .Where(c => c.GetParameters().Length == parameterCount)

@@ -2,6 +2,7 @@ using System.Reflection;
 using MrKWatkins.Reflection.Tests.TestTypes;
 using MrKWatkins.Reflection.Tests.TestTypes.Constructors;
 using MrKWatkins.Reflection.Tests.TestTypes.Methods;
+using MrKWatkins.Reflection.Tests.TestTypes.Types;
 
 namespace MrKWatkins.Reflection.Tests;
 
@@ -33,6 +34,45 @@ public sealed class MethodBaseExtensionsTests : TestFixture
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(MethodBase method, Accessibility expected) => method.GetAccessibility().Should().Be(expected);
+
+
+    [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
+    public void HasPublicOrProtectedOverloads(MethodBase method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Be(expected);
+
+    [Test]
+    public void HasPublicOrProtectedOverloads_ThrowsForUnsupportedMethodBaseType() =>
+        new UnsupportedMethodBase().Invoking(m => m.HasPublicOrProtectedOverloads()).Should().Throw<NotSupportedException>();
+
+    [Pure]
+    public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()
+    {
+        yield return new TestCaseData(GetConstructor<Class>(0), false);
+        yield return new TestCaseData(GetMethod<MethodVirtuality>(nameof(MethodVirtuality.Normal)), false);
+
+        var publicOverloadedConstructor = GetConstructors<ConstructorPublicOverload>();
+        yield return new TestCaseData(publicOverloadedConstructor[0], true);
+        yield return new TestCaseData(publicOverloadedConstructor[1], true);
+
+        var protectedOverloadedConstructor = GetConstructors<ConstructorProtectedOverload>();
+        yield return new TestCaseData(protectedOverloadedConstructor[0], true);
+        yield return new TestCaseData(protectedOverloadedConstructor[1], true);
+
+        var privateOverloadedConstructor = GetConstructors<ConstructorPrivateOverload>();
+        yield return new TestCaseData(privateOverloadedConstructor[0], false);
+        yield return new TestCaseData(privateOverloadedConstructor[1], true);
+
+        var publicOverloadedMethod = GetMethods<MethodPublicOverload>(nameof(MethodPublicOverload.Overload));
+        yield return new TestCaseData(publicOverloadedMethod[0], true);
+        yield return new TestCaseData(publicOverloadedMethod[1], true);
+
+        var protectedOverloadedMethod = GetMethods<MethodProtectedOverload>(nameof(MethodProtectedOverload.Overload));
+        yield return new TestCaseData(protectedOverloadedMethod[0], true);
+        yield return new TestCaseData(protectedOverloadedMethod[1], true);
+
+        var privateOverloadedMethod = GetMethods<MethodPrivateOverload>(nameof(MethodPrivateOverload.Overload));
+        yield return new TestCaseData(privateOverloadedMethod[0], false);
+        yield return new TestCaseData(privateOverloadedMethod[1], true);
+    }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(MethodBase method, Accessibility visibility) =>

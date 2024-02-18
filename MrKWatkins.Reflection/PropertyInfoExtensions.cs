@@ -9,6 +9,27 @@ namespace MrKWatkins.Reflection;
 public static class PropertyInfoExtensions
 {
     /// <summary>
+    /// Enumerates the overloads of the specified property that are declared in the same type. Only indexer properties can be overloaded.
+    /// </summary>
+    /// <param name="property">The property.</param>
+    /// <returns>
+    /// The overloads of <paramref name="property"/> declared in the same type; will be empty if the property is not overloaded or is
+    /// not an indexer property.
+    /// </returns>
+    [Pure]
+    public static IEnumerable<PropertyInfo> EnumerateOverloads(this PropertyInfo property)
+    {
+        if (!property.IsIndexer())
+        {
+            return Enumerable.Empty<PropertyInfo>();
+        }
+
+        return property.DeclaringType!
+            .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
+            .Where(p => p != property && p.IsIndexer());
+    }
+
+    /// <summary>
     /// Returns the <see cref="Accessibility" /> of the specified <see cref="PropertyInfo" />.
     /// </summary>
     /// <param name="property">The method.</param>
@@ -78,37 +99,26 @@ public static class PropertyInfoExtensions
     /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> has a setter marked with the init modifier; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
-    /// <returns><c>true</c> if the specified <see cref="PropertyInfo" /> has a setter marked with the init modifier; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if <paramref name="property"/> has a setter marked with the init modifier; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool HasInitSetter(this PropertyInfo property) =>
         property.SetMethod?.ReturnParameter.GetRequiredCustomModifiers().Contains(typeof(IsExternalInit)) == true;
 
     /// <summary>
-    /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> has public or protected overloads; <c>false</c> otherwise. Only applies to
-    /// indexer properties.
+    /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
+    /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise. Only applies to indexer properties.
     /// </summary>
     /// <param name="property">The property.</param>
-    /// <returns><c>true</c> if the specified <see cref="PropertyInfo" /> has public or protected overloads; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if <paramref name="property"/> has public or protected overloads; <c>false</c> otherwise.</returns>
     [Pure]
-    public static bool HasPublicOrProtectedOverloads(this PropertyInfo property)
-    {
-        if (!property.IsIndexer())
-        {
-            return false;
-        }
-
-        var type = property.DeclaringType!;
-        var indexers = type
-            .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)
-            .Where(p => p != property && p.IsIndexer() && p.IsPublicOrProtected());
-        return indexers.Any();
-    }
+    public static bool HasPublicOrProtectedOverloads(this PropertyInfo property) => property.EnumerateOverloads().Any(p => p.IsPublicOrProtected());
 
     /// <summary>
     /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> is abstract; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
-    /// <returns><c>true</c> if the specified <see cref="PropertyInfo" /> is abstract; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if <paramref name="property"/> is abstract; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsAbstract(this PropertyInfo property) => (property.GetMethod ?? property.SetMethod)!.IsAbstract;
 
@@ -116,7 +126,7 @@ public static class PropertyInfoExtensions
     /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> is abstract or virtual; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
-    /// <returns><c>true</c> if the specified <see cref="PropertyInfo" /> is abstract or virtual; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if t<paramref name="property"/> is abstract or virtual; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsAbstractOrVirtual(this PropertyInfo property) => (property.GetMethod ?? property.SetMethod)!.IsVirtual;
 
@@ -124,7 +134,7 @@ public static class PropertyInfoExtensions
     /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> is an indexer property; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
-    /// <returns><c>true</c> if the specified <see cref="PropertyInfo" /> is an indexer property; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if <paramref name="property"/> is an indexer property; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsIndexer(this PropertyInfo property) => property.GetIndexParameters().Length > 0;
 
@@ -132,7 +142,7 @@ public static class PropertyInfoExtensions
     /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> is a property marked with the new modifier; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
-    /// <returns><c>true</c> if the specified <see cref="PropertyInfo" /> is a property marked with the new modifier; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if <paramref name="property"/> is a property marked with the new modifier; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsNew(this PropertyInfo property)
     {
@@ -152,7 +162,8 @@ public static class PropertyInfoExtensions
     /// </summary>
     /// <param name="property">The property.</param>
     /// <returns>
-    /// <c>true</c> if the property is <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
+    /// <c>true</c> if <paramref name="property"/> is <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />;
+    /// <c>false</c> otherwise.
     /// </returns>
     [Pure]
     public static bool IsProtected(this PropertyInfo property) => property.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
@@ -162,7 +173,7 @@ public static class PropertyInfoExtensions
     /// </summary>
     /// <param name="property">The property.</param>
     /// <returns>
-    /// <c>true</c> if the property is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// <c>true</c> if <paramref name="property"/> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </returns>
     [Pure]
     public static bool IsPublic(this PropertyInfo property) => property.GetAccessibility() == Accessibility.Public;
@@ -173,8 +184,8 @@ public static class PropertyInfoExtensions
     /// </summary>
     /// <param name="property">The property.</param>
     /// <returns>
-    /// <c>true</c> if the property is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />;
-    /// <c>false</c> otherwise.
+    /// <c>true</c> if <paramref name="property"/> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
+    /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </returns>
     [Pure]
     public static bool IsPublicOrProtected(this PropertyInfo property) => property.GetAccessibility() >= Accessibility.Protected;

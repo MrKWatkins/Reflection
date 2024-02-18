@@ -24,9 +24,9 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<byte, long>), [typeof(int)]), "Dictionary<Byte, Int64>.Dictionary(Int32)");
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<,>), [typeof(IDictionary<,>).MakeGenericType(typeof(Dictionary<,>).GetGenericArguments()), typeof(IEqualityComparer<>).MakeGenericType(typeof(Dictionary<,>).GetGenericArguments()[0])]), "Dictionary<TKey, TValue>.Dictionary(IDictionary<TKey, TValue>, IEqualityComparer<TKey>)");
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<byte, long>), [typeof(IDictionary<byte, long>), typeof(IEqualityComparer<byte>)]), "Dictionary<Byte, Int64>.Dictionary(IDictionary<Byte, Int64>, IEqualityComparer<Byte>)");
-        yield return CreateTestCase(GetConstructor<Nested>(), "Nested.Nested()");
-        yield return CreateTestCase(GetConstructor(typeof(Nested<>)), "Nested<T>.Nested()");
-        yield return CreateTestCase(GetConstructor(typeof(Nested<int>)), "Nested<Int32>.Nested()");
+        yield return CreateTestCase(GetConstructor<Nested>(0), "Nested.Nested()");
+        yield return CreateTestCase(GetConstructor(typeof(Nested<>), 0), "Nested<T>.Nested()");
+        yield return CreateTestCase(GetConstructor(typeof(Nested<int>), 0), "Nested<Int32>.Nested()");
 
         #endregion
 
