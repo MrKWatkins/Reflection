@@ -27,6 +27,13 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
     }
 
     /// <summary>
+    /// Formats the specified <see cref="ConstructorInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="constructor"/> to.</param>
+    /// <param name="constructor">The constructor.</param>
+    protected override void Format(TextWriter output, ConstructorInfo constructor) => WriteMethod(output, constructor);
+
+    /// <summary>
     /// Formats the specified <see cref="EventInfo" />.
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="event"/> to.</param>
@@ -58,6 +65,13 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
     }
 
     /// <summary>
+    /// Formats the specified <see cref="MethodInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
+    /// <param name="method">The method.</param>
+    protected override void Format(TextWriter output, MethodInfo method) => WriteMethod(output, method);
+
+    /// <summary>
     /// Formats the specified <see cref="PropertyInfo" />.
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="property"/> to.</param>
@@ -77,45 +91,6 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
             WriteTypeList(output, property.GetIndexParameters().Select(p => p.ParameterType));
             output.Write(']');
         }
-    }
-
-    /// <summary>
-    /// Formats the specified <see cref="MethodBase" />.
-    /// </summary>
-    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
-    /// <param name="method">The method.</param>
-    protected override void Format(TextWriter output, MethodBase method)
-    {
-        var type = method.DeclaringType!;
-        if (options.PrefixMembersWithType)
-        {
-            Format(output, method.DeclaringType!);
-            output.Write('.');
-        }
-
-        if (method.IsConstructor)
-        {
-            WriteName(output, type, false);
-        }
-        else if (method.Name.StartsWith("op_", StringComparison.Ordinal))
-        {
-            output.Write(method.Name.AsSpan(3));
-        }
-        else
-        {
-            output.Write(method.Name);
-        }
-
-        if (method.IsGenericMethod)
-        {
-            output.Write('<');
-            WriteTypeList(output, method.GetGenericArguments());
-            output.Write('>');
-        }
-
-        output.Write('(');
-        WriteTypeList(output, method.GetParameters().Select(p => p.ParameterType));
-        output.Write(')');
     }
 
     /// <summary>
@@ -218,6 +193,40 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
             yield return (nestedType, new ArraySegment<Type>(genericArguments, parametersUsed, parametersDefinedByItem));
             parametersUsed = totalParameters;
         }
+    }
+
+    private void WriteMethod(TextWriter output, MethodBase method)
+    {
+        var type = method.DeclaringType!;
+        if (options.PrefixMembersWithType)
+        {
+            Format(output, method.DeclaringType!);
+            output.Write('.');
+        }
+
+        if (method.IsConstructor)
+        {
+            WriteName(output, type, false);
+        }
+        else if (method.Name.StartsWith("op_", StringComparison.Ordinal))
+        {
+            output.Write(method.Name.AsSpan(3));
+        }
+        else
+        {
+            output.Write(method.Name);
+        }
+
+        if (method.IsGenericMethod)
+        {
+            output.Write('<');
+            WriteTypeList(output, method.GetGenericArguments());
+            output.Write('>');
+        }
+
+        output.Write('(');
+        WriteTypeList(output, method.GetParameters().Select(p => p.ParameterType));
+        output.Write(')');
     }
 
     private void WriteTypeList(TextWriter output, [InstantHandle] IEnumerable<Type> types)

@@ -1,3 +1,4 @@
+using System.Collections.Frozen;
 using System.Reflection;
 
 namespace MrKWatkins.Reflection.Formatting;
@@ -8,6 +9,21 @@ namespace MrKWatkins.Reflection.Formatting;
 /// <seealso href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/#id-strings"/>
 public sealed class XmlDocIdFormatter : ReflectionFormatter
 {
+    private static readonly FrozenDictionary<char, char> NameReplacements = new KeyValuePair<char, char>[]
+    {
+        new ('.', '#'),
+        new ('<', '{'),
+        new ('>', '}'),
+        new (',', '@')
+    }.ToFrozenDictionary();
+
+    /// <summary>
+    /// Formats the specified <see cref="ConstructorInfo" />.
+    /// </summary>
+    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="constructor"/> to.</param>
+    /// <param name="constructor">The constructor.</param>
+    protected override void Format(TextWriter output, ConstructorInfo constructor) => WriteMethod(output, constructor);
+
     /// <summary>
     /// Formats the specified <see cref="EventInfo" />.
     /// </summary>
@@ -49,13 +65,13 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
     }
 
     /// <summary>
-    /// Formats the specified <see cref="MethodInfo" />. By default delegates to <see cref="Format(TextWriter, MethodBase)"/>.
+    /// Formats the specified <see cref="MethodInfo" />.
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
     /// <param name="method">The method.</param>
     protected override void Format(TextWriter output, MethodInfo method)
     {
-        Format(output, (MethodBase)method);
+        WriteMethod(output, method);
 
         if (method.Name is "op_Implicit" or "op_Explicit" or "op_CheckedExplicit")
         {
@@ -90,12 +106,7 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         }
     }
 
-    /// <summary>
-    /// Formats the specified <see cref="MethodBase" />.
-    /// </summary>
-    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
-    /// <param name="method">The method.</param>
-    protected override void Format(TextWriter output, MethodBase method)
+    private static void WriteMethod(TextWriter output, MethodBase method)
     {
         output.Write("M:");
         Write(output, method.DeclaringType!);  // Ignoring global methods on a module; we don't generate documentation for them.
@@ -252,8 +263,11 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
 
     private static void WriteName(TextWriter output, MemberInfo member, bool includeTypeParameterNumber = true)
     {
-        var name = includeTypeParameterNumber ? member.Name : member.Name[..^2];
-        output.Write(name.Replace('.', '#').Replace('<', '{').Replace('>', '}').Replace(',', '@'));
+        var name = member.Name.AsSpan(0, includeTypeParameterNumber ? member.Name.Length : member.Name.Length - 2);
+        foreach (var character in name)
+        {
+            output.Write(NameReplacements.GetValueOrDefault(character, character));
+        }
     }
 
     private static void VerifyType(Type type)

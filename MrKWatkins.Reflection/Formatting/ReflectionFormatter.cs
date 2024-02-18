@@ -32,11 +32,11 @@ public abstract class ReflectionFormatter : IReflectionFormatter
     }
 
     /// <summary>
-    /// Formats the specified <see cref="MemberInfo" />. Delegates to more specific Format methods.
+    /// Formats the specified <see cref="MemberInfo" />.
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="member"/> to.</param>
     /// <param name="member">The member.</param>
-    public void Format(TextWriter output, MemberInfo member)
+    public virtual void Format(TextWriter output, MemberInfo member)
     {
         switch (member)
         {
@@ -63,11 +63,11 @@ public abstract class ReflectionFormatter : IReflectionFormatter
     }
 
     /// <summary>
-    /// Formats the specified <see cref="ConstructorInfo" />. By default delegates to <see cref="Format(TextWriter, MethodBase)"/>.
+    /// Formats the specified <see cref="ConstructorInfo" />.
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="constructor"/> to.</param>
     /// <param name="constructor">The constructor.</param>
-    protected virtual void Format(TextWriter output, ConstructorInfo constructor) => Format(output, (MethodBase)constructor);
+    protected abstract void Format(TextWriter output, ConstructorInfo constructor);
 
     /// <summary>
     /// Formats the specified <see cref="EventInfo" />.
@@ -84,18 +84,11 @@ public abstract class ReflectionFormatter : IReflectionFormatter
     protected abstract void Format(TextWriter output, FieldInfo field);
 
     /// <summary>
-    /// Formats the specified <see cref="MethodBase" />. Throws a <see cref="NotImplementedException" /> by default.
+    /// Formats the specified <see cref="MethodInfo" />.
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
     /// <param name="method">The method.</param>
-    protected virtual void Format(TextWriter output, MethodBase method) => throw new NotImplementedException($"{nameof(Format)}({nameof(TextWriter)}, {nameof(MethodBase)}) is not implemented.");
-
-    /// <summary>
-    /// Formats the specified <see cref="MethodInfo" />. By default delegates to <see cref="Format(TextWriter, MethodBase)"/>.
-    /// </summary>
-    /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="method"/> to.</param>
-    /// <param name="method">The method.</param>
-    protected virtual void Format(TextWriter output, MethodInfo method) => Format(output, (MethodBase)method);
+    protected abstract void Format(TextWriter output, MethodInfo method);
 
     /// <summary>
     /// Formats the specified <see cref="PropertyInfo" />.
