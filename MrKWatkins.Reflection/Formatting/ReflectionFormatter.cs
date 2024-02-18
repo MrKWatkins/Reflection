@@ -36,7 +36,7 @@ public abstract class ReflectionFormatter : IReflectionFormatter
     /// </summary>
     /// <param name="output">A <see cref="TextWriter"/> to write a string representing <paramref name="member"/> to.</param>
     /// <param name="member">The member.</param>
-    public virtual void Format(TextWriter output, MemberInfo member)
+    public void Format(TextWriter output, MemberInfo member)
     {
         switch (member)
         {
@@ -61,6 +61,27 @@ public abstract class ReflectionFormatter : IReflectionFormatter
         }
         throw new NotSupportedException($"Members of type {member.GetType().Name} are not supported.");
     }
+
+    public string FormatNamespace(MemberInfo member) => FormatNamespace(member.GetNamespaceOrThrow());
+
+    public string FormatNamespace(string @namespace)
+    {
+        var output = new StringBuilder();
+        FormatNamespace(output, @namespace);
+        return output.ToString();
+    }
+
+    public void FormatNamespace(StringBuilder output, MemberInfo member) => FormatNamespace(output, member.GetNamespaceOrThrow());
+
+    public void FormatNamespace(StringBuilder output, string @namespace)
+    {
+        using var writer = new StringWriter(output);
+        FormatNamespace(writer, @namespace);
+    }
+
+    public void FormatNamespace(TextWriter output, MemberInfo member) => FormatNamespace(output, member.GetNamespaceOrThrow());
+
+    public abstract void FormatNamespace(TextWriter output, string @namespace);
 
     /// <summary>
     /// Formats the specified <see cref="ConstructorInfo" />.

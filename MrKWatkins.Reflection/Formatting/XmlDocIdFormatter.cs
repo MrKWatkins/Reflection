@@ -17,6 +17,12 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
         new (',', '@')
     }.ToFrozenDictionary();
 
+    public override void FormatNamespace(TextWriter output, string @namespace)
+    {
+        output.Write("N:");
+        output.Write(@namespace);
+    }
+
     /// <summary>
     /// Formats the specified <see cref="ConstructorInfo" />.
     /// </summary>

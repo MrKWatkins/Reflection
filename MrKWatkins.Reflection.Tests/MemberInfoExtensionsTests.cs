@@ -7,7 +7,7 @@ using MrKWatkins.Reflection.Tests.TestTypes.Types;
 
 namespace MrKWatkins.Reflection.Tests;
 
-public sealed class MemberInfoExtensionsTests
+public sealed class MemberInfoExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(MemberInfo member, Accessibility expected) => member.GetAccessibility().Should().Be(expected);
@@ -16,6 +16,32 @@ public sealed class MemberInfoExtensionsTests
     public void GetAccessibility_UnsupportedMemberInfoThrows() =>
         new UnsupportedMemberInfo().Invoking(m => m.GetAccessibility()).Should().Throw<NotSupportedException>()
             .WithMessage("MemberInfos of type UnsupportedMemberInfo are not supported.");
+
+    [TestCaseSource(nameof(GetNamespaceTestCases))]
+    public void GetNamespace(MemberInfo member, string? expected) => member.GetNamespace().Should().Be(expected);
+
+    [TestCaseSource(nameof(GetNamespaceTestCases))]
+    public void GetNamespaceOrThrow(MemberInfo member, string? expected)
+    {
+        if (expected != null)
+        {
+            member.GetNamespaceOrThrow().Should().Be(expected);
+        }
+        else
+        {
+            member.Invoking(m => m.GetNamespaceOrThrow()).Should().Throw<ArgumentException>();
+        }
+    }
+
+    [Pure]
+    [SuppressMessage("Design", "CA1024:Use properties where appropriate")]
+    public static IEnumerable<TestCaseData> GetNamespaceTestCases()
+    {
+        yield return new TestCaseData(typeof(MethodAccessibility), "MrKWatkins.Reflection.Tests.TestTypes.Methods");
+        yield return new TestCaseData(GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public)), "MrKWatkins.Reflection.Tests.TestTypes.Methods");
+        yield return new TestCaseData(typeof(GlobalType), null);
+        yield return new TestCaseData(GetMethod<GlobalType>(nameof(GlobalType.Method)), null);
+    }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(MemberInfo member, Accessibility visibility) =>

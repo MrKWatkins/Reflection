@@ -129,4 +129,32 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
 
         #endregion
     }
+
+
+    [TestCaseSource(nameof(FormatNamespaceTestCases))]
+    public void FormatNamespace(MemberInfo member, string expected) => new XmlDocIdFormatter().FormatNamespace(member).Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> FormatNamespaceTestCases()
+    {
+        yield return CreateTestCase(GetConstructor(typeof(Dictionary<,>), [typeof(int)]), "N:System.Collections.Generic");
+        yield return CreateTestCase(GetEvent<EventAccessibility>(nameof(EventAccessibility.Public)), "N:MrKWatkins.Reflection.Tests.TestTypes.Events");
+        yield return CreateTestCase(GetField<FieldModifiers>(nameof(FieldModifiers.Const)), "N:MrKWatkins.Reflection.Tests.TestTypes.Fields");
+        yield return CreateTestCase(GetMethod<object>(nameof(ToString)), "N:System");
+        yield return CreateTestCase(GetMethod<Nested>(nameof(Nested.GenericMethodOneParameter)), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
+        yield return CreateTestCase(GetMethod<Nested.Child>(nameof(Nested.Child.ChildGenericMethodTwoParameters)), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
+        yield return CreateTestCase(GetOperator<CSharpOperators>(CSharpOperator.Decrement), "N:MrKWatkins.Reflection.Tests.TestTypes.Operators");
+        yield return CreateTestCase(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "N:MrKWatkins.Reflection.Tests.TestTypes.Properties");
+        yield return CreateTestCase(GetProperty<PropertyIndexerOneParameter>("Item"), "N:MrKWatkins.Reflection.Tests.TestTypes.Properties");
+        yield return CreateTestCase(typeof(string), "N:System");
+        yield return CreateTestCase(typeof(string).MakePointerType(), "N:System");
+        yield return CreateTestCase(typeof(string).MakeByRefType(), "N:System");
+        yield return CreateTestCase(typeof(string[]), "N:System");
+        yield return CreateTestCase(typeof(string[,]), "N:System");
+        yield return CreateTestCase(typeof(int?), "N:System");
+        yield return CreateTestCase(typeof(Nested.Child), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
+        yield return CreateTestCase(typeof(Nested.Child.GrandChild), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
+        yield return CreateTestCase(typeof(Nested.Child.GrandChild<>), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
+        yield return CreateTestCase(typeof(Nested.Child.GrandChild<int>), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
+    }
 }

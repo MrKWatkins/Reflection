@@ -29,6 +29,13 @@ public static class MemberInfoExtensions
             _ => throw new NotSupportedException($"{nameof(MemberInfo)}s of type {member.GetType().Name} are not supported.")
         };
 
+    [Pure]
+    public static string? GetNamespace(this MemberInfo member) => member is Type type ? type.Namespace : member.DeclaringType?.Namespace;
+
+    [Pure]
+    public static string GetNamespaceOrThrow(this MemberInfo member) =>
+        member.GetNamespace() ?? throw new ArgumentException("Value does not have a namespace.", nameof(member));
+
     /// <summary>
     /// Returns <c>true</c> if the member is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.

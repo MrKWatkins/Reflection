@@ -26,6 +26,8 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
         this.options = options;
     }
 
+    public override void FormatNamespace(TextWriter output, string @namespace) => output.Write(@namespace);
+
     /// <summary>
     /// Formats the specified <see cref="ConstructorInfo" />.
     /// </summary>
