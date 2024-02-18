@@ -73,7 +73,7 @@ public static class PropertyInfoExtensions
     /// <param name="property">The property.</param>
     /// <returns>The <see cref="Virtuality" /> of <paramref name="property"/>.</returns>
     [Pure]
-    public static Virtuality? GetVirtuality(this PropertyInfo property)
+    public static Virtuality GetVirtuality(this PropertyInfo property)
     {
         var isNew = property.IsNew();
         if (property.IsAbstract())
