@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace MrKWatkins.Reflection;
 
@@ -163,4 +164,12 @@ public static class MethodInfoExtensions
             // Not using BindingFlags.DeclaredOnly so will retrieve any depth lower in the hierarchy.
             .GetMethod(method.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic) != null;
     }
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified method is an extension method; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns><c>true</c> if the <paramref name="method"/> is an extension method; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool IsExtensionMethod(this MethodInfo method) => method.GetCustomAttribute<ExtensionAttribute>() != null;
 }

@@ -76,6 +76,16 @@ public sealed class MethodInfoExtensionTests : TestFixture
         yield return new TestCaseData(privateOverloaded[1], true);
     }
 
+    [TestCaseSource(nameof(IsExtensionMethodTestCases))]
+    public void IsExtensionMethod(MethodInfo method, bool expected) => method.IsExtensionMethod().Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> IsExtensionMethodTestCases()
+    {
+        yield return new TestCaseData(GetMethod(typeof(ExtensionMethods), nameof(ExtensionMethods.Normal)), false);
+        yield return new TestCaseData(GetMethod(typeof(ExtensionMethods), nameof(ExtensionMethods.Extension)), true);
+    }
+
     [TestCaseSource(nameof(IsNewTestCases))]
     public void IsNew(MethodInfo method, bool expected) => method.IsNew().Should().Be(expected);
 
