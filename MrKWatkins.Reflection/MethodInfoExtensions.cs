@@ -160,9 +160,16 @@ public static class MethodInfoExtensions
             return false;
         }
 
-        return method.DeclaringType?.BaseType?
+        var baseType = method.DeclaringType?.BaseType;
+        if (baseType == null)
+        {
+            return false;
+        }
+
+        return baseType
             // Not using BindingFlags.DeclaredOnly so will retrieve any depth lower in the hierarchy.
-            .GetMethod(method.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic) != null;
+            .GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic)
+            .Any(m => m.Name == method.Name);
     }
 
     /// <summary>
