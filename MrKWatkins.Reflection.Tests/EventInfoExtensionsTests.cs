@@ -3,10 +3,24 @@ using MrKWatkins.Reflection.Tests.TestTypes.Events;
 
 namespace MrKWatkins.Reflection.Tests;
 
-public sealed class EventInfoExtensionsTests
+public sealed class EventInfoExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(EventInfo @event, Accessibility expected) => @event.GetAccessibility().Should().Be(expected);
+
+    [TestCaseSource(nameof(AccessibilityTestCases))]
+    public void GetAccessibility_NoAddMethod(EventInfo @event, Accessibility expected)
+    {
+        var testEvent = new TestEventInfo(@event, false, true);
+        testEvent.GetAccessibility().Should().Be(expected);
+    }
+
+    [Test]
+    public void GetAccessibility_NoAddOrRemoveMethodThrows()
+    {
+        var testEvent = new TestEventInfo(GetEvent<EventAccessibility>(nameof(EventAccessibility.Public)), false, false);
+        testEvent.Invoking(e => e.GetAccessibility()).Should().Throw<ArgumentException>();
+    }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(EventInfo @event, Accessibility visibility) =>

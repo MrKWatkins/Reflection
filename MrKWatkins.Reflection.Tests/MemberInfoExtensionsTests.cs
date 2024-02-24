@@ -41,6 +41,7 @@ public sealed class MemberInfoExtensionsTests : TestFixture
         yield return new TestCaseData(GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public)), "MrKWatkins.Reflection.Tests.TestTypes.Methods");
         yield return new TestCaseData(typeof(GlobalType), null);
         yield return new TestCaseData(GetMethod<GlobalType>(nameof(GlobalType.Method)), null);
+        yield return new TestCaseData(new GlobalMethodInfo(GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public))), null);
     }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]

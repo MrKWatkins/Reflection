@@ -103,5 +103,6 @@ public sealed class MethodInfoExtensionTests : TestFixture
         yield return new TestCaseData(GetMethod<MethodVirtualitySubSubClass>(nameof(MethodVirtualitySubSubClass.NewSubSubClass)), true);
         yield return new TestCaseData(GetMethod<NewHidesOverloadsSubClass>(nameof(NewHidesOverloadsSubClass.Overload)), true);
         yield return new TestCaseData(GetMethod<object>(nameof(GetType)), false);
+        yield return new TestCaseData(new GlobalMethodInfo(GetMethod<object>(nameof(GetType))), false);
     }
 }
