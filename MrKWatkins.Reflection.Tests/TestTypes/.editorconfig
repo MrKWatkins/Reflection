@@ -3,5 +3,6 @@ dotnet_diagnostic.CA1044.severity = none
 dotnet_diagnostic.CA1046.severity = none
 dotnet_diagnostic.CA1052.severity = none
 dotnet_diagnostic.CA1040.severity = none
+dotnet_diagnostic.CA1043.severity = none
 dotnet_diagnostic.CA1065.severity = none
 dotnet_diagnostic.CA1814.severity = none

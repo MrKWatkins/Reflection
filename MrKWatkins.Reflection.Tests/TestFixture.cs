@@ -106,6 +106,28 @@ public abstract class TestFixture
         ?? throw new ArgumentException($"Could not find a property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
 
     [Pure]
+    protected static PropertyInfo GetIndexer<T>() => GetProperty<T>("Item");
+
+    [Pure]
+    protected static PropertyInfo GetIndexer<T>(string parameterName)
+    {
+        var indexers = GetIndexers<T>()
+            .Where(i =>
+            {
+                var parameters = i.GetIndexParameters();
+                return parameters.Length == 1 && parameters[0].Name!.Equals(parameterName, StringComparison.OrdinalIgnoreCase);
+            })
+            .ToList();
+
+        if (indexers.Count != 1)
+        {
+            throw new ArgumentException($"Could not find a single indexer with a single parameter named {parameterName} on {typeof(T).ToDisplayName()}.", nameof(parameterName));
+        }
+
+        return indexers[0];
+    }
+
+    [Pure]
     protected static IReadOnlyList<PropertyInfo> GetProperties<T>(string name)
     {
         var properties = typeof(T)
@@ -120,4 +142,7 @@ public abstract class TestFixture
 
         return properties;
     }
+
+    [Pure]
+    protected static IReadOnlyList<PropertyInfo> GetIndexers<T>() => GetProperties<T>("Item");
 }

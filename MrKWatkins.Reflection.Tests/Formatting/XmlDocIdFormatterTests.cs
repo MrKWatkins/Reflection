@@ -92,8 +92,8 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
         #region Properties
 
         yield return CreateTestCase(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "P:MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyModifiers.Normal");
-        yield return CreateTestCase(GetProperty<PropertyIndexerOneParameter>("Item"), "P:MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyIndexerOneParameter.Item(System.Int32)");
-        yield return CreateTestCase(GetProperty<PropertyIndexerTwoParameters>("Item"), "P:MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyIndexerTwoParameters.Item(System.Int32,System.String)");
+        yield return CreateTestCase(GetIndexer<PropertyIndexerOneParameter>(), "P:MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyIndexerOneParameter.Item(System.Int32)");
+        yield return CreateTestCase(GetIndexer<PropertyIndexerTwoParameters>(), "P:MrKWatkins.Reflection.Tests.TestTypes.Properties.PropertyIndexerTwoParameters.Item(System.Int32,System.String)");
 
         #endregion
 
@@ -145,7 +145,7 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(GetMethod<Nested.Child>(nameof(Nested.Child.ChildGenericMethodTwoParameters)), "N:MrKWatkins.Reflection.Tests.TestTypes.Types");
         yield return CreateTestCase(GetOperator<CSharpOperators>(CSharpOperator.Decrement), "N:MrKWatkins.Reflection.Tests.TestTypes.Operators");
         yield return CreateTestCase(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "N:MrKWatkins.Reflection.Tests.TestTypes.Properties");
-        yield return CreateTestCase(GetProperty<PropertyIndexerOneParameter>("Item"), "N:MrKWatkins.Reflection.Tests.TestTypes.Properties");
+        yield return CreateTestCase(GetIndexer<PropertyIndexerOneParameter>(), "N:MrKWatkins.Reflection.Tests.TestTypes.Properties");
         yield return CreateTestCase(typeof(string), "N:System");
         yield return CreateTestCase(typeof(string).MakePointerType(), "N:System");
         yield return CreateTestCase(typeof(string).MakeByRefType(), "N:System");

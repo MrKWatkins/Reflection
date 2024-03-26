@@ -13,17 +13,17 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     public static IEnumerable<TestCaseData> EnumerateOverloadsTestCases()
     {
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), Array.Empty<PropertyInfo>());
-        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), Array.Empty<PropertyInfo>());
+        yield return new TestCaseData(GetIndexer<PropertyIndexerOneParameter>(), Array.Empty<PropertyInfo>());
 
-        var publicOverloaded = GetProperties<PropertyPublicOverloadedIndexer>("Item");
+        var publicOverloaded = GetIndexers<PropertyPublicOverloadedIndexer>();
         yield return new TestCaseData(publicOverloaded[0], new[] { publicOverloaded[1] });
         yield return new TestCaseData(publicOverloaded[1], new[] { publicOverloaded[0] });
 
-        var protectedOverloaded = GetProperties<PropertyProtectedOverloadedIndexer>("Item");
+        var protectedOverloaded = GetIndexers<PropertyProtectedOverloadedIndexer>();
         yield return new TestCaseData(protectedOverloaded[0], new[] { protectedOverloaded[1] });
         yield return new TestCaseData(protectedOverloaded[1], new[] { protectedOverloaded[0] });
 
-        var privateOverloaded = GetProperties<PropertyPrivateOverloadedIndexer>("Item");
+        var privateOverloaded = GetIndexers<PropertyPrivateOverloadedIndexer>();
         yield return new TestCaseData(privateOverloaded[0], new[] { privateOverloaded[1] });
         yield return new TestCaseData(privateOverloaded[1], new[] { privateOverloaded[0] });
     }
@@ -61,6 +61,15 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
         yield return new TestCaseData(GetProperty<PropertyVirtualitySubClass>(nameof(PropertyVirtualitySubClass.New)), Virtuality.New);
         yield return new TestCaseData(GetProperty<PropertyVirtualitySubClass>(nameof(PropertyVirtualitySubClass.NewAbstract)), Virtuality.NewAbstract);
         yield return new TestCaseData(GetProperty<PropertyVirtualitySubClass>(nameof(PropertyVirtualitySubClass.NewVirtual)), Virtuality.NewVirtual);
+
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtuality>("normal"), Virtuality.Normal);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtuality>("virtual"), Virtuality.Virtual);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtuality>("abstract"), Virtuality.Abstract);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtualitySubClass>("override"), Virtuality.Override);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtualitySubClass>("sealedOverride"), Virtuality.SealedOverride);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtualitySubClass>("new"), Virtuality.New);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtualitySubClass>("newAbstract"), Virtuality.NewAbstract);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerVirtualitySubClass>("newVirtual"), Virtuality.NewVirtual);
     }
 
     [TestCase(nameof(PropertyModifiers.InitSetter), true)]
@@ -74,17 +83,17 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()
     {
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
-        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), false);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerOneParameter>(), false);
 
-        var publicOverloaded = GetProperties<PropertyPublicOverloadedIndexer>("Item");
+        var publicOverloaded = GetIndexers<PropertyPublicOverloadedIndexer>();
         yield return new TestCaseData(publicOverloaded[0], true);
         yield return new TestCaseData(publicOverloaded[1], true);
 
-        var protectedOverloaded = GetProperties<PropertyProtectedOverloadedIndexer>("Item");
+        var protectedOverloaded = GetIndexers<PropertyProtectedOverloadedIndexer>();
         yield return new TestCaseData(protectedOverloaded[0], true);
         yield return new TestCaseData(protectedOverloaded[1], true);
 
-        var privateOverloaded = GetProperties<PropertyPrivateOverloadedIndexer>("Item");
+        var privateOverloaded = GetIndexers<PropertyPrivateOverloadedIndexer>();
         yield return new TestCaseData(privateOverloaded[0], false);
         yield return new TestCaseData(privateOverloaded[1], true);
     }
@@ -106,17 +115,17 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     public static IEnumerable<TestCaseData> IsIndexerTestCases()
     {
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
-        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), true);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerOneParameter>(), true);
 
-        var publicOverloaded = GetProperties<PropertyPublicOverloadedIndexer>("Item");
+        var publicOverloaded = GetIndexers<PropertyPublicOverloadedIndexer>();
         yield return new TestCaseData(publicOverloaded[0], true);
         yield return new TestCaseData(publicOverloaded[1], true);
 
-        var protectedOverloaded = GetProperties<PropertyProtectedOverloadedIndexer>("Item");
+        var protectedOverloaded = GetIndexers<PropertyProtectedOverloadedIndexer>();
         yield return new TestCaseData(protectedOverloaded[0], true);
         yield return new TestCaseData(protectedOverloaded[1], true);
 
-        var privateOverloaded = GetProperties<PropertyPrivateOverloadedIndexer>("Item");
+        var privateOverloaded = GetIndexers<PropertyPrivateOverloadedIndexer>();
         yield return new TestCaseData(privateOverloaded[0], true);
         yield return new TestCaseData(privateOverloaded[1], true);
     }
@@ -162,7 +171,7 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     {
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), false);
         yield return new TestCaseData(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Static)), true);
-        yield return new TestCaseData(GetProperty<PropertyIndexerOneParameter>("Item"), false);
+        yield return new TestCaseData(GetIndexer<PropertyIndexerOneParameter>(), false);
     }
 
     [Pure]

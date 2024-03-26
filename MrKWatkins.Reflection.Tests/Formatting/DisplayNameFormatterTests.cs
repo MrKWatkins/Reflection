@@ -102,8 +102,8 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         #region Properties
 
         yield return CreateTestCase(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "PropertyModifiers.Normal");
-        yield return CreateTestCase(GetProperty<PropertyIndexerOneParameter>("Item"), "PropertyIndexerOneParameter.Item[Int32]");
-        yield return CreateTestCase(GetProperty<PropertyIndexerTwoParameters>("Item"), "PropertyIndexerTwoParameters.Item[Int32, String]");
+        yield return CreateTestCase(GetIndexer<PropertyIndexerOneParameter>(), "PropertyIndexerOneParameter.Item[Int32]");
+        yield return CreateTestCase(GetIndexer<PropertyIndexerTwoParameters>(), "PropertyIndexerTwoParameters.Item[Int32, String]");
 
         #endregion
 
@@ -244,7 +244,7 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
         yield return CreateTestCase(GetMethod<Nested.Child>(nameof(Nested.Child.ChildGenericMethodTwoParameters)), "MrKWatkins.Reflection.Tests.TestTypes.Types");
         yield return CreateTestCase(GetOperator<CSharpOperators>(CSharpOperator.Decrement), "MrKWatkins.Reflection.Tests.TestTypes.Operators");
         yield return CreateTestCase(GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal)), "MrKWatkins.Reflection.Tests.TestTypes.Properties");
-        yield return CreateTestCase(GetProperty<PropertyIndexerOneParameter>("Item"), "MrKWatkins.Reflection.Tests.TestTypes.Properties");
+        yield return CreateTestCase(GetIndexer<PropertyIndexerOneParameter>(), "MrKWatkins.Reflection.Tests.TestTypes.Properties");
         yield return CreateTestCase(typeof(string), "System");
         yield return CreateTestCase(typeof(string).MakePointerType(), "System");
         yield return CreateTestCase(typeof(string).MakeByRefType(), "System");

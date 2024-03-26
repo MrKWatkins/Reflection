@@ -55,9 +55,7 @@ public static class PropertyInfoExtensions
     public static PropertyInfo GetBaseDefinition(this PropertyInfo property)
     {
         var baseDefinition = GetAccessorBaseDefinition(property.GetMethod) ?? GetAccessorBaseDefinition(property.SetMethod);
-        return baseDefinition?.DeclaringType!
-                   .GetProperty(property.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-               ?? property;
+        return GetEquivalentPropertyOrNull(property, baseDefinition?.DeclaringType) ?? property;
     }
 
     [Pure]
@@ -66,6 +64,13 @@ public static class PropertyInfoExtensions
         var baseDefinition = accessor?.GetBaseDefinition();
         return baseDefinition != accessor ? baseDefinition : null;
     }
+
+    [Pure]
+    private static PropertyInfo? GetEquivalentPropertyOrNull(PropertyInfo property, Type? type) =>
+        type?.GetProperties(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+            .FirstOrDefault(p =>
+                p.Name == property.Name &&
+                p.GetIndexParameters().Select(i => i.ParameterType).SequenceEqual(property.GetIndexParameters().Select(i => i.ParameterType)));
 
     /// <summary>
     /// Gets the <see cref="Virtuality" /> of the specified <see cref="PropertyInfo" />.
@@ -151,9 +156,7 @@ public static class PropertyInfoExtensions
             return false;
         }
 
-        return property.DeclaringType?.BaseType?
-            // Not using BindingFlags.DeclaredOnly so will retrieve any depth lower in the hierarchy.
-            .GetProperty(property.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic) != null;
+        return GetEquivalentPropertyOrNull(property, property.DeclaringType?.BaseType) != null;
     }
 
     /// <summary>
