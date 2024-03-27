@@ -7,6 +7,8 @@ namespace MrKWatkins.Reflection;
 /// </summary>
 public static class ParameterInfoExtensions
 {
+    private static readonly NullabilityInfoContext NullabilityInfoContext = new();
+
     /// <summary>
     /// Gets the <see cref="ParameterKind" />  of the specified <see cref="ParameterInfo" />.
     /// </summary>
@@ -36,5 +38,18 @@ public static class ParameterInfoExtensions
         }
 
         return ParameterKind.Normal;
+    }
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified parameter is a nullable reference type.
+    /// </summary>
+    /// <param name="parameter">The parameter.</param>
+    /// <returns><c>true</c> if the <paramref name="parameter"/>'s is a nullable reference type; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool IsNullableReferenceType(this ParameterInfo parameter)
+    {
+        var info = NullabilityInfoContext.Create(parameter);
+
+        return info.ReadState == NullabilityState.Nullable;
     }
 }

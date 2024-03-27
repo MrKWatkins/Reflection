@@ -1,9 +1,13 @@
 namespace MrKWatkins.Reflection.Tests.TestTypes.Methods;
 
 [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-public class NewHidesOverloadsSubClass : NewHidesOverloads
+public class MethodNewHidesOverloads
 {
-    public new static void Overload()
+    public static void Overload()
+    {
+    }
+
+    public static void Overload(int _)
     {
     }
 }

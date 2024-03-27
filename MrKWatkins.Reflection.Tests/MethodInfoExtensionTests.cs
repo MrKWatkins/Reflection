@@ -101,8 +101,18 @@ public sealed class MethodInfoExtensionTests : TestFixture
         yield return new TestCaseData(GetMethod<MethodVirtualitySubClass>(nameof(MethodVirtualitySubClass.NewVirtual)), true);
         yield return new TestCaseData(GetMethod<MethodVirtualitySubSubClass>(nameof(MethodVirtualitySubSubClass.New)), true);
         yield return new TestCaseData(GetMethod<MethodVirtualitySubSubClass>(nameof(MethodVirtualitySubSubClass.NewSubSubClass)), true);
-        yield return new TestCaseData(GetMethod<NewHidesOverloadsSubClass>(nameof(NewHidesOverloadsSubClass.Overload)), true);
+        yield return new TestCaseData(GetMethod<MethodNewHidesOverloadsSubClass>(nameof(MethodNewHidesOverloadsSubClass.Overload)), true);
         yield return new TestCaseData(GetMethod<object>(nameof(GetType)), false);
         yield return new TestCaseData(new GlobalMethodInfo(GetMethod<object>(nameof(GetType))), false);
+    }
+
+    [TestCaseSource(nameof(IsReturnNullableReferenceTypeTestCases))]
+    public void IsReturnNullableReferenceType(MethodInfo method, bool expected) => method.IsReturnNullableReferenceType().Should().Be(expected);
+
+    [Pure]
+    public static IEnumerable<TestCaseData> IsReturnNullableReferenceTypeTestCases()
+    {
+        yield return new TestCaseData(GetMethod<MethodNullableReferenceTypes>(nameof(MethodNullableReferenceTypes.NullableReturn)), true);
+        yield return new TestCaseData(GetMethod<MethodNullableReferenceTypes>(nameof(MethodNullableReferenceTypes.NonNullableReturn)), false);
     }
 }

@@ -148,6 +148,14 @@ public static class MethodInfoExtensions
     public static bool HasPublicOrProtectedOverloads(this MethodInfo method) => method.EnumerateOverloads().Any(m => m.IsPublicOrProtected());
 
     /// <summary>
+    /// Returns <c>true</c> if the specified method is an extension method; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns><c>true</c> if the <paramref name="method"/> is an extension method; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool IsExtensionMethod(this MethodInfo method) => method.GetCustomAttribute<ExtensionAttribute>() != null;
+
+    /// <summary>
     /// Returns <c>true</c> if the specified method has the <c>new</c> modifier; <c>false</c> otherwise.
     /// </summary>
     /// <param name="method">The method.</param>
@@ -173,10 +181,10 @@ public static class MethodInfoExtensions
     }
 
     /// <summary>
-    /// Returns <c>true</c> if the specified method is an extension method; <c>false</c> otherwise.
+    /// Returns <c>true</c> if the specified method's return type is a nullable reference type.
     /// </summary>
     /// <param name="method">The method.</param>
-    /// <returns><c>true</c> if the <paramref name="method"/> is an extension method; <c>false</c> otherwise.</returns>
+    /// <returns><c>true</c> if the <paramref name="method"/>'s return type is a nullable reference type; <c>false</c> otherwise.</returns>
     [Pure]
-    public static bool IsExtensionMethod(this MethodInfo method) => method.GetCustomAttribute<ExtensionAttribute>() != null;
+    public static bool IsReturnNullableReferenceType(this MethodInfo method) => method.ReturnParameter.IsNullableReferenceType();
 }
