@@ -40,7 +40,7 @@ jobs:
         run: dotnet test --no-restore --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --collect "Code Coverage;Format=cobertura;IncludeTestAssembly=false;"
 
       - name: Generate Test Results Report
-        uses: dorny/test-reporter@v1.8.0
+        uses: dorny/test-reporter@v1.9.0
         if: success() || failure()
         with:
           name: Test Results
