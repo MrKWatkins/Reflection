@@ -19,8 +19,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{00684DA7-BE37-4859-A73B-7DD6D23B9DD8}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\publish.yml = .github\workflows\publish.yml
 		.github\workflows\qodana.yml = .github\workflows\qodana.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection", "MrKWatkins.Reflection\MrKWatkins.Reflection.csproj", "{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}"
