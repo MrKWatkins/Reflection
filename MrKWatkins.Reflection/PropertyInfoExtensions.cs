@@ -21,7 +21,7 @@ public static class PropertyInfoExtensions
     {
         if (!property.IsIndexer())
         {
-            return Enumerable.Empty<PropertyInfo>();
+            return [];
         }
 
         return property.DeclaringType!

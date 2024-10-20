@@ -10,6 +10,7 @@ public static class CSharp
     /// <summary>
     /// All the keywords in CSharp.
     /// </summary>
+    // ReSharper disable once UnusedMember.Global
     public static readonly IReadOnlySet<string> Keywords = new[]
     {
         "abstract", "as",

@@ -5,9 +5,6 @@ namespace MrKWatkins.Reflection.Tests;
 public abstract class TestFixture
 {
     [Pure]
-    protected static ConstructorInfo GetConstructor<T>(Type[] parameterTypes) => GetConstructor(typeof(T), parameterTypes);
-
-    [Pure]
     protected static ConstructorInfo GetConstructor(Type type, Type[] parameterTypes)
     {
         var constructors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
@@ -42,11 +39,11 @@ public abstract class TestFixture
     protected static IReadOnlyList<ConstructorInfo> GetConstructors<T>() => GetConstructors(typeof(T));
 
     [Pure]
-    protected static IReadOnlyList<ConstructorInfo> GetConstructors(Type type) =>
+    private static IReadOnlyList<ConstructorInfo> GetConstructors(Type type) =>
         type.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
     [Pure]
-    protected static IReadOnlyList<ConstructorInfo> GetConstructors(Type type, int parameterCount)
+    private static IReadOnlyList<ConstructorInfo> GetConstructors(Type type, int parameterCount)
     {
         var constructors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
             .Where(c => c.GetParameters().Length == parameterCount)
@@ -98,9 +95,6 @@ public abstract class TestFixture
     protected static MethodInfo GetOperator<T>(CSharpOperator @operator) => GetMethod<T>(@operator.ToMethodName());
 
     [Pure]
-    protected static MethodInfo GetOperator(Type type, CSharpOperator @operator) => GetMethod(type, @operator.ToMethodName());
-
-    [Pure]
     protected static PropertyInfo GetProperty<T>(string name) =>
         typeof(T).GetProperty(name, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
         ?? throw new ArgumentException($"Could not find a property {name} on {typeof(T).ToDisplayName()}.", nameof(name));
@@ -128,7 +122,7 @@ public abstract class TestFixture
     }
 
     [Pure]
-    protected static IReadOnlyList<PropertyInfo> GetProperties<T>(string name)
+    private static IReadOnlyList<PropertyInfo> GetProperties<T>(string name)
     {
         var properties = typeof(T)
             .GetProperties(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)

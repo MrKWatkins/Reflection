@@ -4,15 +4,8 @@ using System.Reflection;
 namespace MrKWatkins.Reflection.Tests.TestTypes.Methods;
 
 // Wraps a method info but returns null from DeclaringType to simulate a global method.
-public sealed class GlobalMethodInfo : MethodInfo
+public sealed class GlobalMethodInfo(MethodInfo method) : MethodInfo
 {
-    private readonly MethodInfo method;
-
-    public GlobalMethodInfo(MethodInfo method)
-    {
-        this.method = method;
-    }
-
     public override object[] GetCustomAttributes(bool inherit) => method.GetCustomAttributes(inherit);
 
     public override object[] GetCustomAttributes(Type attributeType, bool inherit) => method.GetCustomAttributes(attributeType, inherit);

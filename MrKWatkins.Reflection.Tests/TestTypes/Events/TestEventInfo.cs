@@ -3,19 +3,8 @@ using System.Reflection;
 namespace MrKWatkins.Reflection.Tests.TestTypes.Events;
 
 // For testing AddMethod/RemoveMethod that returns null. Not sure that can actually happen, but the signature implies it can.
-public sealed class TestEventInfo : EventInfo
+public sealed class TestEventInfo(EventInfo @event, bool hasAdd, bool hasRemove) : EventInfo
 {
-    private readonly EventInfo @event;
-    private readonly bool hasAdd;
-    private readonly bool hasRemove;
-
-    public TestEventInfo(EventInfo @event, bool hasAdd, bool hasRemove)
-    {
-        this.@event = @event;
-        this.hasAdd = hasAdd;
-        this.hasRemove = hasRemove;
-    }
-
     public override EventAttributes Attributes => @event.Attributes;
 
     public override Type? DeclaringType => @event.DeclaringType;

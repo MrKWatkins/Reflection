@@ -25,14 +25,14 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
 
         var method1 = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public));
         cached.Format(method1).Should().Be("Public");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1]);
 
         cached.Format(method1).Should().Be("Public");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1]);
 
         var method2 = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Internal));
         cached.Format(method2).Should().Be("Internal");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1, method2 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1, method2]);
     }
 
     [Test]
@@ -46,16 +46,16 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         var method1 = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public));
         cached.Format(stringBuilder, method1);
         stringBuilder.ToString().Should().Be("Public");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1]);
 
         cached.Format(stringBuilder, method1);
         stringBuilder.ToString().Should().Be("PublicPublic");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1]);
 
         var method2 = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Internal));
         cached.Format(stringBuilder, method2);
         stringBuilder.ToString().Should().Be("PublicPublicInternal");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1, method2 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1, method2]);
     }
 
     [Test]
@@ -69,16 +69,16 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         var method1 = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public));
         cached.Format(writer, method1);
         writer.ToString().Should().Be("Public");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1]);
 
         cached.Format(writer, method1);
         writer.ToString().Should().Be("PublicPublic");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1]);
 
         var method2 = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Internal));
         cached.Format(writer, method2);
         writer.ToString().Should().Be("PublicPublicInternal");
-        underlying.FormatCalls.Should().BeEquivalentTo(new[] { method1, method2 });
+        underlying.FormatCalls.Should().BeEquivalentTo([method1, method2]);
     }
 
     [Test]
@@ -204,8 +204,8 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
 
     private sealed class TestReflectionFormatter : IReflectionFormatter
     {
-        private readonly List<MemberInfo> formatCalls = new();
-        private readonly List<string> formatNamespaceCalls = new();
+        private readonly List<MemberInfo> formatCalls = [];
+        private readonly List<string> formatNamespaceCalls = [];
 
         public string Format(MemberInfo member)
         {

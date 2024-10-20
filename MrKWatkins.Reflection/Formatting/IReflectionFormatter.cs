@@ -6,6 +6,7 @@ namespace MrKWatkins.Reflection.Formatting;
 /// <summary>
 /// A type for formatting reflection types.
 /// </summary>
+[SuppressMessage("ReSharper", "UnusedMemberInSuper.Global")]
 public interface IReflectionFormatter
 {
     /// <summary>
