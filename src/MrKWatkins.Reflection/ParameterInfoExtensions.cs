@@ -50,6 +50,11 @@ public static class ParameterInfoExtensions
     [Pure]
     public static bool IsNullableReferenceType(this ParameterInfo parameter)
     {
+        if (parameter.ParameterType.IsValueType)
+        {
+            return false;
+        }
+
         var info = NullabilityInfoContext.Create(parameter);
 
         return info.ReadState == NullabilityState.Nullable;

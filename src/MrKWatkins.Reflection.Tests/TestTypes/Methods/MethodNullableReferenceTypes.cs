@@ -6,4 +6,6 @@ public sealed class MethodNullableReferenceTypes
     public static string? NullableReturn() => null;
 
     public static string NonNullableReturn() => "";
+
+    public static int? NullableValueType() => null;
 }

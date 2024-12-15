@@ -26,5 +26,6 @@ public sealed class ParameterInfoExtensionsTests : TestFixture
     {
         yield return new TestCaseData(GetMethod<MethodNullableReferenceTypes>(nameof(MethodNullableReferenceTypes.NullableReturn)).ReturnParameter, true);
         yield return new TestCaseData(GetMethod<MethodNullableReferenceTypes>(nameof(MethodNullableReferenceTypes.NonNullableReturn)).ReturnParameter, false);
+        yield return new TestCaseData(GetMethod<MethodNullableReferenceTypes>(nameof(MethodNullableReferenceTypes.NullableValueType)).ReturnParameter, false);
     }
 }
