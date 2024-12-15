@@ -4,7 +4,7 @@
 The operators in C#.
 
 ```c#
-public sealed enum CSharpOperator : IComparable, ISpanFormattable, IFormattable, IConvertible
+public enum CSharpOperator
 ```
 
 ## Fields

@@ -4,7 +4,7 @@
 The virtuality of a member.
 
 ```c#
-public sealed enum Virtuality : IComparable, ISpanFormattable, IFormattable, IConvertible
+public enum Virtuality
 ```
 
 ## Fields

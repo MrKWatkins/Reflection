@@ -4,7 +4,7 @@
 The kind of parameter.
 
 ```c#
-public sealed enum ParameterKind : IComparable, ISpanFormattable, IFormattable, IConvertible
+public enum ParameterKind
 ```
 
 ## Fields

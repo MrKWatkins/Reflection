@@ -4,7 +4,7 @@
 Describes how accessible a member is.
 
 ```c#
-public sealed enum Accessibility : IComparable, ISpanFormattable, IFormattable, IConvertible
+public enum Accessibility
 ```
 
 ## Fields
