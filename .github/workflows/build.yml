@@ -11,63 +11,31 @@ permissions:
   pages: write
 
 jobs:
-  BuildAndTest:
+  Build:
     name: Build and Test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
 
-      - name: Restore Dependencies
-        run: dotnet restore
-
-      - name: Verify Code Is Correctly Formatted
-        continue-on-error: true
-        run: dotnet format --verify-no-changes
-
-      - name: Build
-        run: dotnet build --no-restore --configuration Release
-
-      - name: Install dotnet-coverage
-        run: dotnet tool install -g dotnet-coverage
-
-      - name: Run Tests
-        run: dotnet test --no-restore --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --collect "Code Coverage;Format=cobertura;IncludeTestAssembly=false;"
-
-      - name: Generate Test Results Report
-        uses: dorny/test-reporter@v1.9.1
-        if: success() || failure()
+      - name: Build and Test MrKWatkins.Reflection
+        uses: ./.github/actions/build
         with:
-          name: Test Results
-          path: "**/TestResults/test-results.trx"
-          reporter: dotnet-trx
+          name: MrKWatkins.Reflection
+          directory: ./src
 
-      - name: Merge Coverage Reports
-        run: dotnet-coverage merge -f cobertura -o coverage.xml ./**/TestResults/**/*.cobertura.xml
+      - name: Build Documentation
+        uses: ./.github/actions/build-documentation
 
-      - name: Generate Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
-        with:
-          filename: coverage.xml
-          format: markdown
-          indicators: true
-          output: file
-          thresholds: '80 90'
-
-      - name: Add Coverage Report to Jobs
-        uses: dtinth/markdown-report-action@v1
-        with:
-          name: Test Coverage
-          title: Test Coverage
-          body-file: code-coverage-results.md
-
-      - name: Add Coverage Report to Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: code-coverage
-          path: coverage.xml
+      - name: Deploy Documentation
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: ./.github/actions/deploy-documentation

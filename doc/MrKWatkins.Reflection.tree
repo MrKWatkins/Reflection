@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE instance-profile SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd"[]>
+<instance-profile id="MrKWatkins.Reflection" name="MrKWatkins.Reflection" start-page="MrKWatkins.Reflection.md">
+  <toc-element topic="MrKWatkins.Reflection.md" />
+  <toc-element toc-title="API" id="API">
+    <toc-element toc-title="MrKWatkins.Reflection">
+      <toc-element toc-title="Accessibility" topic="MrKWatkins.Reflection.Accessibility.md" />
+      <toc-element toc-title="AccessibilityExtensions">
+        <toc-element toc-title="AccessibilityExtensions" topic="MrKWatkins.Reflection.AccessibilityExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="ToCSharpKeywords" topic="MrKWatkins.Reflection.AccessibilityExtensions.ToCSharpKeywords.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="ConstructorInfoExtensions">
+        <toc-element toc-title="ConstructorInfoExtensions" topic="MrKWatkins.Reflection.ConstructorInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="EnumerateOverloads" topic="MrKWatkins.Reflection.ConstructorInfoExtensions.EnumerateOverloads.md" />
+          <toc-element toc-title="HasPublicOrProtectedOverloads" topic="MrKWatkins.Reflection.ConstructorInfoExtensions.HasPublicOrProtectedOverloads.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="CSharp">
+        <toc-element toc-title="CSharp" topic="MrKWatkins.Reflection.CSharp.md" />
+        <toc-element toc-title="Fields">
+          <toc-element toc-title="Keywords" topic="MrKWatkins.Reflection.CSharp.Keywords.md" />
+          <toc-element toc-title="PrimitiveTypeKeywords" topic="MrKWatkins.Reflection.CSharp.PrimitiveTypeKeywords.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="CSharpOperator" topic="MrKWatkins.Reflection.CSharpOperator.md" />
+      <toc-element toc-title="CSharpOperatorExtensions">
+        <toc-element toc-title="CSharpOperatorExtensions" topic="MrKWatkins.Reflection.CSharpOperatorExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="ToMethodName" topic="MrKWatkins.Reflection.CSharpOperatorExtensions.ToMethodName.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="EventInfoExtensions">
+        <toc-element toc-title="EventInfoExtensions" topic="MrKWatkins.Reflection.EventInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="GetAccessibility" topic="MrKWatkins.Reflection.EventInfoExtensions.GetAccessibility.md" />
+          <toc-element toc-title="IsProtected" topic="MrKWatkins.Reflection.EventInfoExtensions.IsProtected.md" />
+          <toc-element toc-title="IsPublic" topic="MrKWatkins.Reflection.EventInfoExtensions.IsPublic.md" />
+          <toc-element toc-title="IsPublicOrProtected" topic="MrKWatkins.Reflection.EventInfoExtensions.IsPublicOrProtected.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="FieldInfoExtensions">
+        <toc-element toc-title="FieldInfoExtensions" topic="MrKWatkins.Reflection.FieldInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="GetAccessibility" topic="MrKWatkins.Reflection.FieldInfoExtensions.GetAccessibility.md" />
+          <toc-element toc-title="IsConst" topic="MrKWatkins.Reflection.FieldInfoExtensions.IsConst.md" />
+          <toc-element toc-title="IsProtected" topic="MrKWatkins.Reflection.FieldInfoExtensions.IsProtected.md" />
+          <toc-element toc-title="IsPublic" topic="MrKWatkins.Reflection.FieldInfoExtensions.IsPublic.md" />
+          <toc-element toc-title="IsPublicOrProtected" topic="MrKWatkins.Reflection.FieldInfoExtensions.IsPublicOrProtected.md" />
+          <toc-element toc-title="IsReadOnly" topic="MrKWatkins.Reflection.FieldInfoExtensions.IsReadOnly.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="MemberInfoExtensions">
+        <toc-element toc-title="MemberInfoExtensions" topic="MrKWatkins.Reflection.MemberInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="GetAccessibility" topic="MrKWatkins.Reflection.MemberInfoExtensions.GetAccessibility.md" />
+          <toc-element toc-title="GetNamespace" topic="MrKWatkins.Reflection.MemberInfoExtensions.GetNamespace.md" />
+          <toc-element toc-title="GetNamespaceOrThrow" topic="MrKWatkins.Reflection.MemberInfoExtensions.GetNamespaceOrThrow.md" />
+          <toc-element toc-title="IsProtected" topic="MrKWatkins.Reflection.MemberInfoExtensions.IsProtected.md" />
+          <toc-element toc-title="IsPublic" topic="MrKWatkins.Reflection.MemberInfoExtensions.IsPublic.md" />
+          <toc-element toc-title="IsPublicOrProtected" topic="MrKWatkins.Reflection.MemberInfoExtensions.IsPublicOrProtected.md" />
+          <toc-element toc-title="ToDisplayName" topic="MrKWatkins.Reflection.MemberInfoExtensions.ToDisplayName.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="MethodBaseExtensions">
+        <toc-element toc-title="MethodBaseExtensions" topic="MrKWatkins.Reflection.MethodBaseExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="EnumerateOverloads" topic="MrKWatkins.Reflection.MethodBaseExtensions.EnumerateOverloads.md" />
+          <toc-element toc-title="GetAccessibility" topic="MrKWatkins.Reflection.MethodBaseExtensions.GetAccessibility.md" />
+          <toc-element toc-title="HasPublicOrProtectedOverloads" topic="MrKWatkins.Reflection.MethodBaseExtensions.HasPublicOrProtectedOverloads.md" />
+          <toc-element toc-title="IsProtected" topic="MrKWatkins.Reflection.MethodBaseExtensions.IsProtected.md" />
+          <toc-element toc-title="IsPublic" topic="MrKWatkins.Reflection.MethodBaseExtensions.IsPublic.md" />
+          <toc-element toc-title="IsPublicOrProtected" topic="MrKWatkins.Reflection.MethodBaseExtensions.IsPublicOrProtected.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="MethodInfoExtensions">
+        <toc-element toc-title="MethodInfoExtensions" topic="MrKWatkins.Reflection.MethodInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="EnumerateOverloads" topic="MrKWatkins.Reflection.MethodInfoExtensions.EnumerateOverloads.md" />
+          <toc-element toc-title="GetCSharpOperator" topic="MrKWatkins.Reflection.MethodInfoExtensions.GetCSharpOperator.md" />
+          <toc-element toc-title="GetVirtuality" topic="MrKWatkins.Reflection.MethodInfoExtensions.GetVirtuality.md" />
+          <toc-element toc-title="HasPublicOrProtectedOverloads" topic="MrKWatkins.Reflection.MethodInfoExtensions.HasPublicOrProtectedOverloads.md" />
+          <toc-element toc-title="IsCSharpOperator" topic="MrKWatkins.Reflection.MethodInfoExtensions.IsCSharpOperator.md" />
+          <toc-element toc-title="IsExtensionMethod" topic="MrKWatkins.Reflection.MethodInfoExtensions.IsExtensionMethod.md" />
+          <toc-element toc-title="IsNew" topic="MrKWatkins.Reflection.MethodInfoExtensions.IsNew.md" />
+          <toc-element toc-title="IsReturnNullableReferenceType" topic="MrKWatkins.Reflection.MethodInfoExtensions.IsReturnNullableReferenceType.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="ParameterInfoExtensions">
+        <toc-element toc-title="ParameterInfoExtensions" topic="MrKWatkins.Reflection.ParameterInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="GetKind" topic="MrKWatkins.Reflection.ParameterInfoExtensions.GetKind.md" />
+          <toc-element toc-title="IsNullableReferenceType" topic="MrKWatkins.Reflection.ParameterInfoExtensions.IsNullableReferenceType.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="ParameterKind" topic="MrKWatkins.Reflection.ParameterKind.md" />
+      <toc-element toc-title="ParameterKindExtensions">
+        <toc-element toc-title="ParameterKindExtensions" topic="MrKWatkins.Reflection.ParameterKindExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="ToCSharpKeywords" topic="MrKWatkins.Reflection.ParameterKindExtensions.ToCSharpKeywords.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="PropertyInfoExtensions">
+        <toc-element toc-title="PropertyInfoExtensions" topic="MrKWatkins.Reflection.PropertyInfoExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="EnumerateOverloads" topic="MrKWatkins.Reflection.PropertyInfoExtensions.EnumerateOverloads.md" />
+          <toc-element toc-title="GetAccessibility" topic="MrKWatkins.Reflection.PropertyInfoExtensions.GetAccessibility.md" />
+          <toc-element toc-title="GetBaseDefinition" topic="MrKWatkins.Reflection.PropertyInfoExtensions.GetBaseDefinition.md" />
+          <toc-element toc-title="GetVirtuality" topic="MrKWatkins.Reflection.PropertyInfoExtensions.GetVirtuality.md" />
+          <toc-element toc-title="HasInitSetter" topic="MrKWatkins.Reflection.PropertyInfoExtensions.HasInitSetter.md" />
+          <toc-element toc-title="HasPublicOrProtectedOverloads" topic="MrKWatkins.Reflection.PropertyInfoExtensions.HasPublicOrProtectedOverloads.md" />
+          <toc-element toc-title="IsAbstract" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsAbstract.md" />
+          <toc-element toc-title="IsAbstractOrVirtual" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsAbstractOrVirtual.md" />
+          <toc-element toc-title="IsIndexer" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsIndexer.md" />
+          <toc-element toc-title="IsNew" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsNew.md" />
+          <toc-element toc-title="IsProtected" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsProtected.md" />
+          <toc-element toc-title="IsPublic" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsPublic.md" />
+          <toc-element toc-title="IsPublicOrProtected" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsPublicOrProtected.md" />
+          <toc-element toc-title="IsRequired" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsRequired.md" />
+          <toc-element toc-title="IsStatic" topic="MrKWatkins.Reflection.PropertyInfoExtensions.IsStatic.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="TypeExtensions">
+        <toc-element toc-title="TypeExtensions" topic="MrKWatkins.Reflection.TypeExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="EnumerateNestedTypes" topic="MrKWatkins.Reflection.TypeExtensions.EnumerateNestedTypes.md" />
+          <toc-element toc-title="GetAccessibility" topic="MrKWatkins.Reflection.TypeExtensions.GetAccessibility.md" />
+          <toc-element toc-title="IsProtected" topic="MrKWatkins.Reflection.TypeExtensions.IsProtected.md" />
+          <toc-element toc-title="IsPublic" topic="MrKWatkins.Reflection.TypeExtensions.IsPublic.md" />
+          <toc-element toc-title="IsPublicOrProtected" topic="MrKWatkins.Reflection.TypeExtensions.IsPublicOrProtected.md" />
+          <toc-element toc-title="IsReadOnlyStruct" topic="MrKWatkins.Reflection.TypeExtensions.IsReadOnlyStruct.md" />
+          <toc-element toc-title="IsRecord" topic="MrKWatkins.Reflection.TypeExtensions.IsRecord.md" />
+          <toc-element toc-title="IsRefStruct" topic="MrKWatkins.Reflection.TypeExtensions.IsRefStruct.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="Virtuality" topic="MrKWatkins.Reflection.Virtuality.md" />
+      <toc-element toc-title="VirtualityExtensions">
+        <toc-element toc-title="VirtualityExtensions" topic="MrKWatkins.Reflection.VirtualityExtensions.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="ToCSharpKeywords" topic="MrKWatkins.Reflection.VirtualityExtensions.ToCSharpKeywords.md" />
+        </toc-element>
+      </toc-element>
+    </toc-element>
+    <toc-element toc-title="MrKWatkins.Reflection.Formatting">
+      <toc-element toc-title="CachedReflectionFormatter">
+        <toc-element toc-title="CachedReflectionFormatter" topic="MrKWatkins.Reflection.Formatting.CachedReflectionFormatter.md" />
+        <toc-element toc-title="Constructors" topic="MrKWatkins.Reflection.Formatting.CachedReflectionFormatter.-ctor.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="Format" topic="MrKWatkins.Reflection.Formatting.CachedReflectionFormatter.Format.md" />
+          <toc-element toc-title="FormatNamespace" topic="MrKWatkins.Reflection.Formatting.CachedReflectionFormatter.FormatNamespace.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="DisplayNameFormatter">
+        <toc-element toc-title="DisplayNameFormatter" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatter.md" />
+        <toc-element toc-title="Constructors" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatter.-ctor.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="Format" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatter.Format.md" />
+          <toc-element toc-title="FormatNamespace" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatter.FormatNamespace.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="DisplayNameFormatterOptions">
+        <toc-element toc-title="DisplayNameFormatterOptions" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatterOptions.md" />
+        <toc-element toc-title="Constructors" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatterOptions.-ctor.md" />
+        <toc-element toc-title="Properties">
+          <toc-element toc-title="PrefixMembersWithType" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatterOptions.PrefixMembersWithType.md" />
+          <toc-element toc-title="UseCSharpKeywordsForPrimitiveTypes" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatterOptions.UseCSharpKeywordsForPrimitiveTypes.md" />
+          <toc-element toc-title="UseFullyQualifiedTypes" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatterOptions.UseFullyQualifiedTypes.md" />
+          <toc-element toc-title="UseQuestionMarksForNullableTypes" topic="MrKWatkins.Reflection.Formatting.DisplayNameFormatterOptions.UseQuestionMarksForNullableTypes.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="IReflectionFormatter">
+        <toc-element toc-title="IReflectionFormatter" topic="MrKWatkins.Reflection.Formatting.IReflectionFormatter.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="Format" topic="MrKWatkins.Reflection.Formatting.IReflectionFormatter.Format.md" />
+          <toc-element toc-title="FormatNamespace" topic="MrKWatkins.Reflection.Formatting.IReflectionFormatter.FormatNamespace.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="ReflectionFormatter">
+        <toc-element toc-title="ReflectionFormatter" topic="MrKWatkins.Reflection.Formatting.ReflectionFormatter.md" />
+        <toc-element toc-title="Constructors" topic="MrKWatkins.Reflection.Formatting.ReflectionFormatter.-ctor.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="Format" topic="MrKWatkins.Reflection.Formatting.ReflectionFormatter.Format.md" />
+          <toc-element toc-title="FormatNamespace" topic="MrKWatkins.Reflection.Formatting.ReflectionFormatter.FormatNamespace.md" />
+        </toc-element>
+      </toc-element>
+      <toc-element toc-title="XmlDocIdFormatter">
+        <toc-element toc-title="XmlDocIdFormatter" topic="MrKWatkins.Reflection.Formatting.XmlDocIdFormatter.md" />
+        <toc-element toc-title="Constructors" topic="MrKWatkins.Reflection.Formatting.XmlDocIdFormatter.-ctor.md" />
+        <toc-element toc-title="Methods">
+          <toc-element toc-title="Format" topic="MrKWatkins.Reflection.Formatting.XmlDocIdFormatter.Format.md" />
+          <toc-element toc-title="FormatNamespace" topic="MrKWatkins.Reflection.Formatting.XmlDocIdFormatter.FormatNamespace.md" />
+        </toc-element>
+      </toc-element>
+    </toc-element>
+  </toc-element>
+</instance-profile>

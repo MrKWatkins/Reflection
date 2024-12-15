@@ -4,29 +4,46 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
-		.editorconfig = .editorconfig
-		.gitignore = .gitignore
-		License.md = License.md
-		ReadMe.md = ReadMe.md
-		qodana.yaml = qodana.yaml
+		.editorconfig = ..\.editorconfig
+		.gitignore = ..\.gitignore
+		License.md = ..\License.md
+		ReadMe.md = ..\ReadMe.md
+		qodana.yaml = ..\qodana.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2CD5FA32-1F2F-440F-8959-92CCB344D822}"
 	ProjectSection(SolutionItems) = preProject
-		.github\dependabot.yml = .github\dependabot.yml
+		.github\dependabot.yml = ..\.github\dependabot.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{00684DA7-BE37-4859-A73B-7DD6D23B9DD8}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\codeql.yml = .github\workflows\codeql.yml
-		.github\workflows\qodana.yml = .github\workflows\qodana.yml
-		.github\workflows\release.yml = .github\workflows\release.yml
+		.github\workflows\build.yml = ..\.github\workflows\build.yml
+		.github\workflows\codeql.yml = ..\.github\workflows\codeql.yml
+		.github\workflows\qodana.yml = ..\.github\workflows\qodana.yml
+		.github\workflows\release.yml = ..\.github\workflows\release.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection", "MrKWatkins.Reflection\MrKWatkins.Reflection.csproj", "{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection.Tests", "MrKWatkins.Reflection.Tests\MrKWatkins.Reflection.Tests.csproj", "{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{0238C206-C1A6-4D31-AC31-F43E9EDD2B40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7071D3DF-51D0-437F-8AAA-BE5BB78EBB56}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\actions\build\action.yml = ..\.github\actions\build\action.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build-documentation", "build-documentation", "{0DE9D989-72D0-4D8B-8C72-C6D7D67D2071}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\actions\build-documentation\action.yml = ..\.github\actions\build-documentation\action.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy-documentation", "deploy-documentation", "{4A0D8E2F-4CE3-4517-B85D-D727BC462FF1}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\actions\deploy-documentation\action.yml = ..\.github\actions\deploy-documentation\action.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,5 +67,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2CD5FA32-1F2F-440F-8959-92CCB344D822} = {EC54CE10-77DB-4F1D-9EA4-EFAA3497A36D}
 		{00684DA7-BE37-4859-A73B-7DD6D23B9DD8} = {2CD5FA32-1F2F-440F-8959-92CCB344D822}
+		{0238C206-C1A6-4D31-AC31-F43E9EDD2B40} = {2CD5FA32-1F2F-440F-8959-92CCB344D822}
+		{7071D3DF-51D0-437F-8AAA-BE5BB78EBB56} = {0238C206-C1A6-4D31-AC31-F43E9EDD2B40}
+		{0DE9D989-72D0-4D8B-8C72-C6D7D67D2071} = {0238C206-C1A6-4D31-AC31-F43E9EDD2B40}
+		{4A0D8E2F-4CE3-4517-B85D-D727BC462FF1} = {0238C206-C1A6-4D31-AC31-F43E9EDD2B40}
 	EndGlobalSection
 EndGlobal

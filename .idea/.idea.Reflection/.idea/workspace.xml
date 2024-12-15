@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7a082b87-a2c2-41be-bbbe-c5c920e610dc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reflection/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/.idea.Reflection/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reflection/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/.idea.Reflection/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reflection/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/.idea.Reflection/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reflection/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.idea/.idea.Reflection/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Directory.Build.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/Directory.Build.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Directory.Packages.props" beforeDir="false" afterPath="$PROJECT_DIR$/src/Directory.Packages.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/AccessibilityExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/AccessibilityExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/CSharpOperatorExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/CSharpOperatorExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/ConstructorInfoExtensionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/ConstructorInfoExtensionTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/EventInfoExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/EventInfoExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/FieldInfoExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/FieldInfoExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/Formatting/CachedReflectionFormatterTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/Formatting/CachedReflectionFormatterTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/Formatting/DisplayNameFormatterTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/Formatting/DisplayNameFormatterTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/Formatting/ReflectionFormatterTestFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/Formatting/ReflectionFormatterTestFixture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/Formatting/ReflectionFormatterTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/Formatting/ReflectionFormatterTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/Formatting/XmlDocIdFormatterTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/Formatting/XmlDocIdFormatterTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/MemberInfoExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/MemberInfoExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/MethodBaseExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/MethodBaseExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/MethodInfoExtensionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/MethodInfoExtensionTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/MrKWatkins.Reflection.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/MrKWatkins.Reflection.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/ParameterInfoExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/ParameterInfoExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/ParameterKindExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/ParameterKindExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/PropertyInfoExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/PropertyInfoExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestFixture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorOverloads.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorOverloads.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorPrivateOverload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorPrivateOverload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorProtectedOverload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorProtectedOverload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorPublicOverload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Constructors/ConstructorPublicOverload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Enums/Enum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Enums/Enum.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Events/EventAccessibility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Events/EventAccessibility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Events/TestEventInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Events/TestEventInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Fields/FieldAccessibility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Fields/FieldAccessibility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Fields/FieldModifiers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Fields/FieldModifiers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Interfaces/IInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Interfaces/IInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/ExtensionMethods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/ExtensionMethods.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/GlobalMethodInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/GlobalMethodInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodAccessibility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodAccessibility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodNewHidesOverloads.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodNewHidesOverloads.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodNewHidesOverloadsSubClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodNewHidesOverloadsSubClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodNullableReferenceTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodNullableReferenceTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodOverloads.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodOverloads.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodParameterTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodParameterTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodPrivateOverload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodPrivateOverload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodProtectedOverload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodProtectedOverload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodPublicOverload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodPublicOverload.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodVirtuality.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodVirtuality.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodVirtualitySubClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodVirtualitySubClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodVirtualitySubSubClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Methods/MethodVirtualitySubSubClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Operators/CSharpOperators.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Operators/CSharpOperators.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Operators/InvalidCSharpOperators.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Operators/InvalidCSharpOperators.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyAccessibility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyAccessibility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerOneParameter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerOneParameter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerTwoParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerTwoParameters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerVirtuality.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerVirtuality.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerVirtualitySubClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyIndexerVirtualitySubClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyModifiers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyModifiers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyPrivateOverloadedIndexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyPrivateOverloadedIndexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyProtectedOverloadedIndexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyProtectedOverloadedIndexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyPublicOverloadedIndexer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyPublicOverloadedIndexer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyVirtuality.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyVirtuality.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyVirtualitySubClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyVirtualitySubClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyVirtualitySubSubClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Properties/PropertyVirtualitySubSubClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/Class.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/Class.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/GlobalType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/GlobalType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/Nested.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/Nested.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/ReadOnlyRecordStruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/ReadOnlyRecordStruct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/ReadOnlyRefStruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/ReadOnlyRefStruct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/ReadOnlyStruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/ReadOnlyStruct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/Record.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/Record.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/RecordStruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/RecordStruct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/RefStruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/RefStruct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/Struct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/Struct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/Types/TypeAccessibility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/Types/TypeAccessibility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TestTypes/UnsupportedMethodBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TestTypes/UnsupportedMethodBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/TypeExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/TypeExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection.Tests/VirtualityExtensionsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection.Tests/VirtualityExtensionsTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Accessibility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Accessibility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/AccessibilityExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/AccessibilityExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/CSharp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/CSharp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/CSharpOperator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/CSharpOperator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/CSharpOperatorExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/CSharpOperatorExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/ConstructorInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/ConstructorInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/EventInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/EventInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/FieldInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/FieldInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Formatting/CachedReflectionFormatter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Formatting/CachedReflectionFormatter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Formatting/DisplayNameFormatter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Formatting/DisplayNameFormatter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Formatting/DisplayNameFormatterOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Formatting/DisplayNameFormatterOptions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Formatting/IReflectionFormatter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Formatting/IReflectionFormatter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Formatting/ReflectionFormatter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Formatting/ReflectionFormatter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Formatting/XmlDocIdFormatter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Formatting/XmlDocIdFormatter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/MemberInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/MemberInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/MethodBaseExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/MethodBaseExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/MethodInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/MethodInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/MrKWatkins.Reflection.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/MrKWatkins.Reflection.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/ParameterInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/ParameterInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/ParameterKind.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/ParameterKind.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/ParameterKindExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/ParameterKindExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/PropertyInfoExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/PropertyInfoExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/TypeExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/TypeExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/Virtuality.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/Virtuality.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrKWatkins.Reflection/VirtualityExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/MrKWatkins.Reflection/VirtualityExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reflection.sln" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reflection.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reflection.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reflection.sln.DotSettings" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MrKWatkins"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:MrKWatkins/Reflection.git",
+    "accountId": "8846085a-548b-4f92-a10e-b53750613234"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2qGbUs9HUMMxwZdA2Uj33iNxR7A" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7a082b87-a2c2-41be-bbbe-c5c920e610dc" name="Changes" comment="" />
+      <created>1734291878785</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734291878785</updated>
+      <workItem from="1734291880147" duration="13000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

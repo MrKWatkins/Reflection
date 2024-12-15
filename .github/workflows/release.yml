@@ -25,7 +25,7 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Create Package
-        run: dotnet pack . /p:Version=${{ inputs.version }} -p:SymbolPackageFormat=snupkg --configuration Release --include-symbols --output ./packages/
+        run: dotnet pack ./src/ /p:Version=${{ inputs.version }} -p:SymbolPackageFormat=snupkg --configuration Release --include-symbols --output ./packages/
 
       - name: Release to NuGet
         run: dotnet nuget push ./packages/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
