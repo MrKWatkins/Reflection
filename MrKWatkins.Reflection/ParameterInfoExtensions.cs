@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace MrKWatkins.Reflection;
 
@@ -27,7 +28,8 @@ public static class ParameterInfoExtensions
             return ParameterKind.Out;
         }
 
-        if (parameter.GetCustomAttribute<ParamArrayAttribute>() != null)
+        if (parameter.GetCustomAttribute<ParamArrayAttribute>() != null ||
+            parameter.GetCustomAttribute<ParamCollectionAttribute>() != null)
         {
             return ParameterKind.Params;
         }

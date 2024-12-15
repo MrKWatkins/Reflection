@@ -19,6 +19,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{00684DA7-BE37-4859-A73B-7DD6D23B9DD8}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
 		.github\workflows\qodana.yml = .github\workflows\qodana.yml
 		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection

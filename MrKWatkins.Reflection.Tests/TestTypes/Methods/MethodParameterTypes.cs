@@ -21,7 +21,15 @@ public class MethodParameterTypes
 
     public static void OutParameter(out int parameter) => parameter = 0;
 
-    public static void ParamsParameter(params string[] parameters)
+    public static void ParamsArrayParameter(params string[] parameters)
+    {
+    }
+
+    public static void ParamsIEnumerableParameter(params IEnumerable<string> parameters)
+    {
+    }
+
+    public static void ParamsSpanParameter(params ReadOnlySpan<string> parameters)
     {
     }
 
