@@ -4,7 +4,7 @@
 Extension methods for [FieldInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.FieldInfo).
 
 ```c#
-public abstract sealed class FieldInfoExtensions
+public static class FieldInfoExtensions
 ```
 
 ## Methods

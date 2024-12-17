@@ -4,7 +4,7 @@
 Extension methods for [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type).
 
 ```c#
-public abstract sealed class TypeExtensions
+public static class TypeExtensions
 ```
 
 ## Methods
@@ -19,4 +19,5 @@ public abstract sealed class TypeExtensions
 | [IsReadOnlyStruct(Type)](MrKWatkins.Reflection.TypeExtensions.IsReadOnlyStruct.md) | Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is a `readonly struct`; `false` otherwise. |
 | [IsRecord(Type)](MrKWatkins.Reflection.TypeExtensions.IsRecord.md) | Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is a `record class` or `record struct`; `false` otherwise. |
 | [IsRefStruct(Type)](MrKWatkins.Reflection.TypeExtensions.IsRefStruct.md) | Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is a `ref struct`; `false` otherwise. |
+| [IsStatic(Type)](MrKWatkins.Reflection.TypeExtensions.IsStatic.md) | Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is static; `false` otherwise. |
 

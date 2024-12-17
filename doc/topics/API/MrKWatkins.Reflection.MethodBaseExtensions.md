@@ -4,7 +4,7 @@
 Extension methods for [MethodBase](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.MethodBase).
 
 ```c#
-public abstract sealed class MethodBaseExtensions
+public static class MethodBaseExtensions
 ```
 
 ## Methods

@@ -4,7 +4,7 @@
 Extension methods for [CSharpOperator](MrKWatkins.Reflection.CSharpOperator.md).
 
 ```c#
-public abstract sealed class CSharpOperatorExtensions
+public static class CSharpOperatorExtensions
 ```
 
 ## Methods

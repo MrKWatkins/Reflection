@@ -4,7 +4,7 @@
 Extension methods for [Accessibility](MrKWatkins.Reflection.Accessibility.md).
 
 ```c#
-public abstract sealed class AccessibilityExtensions
+public static class AccessibilityExtensions
 ```
 
 ## Methods

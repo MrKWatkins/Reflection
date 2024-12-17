@@ -117,4 +117,12 @@ public static class TypeExtensions
     /// <returns><c>true</c> if the specified <see cref="Type" /> is a <c>record class</c> or <c>record struct</c>; <c>false</c> otherwise.</returns>
     [Pure]
     public static bool IsRecord(this Type type) => type.GetMethod("PrintMembers", BindingFlags.Instance | BindingFlags.NonPublic, [typeof(StringBuilder)]) != null;
+
+    /// <summary>
+    /// Returns <c>true</c> if the specified <see cref="Type" /> is static; <c>false</c> otherwise.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns><c>true</c> if the specified <see cref="Type" /> is static; <c>false</c> otherwise.</returns>
+    [Pure]
+    public static bool IsStatic(this Type type) => type is { IsAbstract: true, IsSealed: true };
 }

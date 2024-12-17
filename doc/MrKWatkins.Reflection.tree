@@ -133,6 +133,7 @@
           <toc-element toc-title="IsReadOnlyStruct" topic="MrKWatkins.Reflection.TypeExtensions.IsReadOnlyStruct.md" />
           <toc-element toc-title="IsRecord" topic="MrKWatkins.Reflection.TypeExtensions.IsRecord.md" />
           <toc-element toc-title="IsRefStruct" topic="MrKWatkins.Reflection.TypeExtensions.IsRefStruct.md" />
+          <toc-element toc-title="IsStatic" topic="MrKWatkins.Reflection.TypeExtensions.IsStatic.md" />
         </toc-element>
       </toc-element>
       <toc-element toc-title="Virtuality" topic="MrKWatkins.Reflection.Virtuality.md" />

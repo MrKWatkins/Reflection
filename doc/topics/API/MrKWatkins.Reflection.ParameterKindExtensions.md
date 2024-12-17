@@ -4,7 +4,7 @@
 Extension methods for [ParameterKind](MrKWatkins.Reflection.ParameterKind.md).
 
 ```c#
-public abstract sealed class ParameterKindExtensions
+public static class ParameterKindExtensions
 ```
 
 ## Methods

@@ -4,7 +4,7 @@
 Extension methods for [ConstructorInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.ConstructorInfo).
 
 ```c#
-public abstract sealed class ConstructorInfoExtensions
+public static class ConstructorInfoExtensions
 ```
 
 ## Methods

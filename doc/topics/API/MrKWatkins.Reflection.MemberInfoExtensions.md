@@ -4,7 +4,7 @@
 Extension methods for [MemberInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.MemberInfo).
 
 ```c#
-public abstract sealed class MemberInfoExtensions
+public static class MemberInfoExtensions
 ```
 
 ## Methods

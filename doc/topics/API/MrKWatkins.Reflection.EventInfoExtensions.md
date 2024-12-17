@@ -4,7 +4,7 @@
 Extension methods for [EventInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.EventInfo).
 
 ```c#
-public abstract sealed class EventInfoExtensions
+public static class EventInfoExtensions
 ```
 
 ## Methods

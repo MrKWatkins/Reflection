@@ -4,7 +4,7 @@
 Members related specifically to C# and not .NET in general.
 
 ```c#
-public abstract sealed class CSharp
+public static class CSharp
 ```
 
 ## Fields

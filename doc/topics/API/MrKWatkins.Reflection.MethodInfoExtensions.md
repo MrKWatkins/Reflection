@@ -4,7 +4,7 @@
 Extension methods for [MethodInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.MethodInfo).
 
 ```c#
-public abstract sealed class MethodInfoExtensions
+public static class MethodInfoExtensions
 ```
 
 ## Methods

@@ -4,7 +4,7 @@
 Extension methods for [ParameterInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.ParameterInfo).
 
 ```c#
-public abstract sealed class ParameterInfoExtensions
+public static class ParameterInfoExtensions
 ```
 
 ## Methods

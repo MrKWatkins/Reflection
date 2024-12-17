@@ -74,6 +74,10 @@ public sealed class TypeExtensionsTests
     [TestCase(typeof(Struct), false)]
     public void IsRecord(Type type, bool expected) => type.IsRecord().Should().Be(expected);
 
+    [TestCase(typeof(Class), false)]
+    [TestCase(typeof(Static), true)]
+    public void IsStatic(Type type, bool expected) => type.IsStatic().Should().Be(expected);
+
     [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases()
     {

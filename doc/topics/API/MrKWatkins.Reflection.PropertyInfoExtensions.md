@@ -4,7 +4,7 @@
 Extension methods for [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo).
 
 ```c#
-public abstract sealed class PropertyInfoExtensions
+public static class PropertyInfoExtensions
 ```
 
 ## Methods

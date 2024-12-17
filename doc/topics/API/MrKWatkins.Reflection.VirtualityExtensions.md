@@ -4,7 +4,7 @@
 Extension methods for [Virtuality](MrKWatkins.Reflection.Virtuality.md).
 
 ```c#
-public abstract sealed class VirtualityExtensions
+public static class VirtualityExtensions
 ```
 
 ## Methods
