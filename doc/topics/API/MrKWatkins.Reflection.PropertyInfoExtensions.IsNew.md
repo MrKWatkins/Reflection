@@ -4,7 +4,7 @@
 Returns `true` if the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo) is a property marked with the new modifier; `false` otherwise.
 
 ```c#
-public static bool IsNew(PropertyInfo property);
+public static bool IsNew(this PropertyInfo property);
 ```
 
 ## Parameters

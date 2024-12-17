@@ -4,7 +4,7 @@
 Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is a `ref struct`; `false` otherwise.
 
 ```c#
-public static bool IsRefStruct(Type type);
+public static bool IsRefStruct(this Type type);
 ```
 
 ## Parameters

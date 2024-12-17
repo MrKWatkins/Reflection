@@ -4,7 +4,7 @@
 Returns `true` if the event is public, i.e. its [Accessibility](MrKWatkins.Reflection.Accessibility.md) is [Public](MrKWatkins.Reflection.Accessibility.md#fields); `false` otherwise.
 
 ```c#
-public static bool IsPublic(EventInfo @event);
+public static bool IsPublic(this EventInfo @event);
 ```
 
 ## Parameters

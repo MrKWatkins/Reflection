@@ -4,7 +4,7 @@
 Gets the [ParameterKind](MrKWatkins.Reflection.ParameterKind.md) of the specified [ParameterInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.ParameterInfo).
 
 ```c#
-public static ParameterKind GetKind(ParameterInfo parameter);
+public static ParameterKind GetKind(this ParameterInfo parameter);
 ```
 
 ## Parameters

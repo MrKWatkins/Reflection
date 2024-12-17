@@ -4,7 +4,7 @@
 Returns `true` if the member is public, i.e. its [Accessibility](MrKWatkins.Reflection.Accessibility.md) is [Public](MrKWatkins.Reflection.Accessibility.md#fields); `false` otherwise.
 
 ```c#
-public static bool IsPublic(MemberInfo member);
+public static bool IsPublic(this MemberInfo member);
 ```
 
 ## Parameters

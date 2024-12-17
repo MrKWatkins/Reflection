@@ -4,7 +4,7 @@
 Enumerates the overloads of the specified property that are declared in the same type. Only indexer properties can be overloaded.
 
 ```c#
-public static IEnumerable<PropertyInfo> EnumerateOverloads(PropertyInfo property);
+public static IEnumerable<PropertyInfo> EnumerateOverloads(this PropertyInfo property);
 ```
 
 ## Parameters

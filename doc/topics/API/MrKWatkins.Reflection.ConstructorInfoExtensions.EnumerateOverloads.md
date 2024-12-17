@@ -4,7 +4,7 @@
 Enumerates the overloads of the specified constructor.
 
 ```c#
-public static IEnumerable<ConstructorInfo> EnumerateOverloads(ConstructorInfo constructor);
+public static IEnumerable<ConstructorInfo> EnumerateOverloads(this ConstructorInfo constructor);
 ```
 
 ## Parameters

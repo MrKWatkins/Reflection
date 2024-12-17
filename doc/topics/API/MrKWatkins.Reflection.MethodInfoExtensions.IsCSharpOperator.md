@@ -4,7 +4,7 @@
 Returns `true` if the specified method is a C# operator; `false` otherwise.
 
 ```c#
-public static bool IsCSharpOperator(MethodInfo method);
+public static bool IsCSharpOperator(this MethodInfo method);
 ```
 
 ## Parameters

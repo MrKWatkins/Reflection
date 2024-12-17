@@ -4,7 +4,7 @@
 Returns the relevant [CSharpOperator](MrKWatkins.Reflection.CSharpOperator.md) value if the specified method is a C# operator; `null` otherwise.
 
 ```c#
-public static CSharpOperator? GetCSharpOperator(MethodInfo method);
+public static CSharpOperator? GetCSharpOperator(this MethodInfo method);
 ```
 
 ## Parameters

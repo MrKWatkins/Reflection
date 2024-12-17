@@ -4,7 +4,7 @@
 Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is static; `false` otherwise.
 
 ```c#
-public static bool IsStatic(Type type);
+public static bool IsStatic(this Type type);
 ```
 
 ## Parameters

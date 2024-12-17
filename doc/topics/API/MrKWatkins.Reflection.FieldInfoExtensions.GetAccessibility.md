@@ -4,7 +4,7 @@
 Returns the [Accessibility](MrKWatkins.Reflection.Accessibility.md) of the specified [FieldInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.FieldInfo).
 
 ```c#
-public static Accessibility GetAccessibility(FieldInfo field);
+public static Accessibility GetAccessibility(this FieldInfo field);
 ```
 
 ## Parameters

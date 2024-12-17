@@ -4,7 +4,7 @@
 Returns the [Accessibility](MrKWatkins.Reflection.Accessibility.md) of the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type).
 
 ```c#
-public static Accessibility GetAccessibility(Type type);
+public static Accessibility GetAccessibility(this Type type);
 ```
 
 ## Parameters

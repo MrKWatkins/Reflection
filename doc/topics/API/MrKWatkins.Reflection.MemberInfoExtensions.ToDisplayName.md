@@ -4,7 +4,7 @@
 Returns a display name for the member. Created using [DisplayNameFormatter](MrKWatkins.Reflection.MemberInfoExtensions.DisplayNameFormatter.md) with default options.
 
 ```c#
-public static string ToDisplayName(MemberInfo member);
+public static string ToDisplayName(this MemberInfo member);
 ```
 
 ## Parameters

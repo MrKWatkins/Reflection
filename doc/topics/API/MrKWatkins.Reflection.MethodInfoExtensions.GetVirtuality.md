@@ -4,7 +4,7 @@
 Gets the [Virtuality](MrKWatkins.Reflection.Virtuality.md) of the specified [MethodInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.MethodInfo).
 
 ```c#
-public static Virtuality GetVirtuality(MethodInfo method);
+public static Virtuality GetVirtuality(this MethodInfo method);
 ```
 
 ## Parameters

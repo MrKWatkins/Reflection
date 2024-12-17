@@ -4,7 +4,7 @@
 Returns the namespace the specified [MemberInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.MemberInfo) is contained in, or `null` if it&#39;s in the global namespace.
 
 ```c#
-public static string? GetNamespace(MemberInfo member);
+public static string? GetNamespace(this MemberInfo member);
 ```
 
 ## Parameters

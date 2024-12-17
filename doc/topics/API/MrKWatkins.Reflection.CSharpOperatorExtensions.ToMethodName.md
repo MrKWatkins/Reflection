@@ -4,7 +4,7 @@
 Returns the method name corresponding to the specified [CSharpOperator](MrKWatkins.Reflection.CSharpOperator.md).
 
 ```c#
-public static string ToMethodName(CSharpOperator @operator);
+public static string ToMethodName(this CSharpOperator @operator);
 ```
 
 ## Parameters

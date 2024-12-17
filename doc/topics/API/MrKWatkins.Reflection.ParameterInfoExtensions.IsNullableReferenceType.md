@@ -4,7 +4,7 @@
 Returns `true` if the specified parameter is a nullable reference type.
 
 ```c#
-public static bool IsNullableReferenceType(ParameterInfo parameter);
+public static bool IsNullableReferenceType(this ParameterInfo parameter);
 ```
 
 ## Parameters

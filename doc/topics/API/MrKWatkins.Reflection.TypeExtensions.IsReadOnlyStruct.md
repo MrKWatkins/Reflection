@@ -4,7 +4,7 @@
 Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is a `readonly struct`; `false` otherwise.
 
 ```c#
-public static bool IsReadOnlyStruct(Type type);
+public static bool IsReadOnlyStruct(this Type type);
 ```
 
 ## Parameters

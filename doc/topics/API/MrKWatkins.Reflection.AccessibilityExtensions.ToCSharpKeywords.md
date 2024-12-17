@@ -4,7 +4,7 @@
 Returns the equivalent of the specified [Accessibility](MrKWatkins.Reflection.Accessibility.md) in C# keywords, e.g. &quot;private protected&quot; for [PrivateProtected](MrKWatkins.Reflection.Accessibility.md#fields)
 
 ```c#
-public static string ToCSharpKeywords(Accessibility accessibility);
+public static string ToCSharpKeywords(this Accessibility accessibility);
 ```
 
 ## Parameters

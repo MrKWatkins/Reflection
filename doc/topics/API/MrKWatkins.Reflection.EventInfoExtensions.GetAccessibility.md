@@ -4,7 +4,7 @@
 Returns the [Accessibility](MrKWatkins.Reflection.Accessibility.md) of the specified [EventInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.EventInfo).
 
 ```c#
-public static Accessibility GetAccessibility(EventInfo @event);
+public static Accessibility GetAccessibility(this EventInfo @event);
 ```
 
 ## Parameters

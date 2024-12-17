@@ -4,7 +4,7 @@
 Returns `true` if the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo) is an indexer property; `false` otherwise.
 
 ```c#
-public static bool IsIndexer(PropertyInfo property);
+public static bool IsIndexer(this PropertyInfo property);
 ```
 
 ## Parameters

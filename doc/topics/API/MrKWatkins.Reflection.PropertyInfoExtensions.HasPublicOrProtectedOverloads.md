@@ -4,7 +4,7 @@
 Returns `true` if the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo) has public or protected overloads, as viewed from an external assembly, i.e. their [Accessibility](MrKWatkins.Reflection.Accessibility.md) is [Public](MrKWatkins.Reflection.Accessibility.md#fields), [Protected](MrKWatkins.Reflection.Accessibility.md#fields) or [ProtectedInternal](MrKWatkins.Reflection.Accessibility.md#fields); `false` otherwise. Only applies to indexer properties.
 
 ```c#
-public static bool HasPublicOrProtectedOverloads(PropertyInfo property);
+public static bool HasPublicOrProtectedOverloads(this PropertyInfo property);
 ```
 
 ## Parameters

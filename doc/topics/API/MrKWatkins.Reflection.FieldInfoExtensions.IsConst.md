@@ -4,7 +4,7 @@
 Returns `true` if the field is const; `false` otherwise.
 
 ```c#
-public static bool IsConst(FieldInfo field);
+public static bool IsConst(this FieldInfo field);
 ```
 
 ## Parameters

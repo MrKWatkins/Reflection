@@ -4,7 +4,7 @@
 Returns `true` if the specified [Type](https://learn.microsoft.com/en-gb/dotnet/api/System.Type) is a `record class` or `record struct`; `false` otherwise.
 
 ```c#
-public static bool IsRecord(Type type);
+public static bool IsRecord(this Type type);
 ```
 
 ## Parameters

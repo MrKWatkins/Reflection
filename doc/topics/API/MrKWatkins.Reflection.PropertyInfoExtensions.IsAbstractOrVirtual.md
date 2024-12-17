@@ -4,7 +4,7 @@
 Returns `true` if the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo) is abstract or virtual; `false` otherwise.
 
 ```c#
-public static bool IsAbstractOrVirtual(PropertyInfo property);
+public static bool IsAbstractOrVirtual(this PropertyInfo property);
 ```
 
 ## Parameters

@@ -4,7 +4,7 @@
 Returns `true` if the specified method has the `new` modifier; `false` otherwise.
 
 ```c#
-public static bool IsNew(MethodInfo method);
+public static bool IsNew(this MethodInfo method);
 ```
 
 ## Parameters

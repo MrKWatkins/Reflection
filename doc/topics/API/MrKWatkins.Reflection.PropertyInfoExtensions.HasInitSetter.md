@@ -4,7 +4,7 @@
 Returns `true` if the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo) has a setter marked with the init modifier; `false` otherwise.
 
 ```c#
-public static bool HasInitSetter(PropertyInfo property);
+public static bool HasInitSetter(this PropertyInfo property);
 ```
 
 ## Parameters

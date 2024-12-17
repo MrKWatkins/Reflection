@@ -4,7 +4,7 @@
 Returns `true` if the specified method is an extension method; `false` otherwise.
 
 ```c#
-public static bool IsExtensionMethod(MethodInfo method);
+public static bool IsExtensionMethod(this MethodInfo method);
 ```
 
 ## Parameters

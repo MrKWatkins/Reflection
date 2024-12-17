@@ -4,7 +4,7 @@
 Returns the equivalent of the specified [Virtuality](MrKWatkins.Reflection.Virtuality.md) in C# keywords, e.g. &quot;sealed override&quot; for [SealedOverride](MrKWatkins.Reflection.Virtuality.md#fields). The empty string is returned for [Normal](MrKWatkins.Reflection.Virtuality.md#fields).
 
 ```c#
-public static string ToCSharpKeywords(Virtuality virtuality);
+public static string ToCSharpKeywords(this Virtuality virtuality);
 ```
 
 ## Parameters

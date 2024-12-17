@@ -4,7 +4,7 @@
 Returns `true` if the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo) represents a static property; `false` otherwise.
 
 ```c#
-public static bool IsStatic(PropertyInfo property);
+public static bool IsStatic(this PropertyInfo property);
 ```
 
 ## Parameters

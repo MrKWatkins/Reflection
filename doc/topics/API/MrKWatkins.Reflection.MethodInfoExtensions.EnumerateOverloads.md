@@ -4,7 +4,7 @@
 Enumerates the overloads of the specified method that are declared in the same type.
 
 ```c#
-public static IEnumerable<MethodInfo> EnumerateOverloads(MethodInfo method);
+public static IEnumerable<MethodInfo> EnumerateOverloads(this MethodInfo method);
 ```
 
 ## Parameters

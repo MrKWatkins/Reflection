@@ -4,7 +4,7 @@
 Enumerates the overloads of the specified method that are declared in the same type.
 
 ```c#
-public static IEnumerable<MethodBase> EnumerateOverloads(MethodBase method);
+public static IEnumerable<MethodBase> EnumerateOverloads(this MethodBase method);
 ```
 
 ## Parameters

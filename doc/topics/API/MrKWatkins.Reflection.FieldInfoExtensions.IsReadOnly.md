@@ -4,7 +4,7 @@
 Returns `true` if the field is `readonly`; `false` otherwise.
 
 ```c#
-public static bool IsReadOnly(FieldInfo field);
+public static bool IsReadOnly(this FieldInfo field);
 ```
 
 ## Parameters

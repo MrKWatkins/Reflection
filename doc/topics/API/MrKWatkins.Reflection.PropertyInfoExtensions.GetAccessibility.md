@@ -4,7 +4,7 @@
 Returns the [Accessibility](MrKWatkins.Reflection.Accessibility.md) of the specified [PropertyInfo](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.PropertyInfo).
 
 ```c#
-public static Accessibility GetAccessibility(PropertyInfo property);
+public static Accessibility GetAccessibility(this PropertyInfo property);
 ```
 
 ## Parameters

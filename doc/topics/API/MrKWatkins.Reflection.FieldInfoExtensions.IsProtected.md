@@ -4,7 +4,7 @@
 Returns `true` if the field is protected as viewed from an external assembly, i.e. its [Accessibility](MrKWatkins.Reflection.Accessibility.md) is [Protected](MrKWatkins.Reflection.Accessibility.md#fields) or [ProtectedInternal](MrKWatkins.Reflection.Accessibility.md#fields); `false` otherwise.
 
 ```c#
-public static bool IsProtected(FieldInfo field);
+public static bool IsProtected(this FieldInfo field);
 ```
 
 ## Parameters

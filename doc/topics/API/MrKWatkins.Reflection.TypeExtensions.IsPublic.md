@@ -4,7 +4,7 @@
 Returns `true` if the type is public, nested or not, i.e. its [Accessibility](MrKWatkins.Reflection.Accessibility.md) is [Public](MrKWatkins.Reflection.Accessibility.md#fields); `false` otherwise.
 
 ```c#
-public static bool IsPublic(Type type);
+public static bool IsPublic(this Type type);
 ```
 
 ## Parameters

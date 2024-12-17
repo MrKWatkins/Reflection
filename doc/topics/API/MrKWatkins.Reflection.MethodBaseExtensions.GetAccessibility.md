@@ -4,7 +4,7 @@
 Returns the [Accessibility](MrKWatkins.Reflection.Accessibility.md) of the specified [MethodBase](https://learn.microsoft.com/en-gb/dotnet/api/System.Reflection.MethodBase).
 
 ```c#
-public static Accessibility GetAccessibility(MethodBase method);
+public static Accessibility GetAccessibility(this MethodBase method);
 ```
 
 ## Parameters

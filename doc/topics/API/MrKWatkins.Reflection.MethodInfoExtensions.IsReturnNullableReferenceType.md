@@ -4,7 +4,7 @@
 Returns `true` if the specified method&#39;s return type is a nullable reference type.
 
 ```c#
-public static bool IsReturnNullableReferenceType(MethodInfo method);
+public static bool IsReturnNullableReferenceType(this MethodInfo method);
 ```
 
 ## Parameters
