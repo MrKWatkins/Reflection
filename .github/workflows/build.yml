@@ -12,11 +12,8 @@ permissions:
 
 jobs:
   Build:
-    name: Build and Test
+    name: Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./src
 
     steps:
       - name: Checkout
@@ -26,8 +23,6 @@ jobs:
         uses: MrKWatkins/dotnet-build@main
 
       - name: Build Documentation
-        uses: ./.github/actions/build-documentation
-
-      - name: Deploy Documentation
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: ./.github/actions/deploy-documentation
+        uses: MrKWatkins/writerside-build@main
+        with:
+          instance: MrKWatkins.Reflection

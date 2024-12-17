@@ -8,6 +8,12 @@ on:
         required: true
         type: string
 
+permissions:
+  checks: write
+  contents: write
+  id-token: write
+  pages: write
+
 jobs:
   Release:
     name: Release ${{ inputs.version }}
@@ -19,16 +25,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Publish to NuGet
+        uses: MrKWatkins/nuget-publish@main
         with:
-          dotnet-version: 9.0.x
+          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+          version: ${{ inputs.version }}
 
-      - name: Create Package
-        run: dotnet pack ./src/ /p:Version=${{ inputs.version }} -p:SymbolPackageFormat=snupkg --configuration Release --include-symbols --output ./packages/
-
-      - name: Release to NuGet
-        run: dotnet nuget push ./packages/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
-
-      - name: Create Release
-        run: gh release create v${{ inputs.version }} --generate-notes
+      - name: Deploy Documentation
+        uses: MrKWatkins/writerside-build@main
+        with:
+          instance: MrKWatkins.Reflection
+          deploy: true
+          version: ${{ inputs.version }}
