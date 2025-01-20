@@ -12,22 +12,22 @@ namespace MrKWatkins.Reflection.Tests.Formatting;
 public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
 {
     [TestCaseSource(nameof(Format_ThrowsOnInvalidTypeTestCases))]
-    public void Format_ThrowsOnInvalidType(MemberInfo member, string expectedMessage) =>
-        new XmlDocIdFormatter().Invoking(f => f.Format(member)).Should().Throw<ArgumentException>().WithMessage(expectedMessage);
+    public void Format_ThrowsOnInvalidType(MemberInfo member, string expectedMessageStart) =>
+        new XmlDocIdFormatter().Invoking(f => f.Format(member)).Should().Throw<ArgumentException>().That.Should().HaveMessageStartingWith(expectedMessageStart);
 
     [Pure]
     public static IEnumerable<TestCaseData> Format_ThrowsOnInvalidTypeTestCases()
     {
-        yield return new TestCaseData(typeof(string).MakePointerType(), "Type String* is a pointer type; pointer types do not have XmlDocIds.*");
-        yield return new TestCaseData(typeof(string).MakeByRefType(), "Type String& is a by ref type; by ref types do not have XmlDocIds.*");
-        yield return new TestCaseData(typeof(string[]), "Type String[] is an array type; array types do not have XmlDocIds.*");
-        yield return new TestCaseData(typeof(string[,]), "Type String[,] is an array type; array types do not have XmlDocIds.*");
-        yield return new TestCaseData(typeof(IEnumerable<string>), "Type IEnumerable<String> is a constructed generic type; constructed generic types do not have XmlDocIds.*");
-        yield return new TestCaseData(GetMethod(typeof(Nested.Child<int>), nameof(Nested.Child.ChildGenericMethodOneParameter)), "Type Nested.Child<Int32> is a constructed generic type; constructed generic types do not have XmlDocIds.*");
+        yield return new TestCaseData(typeof(string).MakePointerType(), "Type String* is a pointer type; pointer types do not have XmlDocIds.");
+        yield return new TestCaseData(typeof(string).MakeByRefType(), "Type String& is a by ref type; by ref types do not have XmlDocIds.");
+        yield return new TestCaseData(typeof(string[]), "Type String[] is an array type; array types do not have XmlDocIds.");
+        yield return new TestCaseData(typeof(string[,]), "Type String[,] is an array type; array types do not have XmlDocIds.");
+        yield return new TestCaseData(typeof(IEnumerable<string>), "Type IEnumerable<String> is a constructed generic type; constructed generic types do not have XmlDocIds.");
+        yield return new TestCaseData(GetMethod(typeof(Nested.Child<int>), nameof(Nested.Child.ChildGenericMethodOneParameter)), "Type Nested.Child<Int32> is a constructed generic type; constructed generic types do not have XmlDocIds.");
     }
 
     [TestCaseSource(nameof(FormatTestCases))]
-    public void Format(MemberInfo member, string expected) => new XmlDocIdFormatter().Format(member).Should().Be(expected);
+    public void Format(MemberInfo member, string expected) => new XmlDocIdFormatter().Format(member).Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> FormatTestCases()
@@ -132,7 +132,7 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
 
 
     [TestCaseSource(nameof(FormatNamespaceTestCases))]
-    public void FormatNamespace(MemberInfo member, string expected) => new XmlDocIdFormatter().FormatNamespace(member).Should().Be(expected);
+    public void FormatNamespace(MemberInfo member, string expected) => new XmlDocIdFormatter().FormatNamespace(member).Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> FormatNamespaceTestCases()

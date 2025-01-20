@@ -8,7 +8,7 @@ public sealed class AccessibilityExtensionsTests
     [TestCase(Accessibility.Protected, "protected")]
     [TestCase(Accessibility.ProtectedInternal, "protected internal")]
     [TestCase(Accessibility.Public, "public")]
-    public void ToCSharpKeywords(Accessibility accessibility, string expected) => accessibility.ToCSharpKeywords().Should().Be(expected);
+    public void ToCSharpKeywords(Accessibility accessibility, string expected) => accessibility.ToCSharpKeywords().Should().Equal(expected);
 
     [Test]
     public void ToCSharpKeywords_ThrowsForUnsupportedValue() =>

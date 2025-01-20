@@ -7,7 +7,7 @@ namespace MrKWatkins.Reflection.Tests;
 public sealed class TypeExtensionsTests
 {
     [TestCaseSource(nameof(EnumerateNestedTypesTestCases))]
-    public void EnumerateNestedTypes(Type type, Type[] expected) => type.EnumerateNestedTypes().Should().BeEquivalentTo(expected);
+    public void EnumerateNestedTypes(Type type, Type[] expected) => type.EnumerateNestedTypes().Should().SequenceEqual(expected);
 
     public static IEnumerable<TestCaseData> EnumerateNestedTypesTestCases()
     {
@@ -24,19 +24,19 @@ public sealed class TypeExtensionsTests
     }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
-    public void GetAccessibility(Type type, Accessibility expected) => type.GetAccessibility().Should().Be(expected);
+    public void GetAccessibility(Type type, Accessibility expected) => type.GetAccessibility().Should().Equal(expected);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(Type type, Accessibility visibility) =>
-        type.IsProtected().Should().Be(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
+        type.IsProtected().Should().Equal(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublic(Type type, Accessibility visibility) =>
-        type.IsPublic().Should().Be(visibility == Accessibility.Public);
+        type.IsPublic().Should().Equal(visibility == Accessibility.Public);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublicOrProtected(Type type, Accessibility visibility) =>
-        type.IsPublicOrProtected().Should().Be(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
+        type.IsPublicOrProtected().Should().Equal(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCase(typeof(Class), false)]
     [TestCase(typeof(Enum), false)]
@@ -48,7 +48,7 @@ public sealed class TypeExtensionsTests
     [TestCase(typeof(RecordStruct), false)]
     [TestCase(typeof(RefStruct), true)]
     [TestCase(typeof(Struct), false)]
-    public void IsRefStruct(Type type, bool expected) => type.IsRefStruct().Should().Be(expected);
+    public void IsRefStruct(Type type, bool expected) => type.IsRefStruct().Should().Equal(expected);
 
     [TestCase(typeof(Class), false)]
     [TestCase(typeof(Enum), false)]
@@ -60,7 +60,7 @@ public sealed class TypeExtensionsTests
     [TestCase(typeof(RecordStruct), false)]
     [TestCase(typeof(RefStruct), false)]
     [TestCase(typeof(Struct), false)]
-    public void IsReadOnlyStruct(Type type, bool expected) => type.IsReadOnlyStruct().Should().Be(expected);
+    public void IsReadOnlyStruct(Type type, bool expected) => type.IsReadOnlyStruct().Should().Equal(expected);
 
     [TestCase(typeof(Class), false)]
     [TestCase(typeof(Enum), false)]
@@ -72,11 +72,11 @@ public sealed class TypeExtensionsTests
     [TestCase(typeof(RecordStruct), true)]
     [TestCase(typeof(RefStruct), false)]
     [TestCase(typeof(Struct), false)]
-    public void IsRecord(Type type, bool expected) => type.IsRecord().Should().Be(expected);
+    public void IsRecord(Type type, bool expected) => type.IsRecord().Should().Equal(expected);
 
     [TestCase(typeof(Class), false)]
     [TestCase(typeof(Static), true)]
-    public void IsStatic(Type type, bool expected) => type.IsStatic().Should().Be(expected);
+    public void IsStatic(Type type, bool expected) => type.IsStatic().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases()

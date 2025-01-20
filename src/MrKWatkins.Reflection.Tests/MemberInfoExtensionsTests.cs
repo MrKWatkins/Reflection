@@ -10,22 +10,22 @@ namespace MrKWatkins.Reflection.Tests;
 public sealed class MemberInfoExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(AccessibilityTestCases))]
-    public void GetAccessibility(MemberInfo member, Accessibility expected) => member.GetAccessibility().Should().Be(expected);
+    public void GetAccessibility(MemberInfo member, Accessibility expected) => member.GetAccessibility().Should().Equal(expected);
 
     [Test]
     public void GetAccessibility_UnsupportedMemberInfoThrows() =>
-        new UnsupportedMemberInfo().Invoking(m => m.GetAccessibility()).Should().Throw<NotSupportedException>()
-            .WithMessage("MemberInfos of type UnsupportedMemberInfo are not supported.");
+        new UnsupportedMemberInfo().Invoking(m => m.GetAccessibility()).Should().Throw<NotSupportedException>().That
+            .Should().HaveMessage("MemberInfos of type UnsupportedMemberInfo are not supported.");
 
     [TestCaseSource(nameof(GetNamespaceTestCases))]
-    public void GetNamespace(MemberInfo member, string? expected) => member.GetNamespace().Should().Be(expected);
+    public void GetNamespace(MemberInfo member, string? expected) => member.GetNamespace().Should().Equal(expected);
 
     [TestCaseSource(nameof(GetNamespaceTestCases))]
     public void GetNamespaceOrThrow(MemberInfo member, string? expected)
     {
         if (expected != null)
         {
-            member.GetNamespaceOrThrow().Should().Be(expected);
+            member.GetNamespaceOrThrow().Should().Equal(expected);
         }
         else
         {
@@ -46,15 +46,15 @@ public sealed class MemberInfoExtensionsTests : TestFixture
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(MemberInfo member, Accessibility visibility) =>
-        member.IsProtected().Should().Be(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
+        member.IsProtected().Should().Equal(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublic(MemberInfo member, Accessibility visibility) =>
-        member.IsPublic().Should().Be(visibility == Accessibility.Public);
+        member.IsPublic().Should().Equal(visibility == Accessibility.Public);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublicOrProtected(MemberInfo member, Accessibility visibility) =>
-        member.IsPublicOrProtected().Should().Be(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
+        member.IsPublicOrProtected().Should().Equal(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases()
@@ -75,7 +75,7 @@ public sealed class MemberInfoExtensionsTests : TestFixture
     [TestCase(typeof(int), "Int32")]
     [TestCase(typeof(List<string>), "List<String>")]
     [TestCase(typeof(Dictionary<string, int>), "Dictionary<String, Int32>")]
-    public void ToDisplayName(Type type, string expected) => type.ToDisplayName().Should().Be(expected);
+    public void ToDisplayName(Type type, string expected) => type.ToDisplayName().Should().Equal(expected);
 
     private sealed class UnsupportedMemberInfo : MemberInfo
     {

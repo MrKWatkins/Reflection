@@ -7,7 +7,7 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(EnumerateOverloadsTestCases))]
     public void EnumerateOverloads(PropertyInfo property, PropertyInfo[] expected) =>
-        property.EnumerateOverloads().Should().BeEquivalentTo(expected);
+        property.EnumerateOverloads().Should().SequenceEqual(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> EnumerateOverloadsTestCases()
@@ -29,10 +29,10 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
-    public void GetAccessibility(PropertyInfo property, Accessibility expected) => property.GetAccessibility().Should().Be(expected);
+    public void GetAccessibility(PropertyInfo property, Accessibility expected) => property.GetAccessibility().Should().Equal(expected);
 
     [TestCaseSource(nameof(GetBaseDefinitionTestCases))]
-    public void GetBaseDefinition(PropertyInfo property, PropertyInfo? expected) => property.GetBaseDefinition().Should().BeSameAs(expected);
+    public void GetBaseDefinition(PropertyInfo property, PropertyInfo? expected) => property.GetBaseDefinition().Should().BeTheSameInstanceAs(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> GetBaseDefinitionTestCases()
@@ -48,7 +48,7 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     }
 
     [TestCaseSource(nameof(GetVirtualityTestCases))]
-    public void GetVirtuality(PropertyInfo property, Virtuality expected) => property.GetVirtuality().Should().Be(expected);
+    public void GetVirtuality(PropertyInfo property, Virtuality expected) => property.GetVirtuality().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> GetVirtualityTestCases()
@@ -74,10 +74,10 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
 
     [TestCase(nameof(PropertyModifiers.InitSetter), true)]
     [TestCase(nameof(PropertyModifiers.Normal), false)]
-    public void HasInitSetter(string name, bool expected) => GetProperty<PropertyModifiers>(name).HasInitSetter().Should().Be(expected);
+    public void HasInitSetter(string name, bool expected) => GetProperty<PropertyModifiers>(name).HasInitSetter().Should().Equal(expected);
 
     [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
-    public void HasPublicOrProtectedOverloads(PropertyInfo property, bool expected) => property.HasPublicOrProtectedOverloads().Should().Be(expected);
+    public void HasPublicOrProtectedOverloads(PropertyInfo property, bool expected) => property.HasPublicOrProtectedOverloads().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()
@@ -101,15 +101,15 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     [TestCase(nameof(PropertyVirtuality.Abstract), true)]
     [TestCase(nameof(PropertyVirtuality.Normal), false)]
     [TestCase(nameof(PropertyVirtuality.Virtual), false)]
-    public void IsAbstract(string name, bool expected) => GetProperty<PropertyVirtuality>(name).IsAbstract().Should().Be(expected);
+    public void IsAbstract(string name, bool expected) => GetProperty<PropertyVirtuality>(name).IsAbstract().Should().Equal(expected);
 
     [TestCase(nameof(PropertyVirtuality.Abstract), true)]
     [TestCase(nameof(PropertyVirtuality.Normal), false)]
     [TestCase(nameof(PropertyVirtuality.Virtual), true)]
-    public void IsAbstractOrVirtual(string name, bool expected) => GetProperty<PropertyVirtuality>(name).IsAbstractOrVirtual().Should().Be(expected);
+    public void IsAbstractOrVirtual(string name, bool expected) => GetProperty<PropertyVirtuality>(name).IsAbstractOrVirtual().Should().Equal(expected);
 
     [TestCaseSource(nameof(IsIndexerTestCases))]
-    public void IsIndexer(PropertyInfo property, bool expected) => property.IsIndexer().Should().Be(expected);
+    public void IsIndexer(PropertyInfo property, bool expected) => property.IsIndexer().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsIndexerTestCases()
@@ -131,7 +131,7 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
     }
 
     [TestCaseSource(nameof(IsNewTestCases))]
-    public void IsNew(PropertyInfo property, bool expected) => property.IsNew().Should().Be(expected);
+    public void IsNew(PropertyInfo property, bool expected) => property.IsNew().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsNewTestCases()
@@ -149,22 +149,22 @@ public sealed class PropertyInfoExtensionsTests : TestFixture
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(PropertyInfo property, Accessibility visibility) =>
-        property.IsProtected().Should().Be(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
+        property.IsProtected().Should().Equal(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublic(PropertyInfo property, Accessibility visibility) =>
-        property.IsPublic().Should().Be(visibility == Accessibility.Public);
+        property.IsPublic().Should().Equal(visibility == Accessibility.Public);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublicOrProtected(PropertyInfo property, Accessibility visibility) =>
-        property.IsPublicOrProtected().Should().Be(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
+        property.IsPublicOrProtected().Should().Equal(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCase(nameof(PropertyModifiers.Required), true)]
     [TestCase(nameof(PropertyModifiers.Normal), false)]
-    public void IsRequired(string name, bool expected) => GetProperty<PropertyModifiers>(name).IsRequired().Should().Be(expected);
+    public void IsRequired(string name, bool expected) => GetProperty<PropertyModifiers>(name).IsRequired().Should().Equal(expected);
 
     [TestCaseSource(nameof(IsStaticTestCases))]
-    public void IsStatic(PropertyInfo property, bool expected) => property.IsStatic().Should().Be(expected);
+    public void IsStatic(PropertyInfo property, bool expected) => property.IsStatic().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsStaticTestCases()

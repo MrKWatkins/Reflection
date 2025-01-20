@@ -6,33 +6,33 @@ namespace MrKWatkins.Reflection.Tests;
 public sealed class FieldInfoExtensionsTests
 {
     [TestCaseSource(nameof(AccessibilityTestCases))]
-    public void GetAccessibility(FieldInfo field, Accessibility expected) => field.GetAccessibility().Should().Be(expected);
+    public void GetAccessibility(FieldInfo field, Accessibility expected) => field.GetAccessibility().Should().Equal(expected);
 
     [TestCase(nameof(FieldModifiers.Const), true)]
     [TestCase(nameof(FieldModifiers.Instance), false)]
     [TestCase(nameof(FieldModifiers.InstanceReadOnly), false)]
     [TestCase(nameof(FieldModifiers.Static), false)]
     [TestCase(nameof(FieldModifiers.StaticReadOnly), false)]
-    public void IsConst(string name, bool expected) => GetField<FieldModifiers>(name).IsConst().Should().Be(expected);
+    public void IsConst(string name, bool expected) => GetField<FieldModifiers>(name).IsConst().Should().Equal(expected);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(FieldInfo field, Accessibility visibility) =>
-        field.IsProtected().Should().Be(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
+        field.IsProtected().Should().Equal(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublic(FieldInfo field, Accessibility visibility) =>
-        field.IsPublic().Should().Be(visibility == Accessibility.Public);
+        field.IsPublic().Should().Equal(visibility == Accessibility.Public);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublicOrProtected(FieldInfo field, Accessibility visibility) =>
-        field.IsPublicOrProtected().Should().Be(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
+        field.IsPublicOrProtected().Should().Equal(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCase(nameof(FieldModifiers.Const), false)]
     [TestCase(nameof(FieldModifiers.Instance), false)]
     [TestCase(nameof(FieldModifiers.InstanceReadOnly), true)]
     [TestCase(nameof(FieldModifiers.Static), false)]
     [TestCase(nameof(FieldModifiers.StaticReadOnly), true)]
-    public void IsReadOnly(string name, bool expected) => GetField<FieldModifiers>(name).IsReadOnly().Should().Be(expected);
+    public void IsReadOnly(string name, bool expected) => GetField<FieldModifiers>(name).IsReadOnly().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases() =>

@@ -8,7 +8,7 @@ public sealed class ConstructorInfoExtensionTests : TestFixture
 {
     [TestCaseSource(nameof(EnumerateOverloadsTestCases))]
     public void EnumerateOverloads(ConstructorInfo constructor, ConstructorInfo[] expected) =>
-        constructor.EnumerateOverloads().Should().BeEquivalentTo(expected);
+        constructor.EnumerateOverloads().Should().SequenceEqual(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> EnumerateOverloadsTestCases()
@@ -21,7 +21,7 @@ public sealed class ConstructorInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
-    public void HasPublicOrProtectedOverloads(ConstructorInfo constructor, bool expected) => constructor.HasPublicOrProtectedOverloads().Should().Be(expected);
+    public void HasPublicOrProtectedOverloads(ConstructorInfo constructor, bool expected) => constructor.HasPublicOrProtectedOverloads().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()

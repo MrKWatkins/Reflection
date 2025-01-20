@@ -10,7 +10,7 @@ public sealed class VirtualityExtensionsTests
     [TestCase(Virtuality.New, "new")]
     [TestCase(Virtuality.NewAbstract, "new abstract")]
     [TestCase(Virtuality.NewVirtual, "new virtual")]
-    public void ToCSharpKeywords(Virtuality virtuality, string expected) => virtuality.ToCSharpKeywords().Should().Be(expected);
+    public void ToCSharpKeywords(Virtuality virtuality, string expected) => virtuality.ToCSharpKeywords().Should().Equal(expected);
 
     [Test]
     public void ToCSharpKeywords_ThrowsForUnsupportedValue() =>

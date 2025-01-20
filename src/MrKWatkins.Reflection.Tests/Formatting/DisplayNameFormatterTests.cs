@@ -13,7 +13,7 @@ namespace MrKWatkins.Reflection.Tests.Formatting;
 public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
 {
     [TestCaseSource(nameof(Format_DefaultTestCases))]
-    public void Format_Default(MemberInfo member, string expected) => new DisplayNameFormatter().Format(member).Should().Be(expected);
+    public void Format_Default(MemberInfo member, string expected) => new DisplayNameFormatter().Format(member).Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> Format_DefaultTestCases()
@@ -172,7 +172,7 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
 
     [TestCaseSource(nameof(Format_OptionsTestCases))]
     public void Format_Options(DisplayNameFormatterOptions options, MemberInfo member, string expected) =>
-        new DisplayNameFormatter(options).Format(member).Should().Be(expected);
+        new DisplayNameFormatter(options).Format(member).Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> Format_OptionsTestCases()
@@ -231,7 +231,7 @@ public sealed class DisplayNameFormatterTests : ReflectionFormatterTestFixture
     }
 
     [TestCaseSource(nameof(FormatNamespaceTestCases))]
-    public void FormatNamespace(MemberInfo member, string expected) => new DisplayNameFormatter().FormatNamespace(member).Should().Be(expected);
+    public void FormatNamespace(MemberInfo member, string expected) => new DisplayNameFormatter().FormatNamespace(member).Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> FormatNamespaceTestCases()

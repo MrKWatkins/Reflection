@@ -8,7 +8,7 @@ public sealed class MethodInfoExtensionTests : TestFixture
 {
     [TestCaseSource(nameof(EnumerateOverloadsTestCases))]
     public void EnumerateOverloads(MethodInfo method, MethodInfo[] expected) =>
-        method.EnumerateOverloads().Should().BeEquivalentTo(expected);
+        method.EnumerateOverloads().Should().SequenceEqual(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> EnumerateOverloadsTestCases()
@@ -21,10 +21,10 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(CSharpOperatorTestCases))]
-    public void GetCSharpOperator(MethodInfo method, CSharpOperator? expected) => method.GetCSharpOperator().Should().Be(expected);
+    public void GetCSharpOperator(MethodInfo method, CSharpOperator? expected) => method.GetCSharpOperator().Should().Equal(expected);
 
     [TestCaseSource(nameof(CSharpOperatorTestCases))]
-    public void IsOperator(MethodInfo method, CSharpOperator? expected) => method.IsCSharpOperator().Should().Be(expected.HasValue);
+    public void IsOperator(MethodInfo method, CSharpOperator? expected) => method.IsCSharpOperator().Should().Equal(expected.HasValue);
 
     [Pure]
     public static IEnumerable<TestCaseData> CSharpOperatorTestCases()
@@ -40,7 +40,7 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(GetVirtualityTestCases))]
-    public void GetVirtuality(MethodInfo method, Virtuality expected) => method.GetVirtuality().Should().Be(expected);
+    public void GetVirtuality(MethodInfo method, Virtuality expected) => method.GetVirtuality().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> GetVirtualityTestCases()
@@ -56,7 +56,7 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
-    public void HasPublicOrProtectedOverloads(MethodInfo method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Be(expected);
+    public void HasPublicOrProtectedOverloads(MethodInfo method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> HasPublicOrProtectedOverloadsTestCases()
@@ -77,7 +77,7 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(IsExtensionMethodTestCases))]
-    public void IsExtensionMethod(MethodInfo method, bool expected) => method.IsExtensionMethod().Should().Be(expected);
+    public void IsExtensionMethod(MethodInfo method, bool expected) => method.IsExtensionMethod().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsExtensionMethodTestCases()
@@ -87,7 +87,7 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(IsNewTestCases))]
-    public void IsNew(MethodInfo method, bool expected) => method.IsNew().Should().Be(expected);
+    public void IsNew(MethodInfo method, bool expected) => method.IsNew().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsNewTestCases()
@@ -107,7 +107,7 @@ public sealed class MethodInfoExtensionTests : TestFixture
     }
 
     [TestCaseSource(nameof(IsReturnNullableReferenceTypeTestCases))]
-    public void IsReturnNullableReferenceType(MethodInfo method, bool expected) => method.IsReturnNullableReferenceType().Should().Be(expected);
+    public void IsReturnNullableReferenceType(MethodInfo method, bool expected) => method.IsReturnNullableReferenceType().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsReturnNullableReferenceTypeTestCases()

@@ -7,7 +7,7 @@ public sealed class ParameterKindExtensionsTests
     [TestCase(ParameterKind.Ref, "ref")]
     [TestCase(ParameterKind.Out, "out")]
     [TestCase(ParameterKind.In, "in")]
-    public void ToCSharpKeywords(ParameterKind parameterKind, string expected) => parameterKind.ToCSharpKeywords().Should().Be(expected);
+    public void ToCSharpKeywords(ParameterKind parameterKind, string expected) => parameterKind.ToCSharpKeywords().Should().Equal(expected);
 
     [Test]
     public void ToCSharpKeywords_ThrowsForUnsupportedValue() =>

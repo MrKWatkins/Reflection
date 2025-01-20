@@ -11,14 +11,14 @@ namespace MrKWatkins.Reflection.Tests.Formatting;
 public sealed class ReflectionFormatterTests : ReflectionFormatterTestFixture
 {
     [TestCaseSource(nameof(FormatTestCases))]
-    public void Format_MemberInfo(MemberInfo member, string expected) => new TestReflectionFormatter().Format(member).Should().Be(expected);
+    public void Format_MemberInfo(MemberInfo member, string expected) => new TestReflectionFormatter().Format(member).Should().Equal(expected);
 
     [TestCaseSource(nameof(FormatTestCases))]
     public void Format_StringBuilder_MemberInfo(MemberInfo member, string expected)
     {
         var output = new StringBuilder();
         new TestReflectionFormatter().Format(output, member);
-        output.ToString().Should().Be(expected);
+        output.ToString().Should().Equal(expected);
     }
 
     [TestCaseSource(nameof(FormatTestCases))]
@@ -26,7 +26,7 @@ public sealed class ReflectionFormatterTests : ReflectionFormatterTestFixture
     {
         using var output = new StringWriter();
         new TestReflectionFormatter().Format(output, member);
-        output.ToString().Should().Be(expected);
+        output.ToString().Should().Equal(expected);
     }
 
     [Test]
@@ -44,17 +44,17 @@ public sealed class ReflectionFormatterTests : ReflectionFormatterTestFixture
     }
 
     [Test]
-    public void FormatNamespace_MemberInfo() => new TestReflectionFormatter().FormatNamespace(typeof(ReflectionFormatterTests)).Should().Be("Namespace");
+    public void FormatNamespace_MemberInfo() => new TestReflectionFormatter().FormatNamespace(typeof(ReflectionFormatterTests)).Should().Equal("Namespace");
 
     [Test]
-    public void FormatNamespace_String() => new TestReflectionFormatter().FormatNamespace("Some.Namespace").Should().Be("Namespace");
+    public void FormatNamespace_String() => new TestReflectionFormatter().FormatNamespace("Some.Namespace").Should().Equal("Namespace");
 
     [Test]
     public void FormatNamespace_StringBuilder_MemberInfo()
     {
         var output = new StringBuilder();
         new TestReflectionFormatter().FormatNamespace(output, typeof(ReflectionFormatterTests));
-        output.ToString().Should().Be("Namespace");
+        output.ToString().Should().Equal("Namespace");
     }
 
     [Test]
@@ -62,7 +62,7 @@ public sealed class ReflectionFormatterTests : ReflectionFormatterTestFixture
     {
         var output = new StringBuilder();
         new TestReflectionFormatter().FormatNamespace(output, "Some.Namespace");
-        output.ToString().Should().Be("Namespace");
+        output.ToString().Should().Equal("Namespace");
     }
 
     [Test]
@@ -70,7 +70,7 @@ public sealed class ReflectionFormatterTests : ReflectionFormatterTestFixture
     {
         using var output = new StringWriter();
         new TestReflectionFormatter().FormatNamespace(output, typeof(ReflectionFormatterTests));
-        output.ToString().Should().Be("Namespace");
+        output.ToString().Should().Equal("Namespace");
     }
 
     [Test]
@@ -78,7 +78,7 @@ public sealed class ReflectionFormatterTests : ReflectionFormatterTestFixture
     {
         using var output = new StringWriter();
         new TestReflectionFormatter().FormatNamespace(output, "Some.Namespace");
-        output.ToString().Should().Be("Namespace");
+        output.ToString().Should().Equal("Namespace");
     }
 
     private sealed class TestReflectionFormatter : ReflectionFormatter

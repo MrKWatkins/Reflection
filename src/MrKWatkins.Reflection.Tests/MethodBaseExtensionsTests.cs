@@ -10,7 +10,7 @@ public sealed class MethodBaseExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(EnumerateOverloadsTestCases))]
     public void EnumerateOverloads(MethodBase method, MethodBase[] expected) =>
-        method.EnumerateOverloads().Should().BeEquivalentTo(expected);
+        method.EnumerateOverloads().Should().SequenceEqual(expected);
 
     [Test]
     public void EnumerateOverloads_ThrowsForUnsupportedMethodBaseType() =>
@@ -33,11 +33,11 @@ public sealed class MethodBaseExtensionsTests : TestFixture
     }
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
-    public void GetAccessibility(MethodBase method, Accessibility expected) => method.GetAccessibility().Should().Be(expected);
+    public void GetAccessibility(MethodBase method, Accessibility expected) => method.GetAccessibility().Should().Equal(expected);
 
 
     [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
-    public void HasPublicOrProtectedOverloads(MethodBase method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Be(expected);
+    public void HasPublicOrProtectedOverloads(MethodBase method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Equal(expected);
 
     [Test]
     public void HasPublicOrProtectedOverloads_ThrowsForUnsupportedMethodBaseType() =>
@@ -76,15 +76,15 @@ public sealed class MethodBaseExtensionsTests : TestFixture
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(MethodBase method, Accessibility visibility) =>
-        method.IsProtected().Should().Be(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
+        method.IsProtected().Should().Equal(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublic(MethodBase method, Accessibility visibility) =>
-        method.IsPublic().Should().Be(visibility == Accessibility.Public);
+        method.IsPublic().Should().Equal(visibility == Accessibility.Public);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublicOrProtected(MethodBase method, Accessibility visibility) =>
-        method.IsPublicOrProtected().Should().Be(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
+        method.IsPublicOrProtected().Should().Equal(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases() =>

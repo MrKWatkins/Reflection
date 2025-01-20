@@ -15,11 +15,11 @@ public sealed class ParameterInfoExtensionsTests : TestFixture
     public void GetKind(string method, ParameterKind expected)
     {
         var parameter = GetMethod<MethodParameterTypes>(method).GetParameters()[0];
-        parameter.GetKind().Should().Be(expected);
+        parameter.GetKind().Should().Equal(expected);
     }
 
     [TestCaseSource(nameof(IsNullableReferenceTypeTestCases))]
-    public void IsNullableReferenceType(ParameterInfo parameter, bool expected) => parameter.IsNullableReferenceType().Should().Be(expected);
+    public void IsNullableReferenceType(ParameterInfo parameter, bool expected) => parameter.IsNullableReferenceType().Should().Equal(expected);
 
     [Pure]
     public static IEnumerable<TestCaseData> IsNullableReferenceTypeTestCases()

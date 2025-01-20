@@ -6,13 +6,13 @@ namespace MrKWatkins.Reflection.Tests;
 public sealed class EventInfoExtensionsTests : TestFixture
 {
     [TestCaseSource(nameof(AccessibilityTestCases))]
-    public void GetAccessibility(EventInfo @event, Accessibility expected) => @event.GetAccessibility().Should().Be(expected);
+    public void GetAccessibility(EventInfo @event, Accessibility expected) => @event.GetAccessibility().Should().Equal(expected);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility_NoAddMethod(EventInfo @event, Accessibility expected)
     {
         var testEvent = new TestEventInfo(@event, false, true);
-        testEvent.GetAccessibility().Should().Be(expected);
+        testEvent.GetAccessibility().Should().Equal(expected);
     }
 
     [Test]
@@ -24,15 +24,15 @@ public sealed class EventInfoExtensionsTests : TestFixture
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsProtected(EventInfo @event, Accessibility visibility) =>
-        @event.IsProtected().Should().Be(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
+        @event.IsProtected().Should().Equal(visibility is Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublic(EventInfo @event, Accessibility visibility) =>
-        @event.IsPublic().Should().Be(visibility == Accessibility.Public);
+        @event.IsPublic().Should().Equal(visibility == Accessibility.Public);
 
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void IsPublicOrProtected(EventInfo @event, Accessibility visibility) =>
-        @event.IsPublicOrProtected().Should().Be(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
+        @event.IsPublicOrProtected().Should().Equal(visibility is Accessibility.Public or Accessibility.Protected or Accessibility.ProtectedInternal);
 
     [Pure]
     public static IEnumerable<TestCaseData> AccessibilityTestCases() =>
