@@ -89,11 +89,11 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
 
         var method = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public));
         cached.FormatNamespace(method).Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.Methods");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["MrKWatkins.Reflection.Tests.TestTypes.Methods"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("MrKWatkins.Reflection.Tests.TestTypes.Methods");
 
         var sameNamespaceMethod = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Internal));
         cached.FormatNamespace(sameNamespaceMethod).Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.Methods");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["MrKWatkins.Reflection.Tests.TestTypes.Methods"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("MrKWatkins.Reflection.Tests.TestTypes.Methods");
 
         var differentNamespaceProperty = GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal));
         cached.FormatNamespace(differentNamespaceProperty).Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.Properties");
@@ -107,10 +107,10 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         var cached = new CachedReflectionFormatter(underlying);
 
         cached.FormatNamespace("Some.Namespace").Should().Equal("Some.Namespace");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["Some.Namespace"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace");
 
         cached.FormatNamespace("Some.Namespace").Should().Equal("Some.Namespace");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["Some.Namespace"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace");
 
         cached.FormatNamespace("Different.Namespace").Should().Equal("Different.Namespace");
         underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace", "Different.Namespace");
@@ -126,12 +126,12 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         var method = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public));
         cached.FormatNamespace(output, method);
         output.ToString().Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.Methods");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["MrKWatkins.Reflection.Tests.TestTypes.Methods"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("MrKWatkins.Reflection.Tests.TestTypes.Methods");
 
         var sameNamespaceMethod = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Internal));
         cached.FormatNamespace(output, sameNamespaceMethod);
         output.ToString().Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.MethodsMrKWatkins.Reflection.Tests.TestTypes.Methods");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["MrKWatkins.Reflection.Tests.TestTypes.Methods"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("MrKWatkins.Reflection.Tests.TestTypes.Methods");
 
         var differentNamespaceProperty = GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal));
         cached.FormatNamespace(output, differentNamespaceProperty);
@@ -148,11 +148,11 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         var output = new StringBuilder();
         cached.FormatNamespace(output, "Some.Namespace");
         output.ToString().Should().Equal("Some.Namespace");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["Some.Namespace"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace");
 
         cached.FormatNamespace(output, "Some.Namespace");
         output.ToString().Should().Equal("Some.NamespaceSome.Namespace");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["Some.Namespace"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace");
 
         cached.FormatNamespace(output, "Different.Namespace");
         output.ToString().Should().Equal("Some.NamespaceSome.NamespaceDifferent.Namespace");
@@ -169,12 +169,12 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         var method = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Public));
         cached.FormatNamespace(output, method);
         output.ToString().Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.Methods");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["MrKWatkins.Reflection.Tests.TestTypes.Methods"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("MrKWatkins.Reflection.Tests.TestTypes.Methods");
 
         var sameNamespaceMethod = GetMethod<MethodAccessibility>(nameof(MethodAccessibility.Internal));
         cached.FormatNamespace(output, sameNamespaceMethod);
         output.ToString().Should().Equal("MrKWatkins.Reflection.Tests.TestTypes.MethodsMrKWatkins.Reflection.Tests.TestTypes.Methods");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["MrKWatkins.Reflection.Tests.TestTypes.Methods"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("MrKWatkins.Reflection.Tests.TestTypes.Methods");
 
         var differentNamespaceProperty = GetProperty<PropertyModifiers>(nameof(PropertyModifiers.Normal));
         cached.FormatNamespace(output, differentNamespaceProperty);
@@ -191,11 +191,11 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         using var output = new StringWriter();
         cached.FormatNamespace(output, "Some.Namespace");
         output.ToString().Should().Equal("Some.Namespace");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["Some.Namespace"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace");
 
         cached.FormatNamespace(output, "Some.Namespace");
         output.ToString().Should().Equal("Some.NamespaceSome.Namespace");
-        underlying.FormatNamespaceCalls.Should().SequenceEqual(["Some.Namespace"]);
+        underlying.FormatNamespaceCalls.Should().SequenceEqual("Some.Namespace");
 
         cached.FormatNamespace(output, "Different.Namespace");
         output.ToString().Should().Equal("Some.NamespaceSome.NamespaceDifferent.Namespace");
