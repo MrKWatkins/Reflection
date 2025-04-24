@@ -207,24 +207,24 @@ public sealed class CachedReflectionFormatterTests : ReflectionFormatterTestFixt
         private readonly List<MemberInfo> formatCalls = [];
         private readonly List<string> formatNamespaceCalls = [];
 
+        public IReadOnlyList<MemberInfo> FormatCalls => formatCalls;
+
+        public IReadOnlyList<string> FormatNamespaceCalls => formatNamespaceCalls;
+
         public string Format(MemberInfo member)
         {
             formatCalls.Add(member);
             return member.Name;
         }
 
-        public IReadOnlyList<MemberInfo> FormatCalls => formatCalls;
+        public void Format(StringBuilder output, MemberInfo member) => throw new NotSupportedException();
+        public void Format(TextWriter output, MemberInfo member) => throw new NotSupportedException();
 
         public string FormatNamespace(string @namespace)
         {
             formatNamespaceCalls.Add(@namespace);
             return @namespace;
         }
-
-        public IReadOnlyList<string> FormatNamespaceCalls => formatNamespaceCalls;
-
-        public void Format(StringBuilder output, MemberInfo member) => throw new NotSupportedException();
-        public void Format(TextWriter output, MemberInfo member) => throw new NotSupportedException();
 
         public string FormatNamespace(MemberInfo member) => throw new NotSupportedException();
         public void FormatNamespace(StringBuilder output, MemberInfo member) => throw new NotSupportedException();
