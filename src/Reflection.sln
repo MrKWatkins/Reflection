@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		License.md = ..\License.md
 		ReadMe.md = ..\ReadMe.md
 		qodana.yaml = ..\qodana.yaml
+		..\.deepsource.toml = ..\.deepsource.toml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2CD5FA32-1F2F-440F-8959-92CCB344D822}"
