@@ -4,6 +4,11 @@ test_patterns = ["**/*.Tests/**"]
 
 [[analyzers]]
 name = "csharp"
+enabled = true
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
 
 [[transformers]]
 name = "dotnet-format"
