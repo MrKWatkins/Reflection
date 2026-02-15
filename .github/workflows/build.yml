@@ -17,17 +17,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Build
         uses: MrKWatkins/dotnet-build@main
-
-      - name: Upload Code Coverage to DeepSource
-        run: |
-          curl https://deepsource.io/cli | sh
-          ./bin/deepsource report --analyzer test-coverage --key csharp --value-file ./src/coverage.xml
-        env:
-          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
 
       - name: Build Documentation
         uses: MrKWatkins/writerside-build@main

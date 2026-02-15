@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		License.md = ..\License.md
 		ReadMe.md = ..\ReadMe.md
 		qodana.yaml = ..\qodana.yaml
-		..\.deepsource.toml = ..\.deepsource.toml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{2CD5FA32-1F2F-440F-8959-92CCB344D822}"
@@ -28,11 +27,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection", "MrKWatkins.Reflection\MrKWatkins.Reflection.csproj", "{D95A7E86-6A99-4FF2-BAF9-3A863111F69E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrKWatkins.Reflection.Tests", "MrKWatkins.Reflection.Tests\MrKWatkins.Reflection.Tests.csproj", "{6D8463B0-5631-43AE-A9FB-6BB2BD34D2C3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonarlint", ".sonarlint", "{D952F0FB-A3C1-4BC0-9F3B-2D6F960030D0}"
-	ProjectSection(SolutionItems) = preProject
-		..\.sonarlint\Reflection.json = ..\.sonarlint\Reflection.json
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +50,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2CD5FA32-1F2F-440F-8959-92CCB344D822} = {EC54CE10-77DB-4F1D-9EA4-EFAA3497A36D}
 		{00684DA7-BE37-4859-A73B-7DD6D23B9DD8} = {2CD5FA32-1F2F-440F-8959-92CCB344D822}
-		{D952F0FB-A3C1-4BC0-9F3B-2D6F960030D0} = {EC54CE10-77DB-4F1D-9EA4-EFAA3497A36D}
 	EndGlobalSection
 EndGlobal
