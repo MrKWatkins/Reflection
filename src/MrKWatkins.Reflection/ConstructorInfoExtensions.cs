@@ -22,7 +22,7 @@ public static class ConstructorInfoExtensions
     }
 
     /// <summary>
-    /// Returns <c>true</c> if the specified <see cref="ConstructorInfo" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// Returns <c>true</c> if the specified <see cref="ConstructorInfo" /> has public or protected overloads, as viewed from an external assembly, that is,
     /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
     /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>

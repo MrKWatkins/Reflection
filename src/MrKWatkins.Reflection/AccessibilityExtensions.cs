@@ -6,7 +6,7 @@ namespace MrKWatkins.Reflection;
 public static class AccessibilityExtensions
 {
     /// <summary>
-    /// Returns the equivalent of the specified <see cref="Accessibility" /> in C# keywords, e.g. "private protected" for
+    /// Returns the equivalent of the specified <see cref="Accessibility" /> in C# keywords, for example, "private protected" for
     /// <see cref="Accessibility.PrivateProtected" />
     /// </summary>
     /// <param name="accessibility">The <see cref="Accessibility" />.</param>

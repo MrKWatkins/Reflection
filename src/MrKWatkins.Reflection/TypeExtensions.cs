@@ -56,7 +56,7 @@ public static class TypeExtensions
     }
 
     /// <summary>
-    /// Returns <c>true</c> if the type is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the type is protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="type">The type.</param>
@@ -67,7 +67,7 @@ public static class TypeExtensions
     public static bool IsProtected(this Type type) => type.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
     /// <summary>
-    /// Returns <c>true</c> if the type is public, nested or not, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />;
+    /// Returns <c>true</c> if the type is public, nested or not, that is, its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />;
     /// <c>false</c> otherwise.
     /// </summary>
     /// <remarks>
@@ -81,7 +81,7 @@ public static class TypeExtensions
     public static bool IsPublic(this Type type) => type.GetAccessibility() == Accessibility.Public;
 
     /// <summary>
-    /// Returns <c>true</c> if the type is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the type is public or protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="type">The type.</param>

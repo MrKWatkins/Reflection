@@ -6,7 +6,7 @@ namespace MrKWatkins.Reflection;
 public static class ParameterKindExtensions
 {
     /// <summary>
-    /// Returns the equivalent of the specified <see cref="ParameterKind" /> in C# keywords, e.g. "params" for
+    /// Returns the equivalent of the specified <see cref="ParameterKind" /> in C# keywords, for example, "params" for
     /// <see cref="ParameterKind.Params" />. The empty string is returned for <see cref="ParameterKind.Normal"/>.
     /// </summary>
     /// <param name="parameterKind">The <see cref="ParameterKind" />.</param>

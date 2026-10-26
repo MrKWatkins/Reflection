@@ -24,7 +24,7 @@ public static class EventInfoExtensions
     }
 
     /// <summary>
-    /// Returns <c>true</c> if the event is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the event is protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="event">The event.</param>
@@ -35,7 +35,7 @@ public static class EventInfoExtensions
     public static bool IsProtected(this EventInfo @event) => @event.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
     /// <summary>
-    /// Returns <c>true</c> if the event is public, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// Returns <c>true</c> if the event is public, that is, its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="event">The event.</param>
     /// <returns>
@@ -45,7 +45,7 @@ public static class EventInfoExtensions
     public static bool IsPublic(this EventInfo @event) => @event.GetAccessibility() == Accessibility.Public;
 
     /// <summary>
-    /// Returns <c>true</c> if the event is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the event is public or protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="event">The event.</param>

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "title": "Reflection",
+  "description": "Reflection based extension methods for .NET.",
+  "repository": "https://github.com/MrKWatkins/Reflection",
+  "base": "/Reflection/",
+  "publicDirectory": "docs/public",
+  "vocabularyDirectory": "docs/vocabulary",
+  "head": [
+    [
+      "link",
+      {
+        "rel": "icon",
+        "href": "/Reflection/favicon.ico"
+      }
+    ]
+  ],
+  "guide": [
+    {
+      "text": "Overview",
+      "link": "/"
+    }
+  ],
+  "api": {
+    "generator": "sesharp",
+    "assemblies": [
+      "src/MrKWatkins.Reflection/bin/Release/net10.0/MrKWatkins.Reflection.dll"
+    ]
+  }
+}

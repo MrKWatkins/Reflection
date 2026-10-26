@@ -42,7 +42,7 @@ public static class MethodBaseExtensions
     }
 
     /// <summary>
-    /// Returns <c>true</c> if the specified <see cref="MethodBase" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// Returns <c>true</c> if the specified <see cref="MethodBase" /> has public or protected overloads, as viewed from an external assembly, that is,
     /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
     /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
@@ -52,7 +52,7 @@ public static class MethodBaseExtensions
     public static bool HasPublicOrProtectedOverloads(this MethodBase method) => method.EnumerateOverloads().Any(m => m.IsPublicOrProtected());
 
     /// <summary>
-    /// Returns <c>true</c> if the method is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the method is protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="method">The method.</param>
@@ -63,7 +63,7 @@ public static class MethodBaseExtensions
     public static bool IsProtected(this MethodBase method) => method.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
     /// <summary>
-    /// Returns <c>true</c> if the method is public, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// Returns <c>true</c> if the method is public, that is, its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </summary>
     /// <remarks>
     /// Equivalent to <see cref="MethodBase.IsPublic" />; included for completion.
@@ -77,7 +77,7 @@ public static class MethodBaseExtensions
     public static bool IsPublic(this MethodBase method) => method.IsPublic;
 
     /// <summary>
-    /// Returns <c>true</c> if the method is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the method is public or protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="method">The method.</param>

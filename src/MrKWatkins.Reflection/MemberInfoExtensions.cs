@@ -52,7 +52,7 @@ public static class MemberInfoExtensions
         member.GetNamespace() ?? throw new ArgumentException("Value does not have a namespace.", nameof(member));
 
     /// <summary>
-    /// Returns <c>true</c> if the member is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the member is protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="member">The member.</param>
@@ -63,7 +63,7 @@ public static class MemberInfoExtensions
     public static bool IsProtected(this MemberInfo member) => member.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
     /// <summary>
-    /// Returns <c>true</c> if the member is public, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// Returns <c>true</c> if the member is public, that is, its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="member">The member.</param>
     /// <returns>
@@ -73,7 +73,7 @@ public static class MemberInfoExtensions
     public static bool IsPublic(this MemberInfo member) => member.GetAccessibility() == Accessibility.Public;
 
     /// <summary>
-    /// Returns <c>true</c> if the member is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the member is public or protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="member">The member.</param>
@@ -85,7 +85,7 @@ public static class MemberInfoExtensions
     public static bool IsPublicOrProtected(this MemberInfo member) => member.GetAccessibility() >= Accessibility.Protected;
 
     /// <summary>
-    /// Returns a display name for the member. Created using <see cref="DisplayNameFormatter" /> with default options.
+    /// Returns a display name for the member. Created using <see cref="MrKWatkins.Reflection.Formatting.DisplayNameFormatter" /> with default options.
     /// </summary>
     /// <param name="member">The member.</param>
     /// <returns>The display name of the member.</returns>

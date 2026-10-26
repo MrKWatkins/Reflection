@@ -11,7 +11,7 @@ public sealed record DisplayNameFormatterOptions
     public bool PrefixMembersWithType { get; init; } = true;
 
     /// <summary>
-    /// Whether to use the C# keyword for primitive types rather than the type name, i.e. <code>int</code> instead of <code>Int32</code>.
+    /// Whether to use the C# keyword for primitive types rather than the type name, that is, <code>int</code> instead of <code>Int32</code>.
     /// Defaults to <c>false</c>.
     /// </summary>
     public bool UseCSharpKeywordsForPrimitiveTypes { get; init; }
@@ -25,7 +25,7 @@ public sealed record DisplayNameFormatterOptions
     public bool UseFullyQualifiedTypes { get; init; }
 
     /// <summary>
-    /// Whether question marks should be used to identify nullable types or not, i.e. <code>int?</code> instead of <code>Nullable&lt;T&gt;</code>.
+    /// Whether question marks should be used to identify nullable types or not, that is, <code>int?</code> instead of <code>Nullable&lt;T&gt;</code>.
     /// Defaults to <c>true</c>.
     /// </summary>
     public bool UseQuestionMarksForNullableTypes { get; init; } = true;

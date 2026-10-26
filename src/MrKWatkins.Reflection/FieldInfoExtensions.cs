@@ -41,7 +41,7 @@ public static class FieldInfoExtensions
     public static bool IsConst(this FieldInfo field) => field.IsLiteral;
 
     /// <summary>
-    /// Returns <c>true</c> if the field is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the field is protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="field">The field.</param>
@@ -52,7 +52,7 @@ public static class FieldInfoExtensions
     public static bool IsProtected(this FieldInfo field) => field.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
     /// <summary>
-    /// Returns <c>true</c> if the field is public, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// Returns <c>true</c> if the field is public, that is, its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </summary>
     /// <remarks>
     /// Equivalent to <see cref="FieldInfo.IsPublic" />; included for completion.
@@ -66,7 +66,7 @@ public static class FieldInfoExtensions
     public static bool IsPublic(this FieldInfo field) => field.IsPublic;
 
     /// <summary>
-    /// Returns <c>true</c> if the field is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the field is public or protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="field">The field.</param>

@@ -6,7 +6,7 @@ namespace MrKWatkins.Reflection;
 public static class VirtualityExtensions
 {
     /// <summary>
-    /// Returns the equivalent of the specified <see cref="Virtuality" /> in C# keywords, e.g. "sealed override" for
+    /// Returns the equivalent of the specified <see cref="Virtuality" /> in C# keywords, for example, "sealed override" for
     /// <see cref="Virtuality.SealedOverride" />. The empty string is returned for <see cref="Virtuality.Normal"/>.
     /// </summary>
     /// <param name="virtuality">The <see cref="Virtuality" />.</param>

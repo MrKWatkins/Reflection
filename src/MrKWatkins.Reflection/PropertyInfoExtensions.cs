@@ -110,7 +110,7 @@ public static class PropertyInfoExtensions
         property.SetMethod?.ReturnParameter.GetRequiredCustomModifiers().Contains(typeof(IsExternalInit)) == true;
 
     /// <summary>
-    /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> has public or protected overloads, as viewed from an external assembly, i.e.
+    /// Returns <c>true</c> if the specified <see cref="PropertyInfo" /> has public or protected overloads, as viewed from an external assembly, that is,
     /// their <see cref="Accessibility" /> is <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or
     /// <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise. Only applies to indexer properties.
     /// </summary>
@@ -160,7 +160,7 @@ public static class PropertyInfoExtensions
     }
 
     /// <summary>
-    /// Returns <c>true</c> if the property is protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the property is protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
@@ -172,7 +172,7 @@ public static class PropertyInfoExtensions
     public static bool IsProtected(this PropertyInfo property) => property.GetAccessibility() is Accessibility.Protected or Accessibility.ProtectedInternal;
 
     /// <summary>
-    /// Returns <c>true</c> if the property is public, i.e. its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
+    /// Returns <c>true</c> if the property is public, that is, its <see cref="Accessibility" /> is <see cref="Accessibility.Public" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
     /// <returns>
@@ -182,7 +182,7 @@ public static class PropertyInfoExtensions
     public static bool IsPublic(this PropertyInfo property) => property.GetAccessibility() == Accessibility.Public;
 
     /// <summary>
-    /// Returns <c>true</c> if the property is public or protected as viewed from an external assembly, i.e. its <see cref="Accessibility" /> is
+    /// Returns <c>true</c> if the property is public or protected as viewed from an external assembly, that is, its <see cref="Accessibility" /> is
     /// <see cref="Accessibility.Public" />, <see cref="Accessibility.Protected" /> or <see cref="Accessibility.ProtectedInternal" />; <c>false</c> otherwise.
     /// </summary>
     /// <param name="property">The property.</param>
