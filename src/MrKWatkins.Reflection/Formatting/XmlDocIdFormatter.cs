@@ -192,8 +192,7 @@ public sealed class XmlDocIdFormatter : ReflectionFormatter
             return;
         }
 
-        WriteNamespace(output, type);
-        WriteName(output, type);
+        Write(output, type);
     }
 
     private static void WriteParameterTypeGenericType(TextWriter output, MemberInfo member, Type type)

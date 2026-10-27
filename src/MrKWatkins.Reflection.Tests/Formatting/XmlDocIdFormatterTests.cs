@@ -32,6 +32,12 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
     [Pure]
     public static IEnumerable<TestCaseData> FormatTestCases()
     {
+        yield return CreateTestCase(GetMethod(typeof(NestedParameterTypes), nameof(NestedParameterTypes.UseHandler)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.UseHandler(MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.Handler)");
+        yield return CreateTestCase(GetMethod(typeof(NestedParameterTypes), nameof(NestedParameterTypes.UseChild)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.UseChild(MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.Child)");
+        yield return CreateTestCase(GetMethod(typeof(NestedParameterTypes), nameof(NestedParameterTypes.UseArray)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.UseArray(MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.Handler[])");
+        yield return CreateTestCase(GetMethod(typeof(NestedParameterTypes), nameof(NestedParameterTypes.UseContainer)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.UseContainer(System.Collections.Generic.IReadOnlyList{MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.Handler})");
+        yield return CreateTestCase(GetMethod(typeof(NestedParameterTypes), nameof(NestedParameterTypes.UseReference)), "M:MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.UseReference(MrKWatkins.Reflection.Tests.TestTypes.Methods.NestedParameterTypes.Handler@)");
+
         #region Constructors
 
         yield return CreateTestCase(GetConstructor(typeof(Dictionary<,>), [typeof(int)]), "M:System.Collections.Generic.Dictionary`2.#ctor(System.Int32)");
