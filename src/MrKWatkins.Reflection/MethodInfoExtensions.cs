@@ -43,60 +43,24 @@ public static class MethodInfoExtensions
 
         var parameters = method.GetParameters();
 
-        switch (@operator)
+        return @operator switch
         {
-            case CSharpOperator.Explicit:
-            case CSharpOperator.Implicit:
-                return parameters.Length == 1 &&
-                       (method.ReturnType == method.DeclaringType || parameters[0].ParameterType == method.DeclaringType)
-                    ? @operator
-                    : null;
-
+            CSharpOperator.Explicit or CSharpOperator.Implicit => parameters.Length == 1 &&
+                                   (method.ReturnType == method.DeclaringType || parameters[0].ParameterType == method.DeclaringType)
+                                ? @operator
+                                : null,
             // Unary.
-            case CSharpOperator.CheckedDecrement:
-            case CSharpOperator.CheckedIncrement:
-            case CSharpOperator.CheckedUnaryNegation:
-            case CSharpOperator.Decrement:
-            case CSharpOperator.False:
-            case CSharpOperator.Increment:
-            case CSharpOperator.LogicalNot:
-            case CSharpOperator.OnesComplement:
-            case CSharpOperator.True:
-            case CSharpOperator.UnaryNegation:
-            case CSharpOperator.UnaryPlus:
-                return parameters.Length == 1 &&
-                       parameters[0].ParameterType == method.DeclaringType
-                    ? @operator
-                    : null;
-
+            CSharpOperator.CheckedDecrement or CSharpOperator.CheckedIncrement or CSharpOperator.CheckedUnaryNegation or CSharpOperator.Decrement or CSharpOperator.False or CSharpOperator.Increment or CSharpOperator.LogicalNot or CSharpOperator.OnesComplement or CSharpOperator.True or CSharpOperator.UnaryNegation or CSharpOperator.UnaryPlus => parameters.Length == 1 &&
+                                   parameters[0].ParameterType == method.DeclaringType
+                                ? @operator
+                                : null,
             // Binary.
-            case CSharpOperator.Addition:
-            case CSharpOperator.BitwiseAnd:
-            case CSharpOperator.BitwiseOr:
-            case CSharpOperator.CheckedAddition:
-            case CSharpOperator.CheckedDivision:
-            case CSharpOperator.CheckedMultiply:
-            case CSharpOperator.CheckedSubtraction:
-            case CSharpOperator.Division:
-            case CSharpOperator.Equality:
-            case CSharpOperator.ExclusiveOr:
-            case CSharpOperator.GreaterThan:
-            case CSharpOperator.GreaterThanOrEqual:
-            case CSharpOperator.Inequality:
-            case CSharpOperator.LeftShift:
-            case CSharpOperator.LessThan:
-            case CSharpOperator.LessThanOrEqual:
-            case CSharpOperator.Modulus:
-            case CSharpOperator.Multiply:
-            case CSharpOperator.RightShift:
-            case CSharpOperator.Subtraction:
-            case CSharpOperator.UnsignedRightShift:
-                return parameters.Length == 2 &&
-                       (parameters[0].ParameterType == method.DeclaringType || parameters[1].ParameterType == method.DeclaringType)
-                    ? @operator
-                    : null;
-        }
-        throw new UnreachableException();
+            CSharpOperator.Addition or CSharpOperator.BitwiseAnd or CSharpOperator.BitwiseOr or CSharpOperator.CheckedAddition or CSharpOperator.CheckedDivision or CSharpOperator.CheckedMultiply or CSharpOperator.CheckedSubtraction or CSharpOperator.Division or CSharpOperator.Equality or CSharpOperator.ExclusiveOr or CSharpOperator.GreaterThan or CSharpOperator.GreaterThanOrEqual or CSharpOperator.Inequality or CSharpOperator.LeftShift or CSharpOperator.LessThan or CSharpOperator.LessThanOrEqual or CSharpOperator.Modulus or CSharpOperator.Multiply or CSharpOperator.RightShift or CSharpOperator.Subtraction or CSharpOperator.UnsignedRightShift => parameters.Length == 2 &&
+                                   (parameters[0].ParameterType == method.DeclaringType || parameters[1].ParameterType == method.DeclaringType)
+                                ? @operator
+                                : null,
+            _ => throw new UnreachableException(),
+        };
     }
 
     /// <summary>

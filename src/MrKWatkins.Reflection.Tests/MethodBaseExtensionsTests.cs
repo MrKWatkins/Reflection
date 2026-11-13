@@ -35,7 +35,6 @@ public sealed class MethodBaseExtensionsTests : TestFixture
     [TestCaseSource(nameof(AccessibilityTestCases))]
     public void GetAccessibility(MethodBase method, Accessibility expected) => method.GetAccessibility().Should().Equal(expected);
 
-
     [TestCaseSource(nameof(HasPublicOrProtectedOverloadsTestCases))]
     public void HasPublicOrProtectedOverloads(MethodBase method, bool expected) => method.HasPublicOrProtectedOverloads().Should().Equal(expected);
 

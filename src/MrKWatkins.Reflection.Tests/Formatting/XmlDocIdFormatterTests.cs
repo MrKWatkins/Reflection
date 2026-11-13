@@ -136,7 +136,6 @@ public sealed class XmlDocIdFormatterTests : ReflectionFormatterTestFixture
         #endregion
     }
 
-
     [TestCaseSource(nameof(FormatNamespaceTestCases))]
     public void FormatNamespace(MemberInfo member, string expected) => new XmlDocIdFormatter().FormatNamespace(member).Should().Equal(expected);
 

@@ -1,76 +1,21 @@
 <Project>
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        <RepositoryUrl>https://github.com/MrKWatkins/Reflection</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/MrKWatkins/Reflection</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" PrivateAssets="All"/>
-
-        <Using Include="System.Diagnostics.CodeAnalysis"/>
-        <Using Include="System.Diagnostics.Contracts"/>
-        <Using Include="System.Diagnostics.Contracts.PureAttribute" Alias="PureAttribute"/>
-        <Using Include="JetBrains.Annotations"/>
+        <PackageReference Include="MrKWatkins.CSharpConventions" PrivateAssets="All" />
+        <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
     </ItemGroup>
-
-    <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
-        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <_Parameter1>$(AssemblyName).Tests</_Parameter1>
-        </AssemblyAttribute>
-    </ItemGroup>
-
-    <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
-        <!-- Allow underscores in test method names. -->
-        <NoWarn>CA1707</NoWarn>
-        <IsTestProject>true</IsTestProject>
-        <EnableNUnitRunner>true</EnableNUnitRunner>
-        <OutputType>Exe</OutputType>
-        <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-        <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
-    </PropertyGroup>
 
     <ItemGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
-        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
         <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
         <PackageReference Include="Microsoft.Testing.Extensions.TrxReport" PrivateAssets="All" />
-        <PackageReference Include="MrKWatkins.Assertions"/>
-        <PackageReference Include="NUnit"/>
-        <PackageReference Include="NUnit3TestAdapter"/>
-
-        <Using Include="MrKWatkins.Assertions"/>
-        <Using Include="NUnit.Framework"/>
-    </ItemGroup>
-
-    <PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
-        <IsPackable>true</IsPackable>
-        <Title>$(MSBuildProjectName)</Title>
-        <Authors>Kevin Watkins</Authors>
-        <Description>Reflection based extension methods for .NET.</Description>
-        <Copyright>Kevin Watkins 2026</Copyright>
-        <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/MrKWatkins/Reflection</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/MrKWatkins/Reflection</RepositoryUrl>
-        <PackageIcon>Icon.png</PackageIcon>
-        <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    </PropertyGroup>
-
-    <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('Tests'))">
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
-        <Content Include="..\Icon.png" Pack="true" PackagePath="\">
-            <Link>Icon.png</Link>
-        </Content>
-        <Content Include="..\..\ReadMe.md" Pack="true" PackagePath="\">
-            <Link>ReadMe.md</Link>
-        </Content>
+        <PackageReference Include="MrKWatkins.Assertions" />
+        <PackageReference Include="NUnit" PrivateAssets="All" />
+        <PackageReference Include="NUnit3TestAdapter" PrivateAssets="All" />
     </ItemGroup>
 </Project>

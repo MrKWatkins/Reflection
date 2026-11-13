@@ -10,7 +10,7 @@ namespace MrKWatkins.Reflection.Formatting;
 public sealed class CachedReflectionFormatter : IReflectionFormatter
 {
     private readonly ConcurrentDictionary<MemberInfo, string> memberCache = new();
-    private readonly ConcurrentDictionary<string, string> namespaceCache = new();
+    private readonly ConcurrentDictionary<string, string> namespaceCache = new(StringComparer.Ordinal);
     private readonly IReflectionFormatter formatter;
 
     /// <summary>

@@ -5,9 +5,10 @@ namespace MrKWatkins.Reflection.Formatting;
 /// <summary>
 /// Formats reflection types into a human readable display name.
 /// </summary>
-public sealed class DisplayNameFormatter : ReflectionFormatter
+/// <param name="options">The options to use.</param>
+public sealed class DisplayNameFormatter(DisplayNameFormatterOptions options) : ReflectionFormatter
 {
-    private readonly DisplayNameFormatterOptions options;
+    private readonly DisplayNameFormatterOptions options = options;
 
     /// <summary>
     /// Initialises a new instance of the <see cref="DisplayNameFormatter"/> class using default options.
@@ -15,15 +16,6 @@ public sealed class DisplayNameFormatter : ReflectionFormatter
     public DisplayNameFormatter()
         : this(new DisplayNameFormatterOptions())
     {
-    }
-
-    /// <summary>
-    /// Initialises a new instance of the <see cref="DisplayNameFormatter"/> class with the specified options.
-    /// </summary>
-    /// <param name="options">The options to use.</param>
-    public DisplayNameFormatter(DisplayNameFormatterOptions options)
-    {
-        this.options = options;
     }
 
     /// <summary>

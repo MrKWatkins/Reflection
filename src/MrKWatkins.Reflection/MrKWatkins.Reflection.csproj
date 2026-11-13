@@ -1,2 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <Description>Reflection based extension methods for .NET.</Description>
+    </PropertyGroup>
 </Project>
